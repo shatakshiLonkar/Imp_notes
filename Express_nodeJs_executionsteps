@@ -1,0 +1,271 @@
+synerzip@ULTP-788:~$ mkdir ExpressDemo
+
+
+
+synerzip@ULTP-788:~$ cd ExpressDemo/
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (expressdemo) 
+version: (1.0.0) 
+description: 
+entry point: (index.js) 
+test command: 
+git repository: 
+keywords: 
+author: 
+license: (ISC) 
+About to write to /home/synerzip/ExpressDemo/package.json:
+
+{
+  "name": "expressdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) 
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ npm install express --save
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN expressdemo@1.0.0 No description
+npm WARN expressdemo@1.0.0 No repository field.
+
++ express@4.16.4
+added 48 packages from 36 contributors and audited 121 packages in 6.994s
+found 0 vulnerabilities
+
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ code .
+
+
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ sudo npm install express-generator -g
+[sudo] password for synerzip: 
+/usr/bin/express -> /usr/lib/node_modules/express-generator/bin/express-cli.js
++ express-generator@4.16.0
+added 10 packages from 13 contributors in 0.677s
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ express -h
+
+  Usage: express [options] [dir]
+
+
+  Options:
+
+        --version        output the version number
+    -e, --ejs            add ejs engine support
+        --pug            add pug engine support
+        --hbs            add handlebars engine support
+    -H, --hogan          add hogan.js engine support
+    -v, --view <engine>  add view <engine> support (dust|ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+        --no-view        use static html instead of view engine
+    -c, --css <engine>   add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)
+        --git            add .gitignore
+    -f, --force          force on non-empty directory
+    -h, --help           output usage information
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ ls -a
+.  ..  hello_world.js  node_modules  package.json  package-lock.json
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ express --view=pug myapp
+
+   create : myapp/
+   create : myapp/public/
+   create : myapp/public/javascripts/
+   create : myapp/public/images/
+   create : myapp/public/stylesheets/
+   create : myapp/public/stylesheets/style.css
+   create : myapp/routes/
+   create : myapp/routes/index.js
+   create : myapp/routes/users.js
+   create : myapp/views/
+   create : myapp/views/error.pug
+   create : myapp/views/index.pug
+   create : myapp/views/layout.pug
+   create : myapp/app.js
+   create : myapp/package.json
+   create : myapp/bin/
+   create : myapp/bin/www
+
+   change directory:
+     $ cd myapp
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=myapp:* npm start
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ cd myapp/
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp$ npm install
+npm notice created a lockfile as package-lock.json. You should commit this file.
+added 118 packages from 174 contributors and audited 247 packages in 4.188s
+found 0 vulnerabilities
+
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp$ DEBUG=myapp:* npm start
+
+> myapp@0.0.0 start /home/synerzip/ExpressDemo/myapp
+> node ./bin/www
+
+  myapp:server Listening on port 3000 +0ms
+GET / 200 229.320 ms - 170
+GET /stylesheets/style.css 200 3.518 ms - 111
+^C
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp$ express --view=ejs myapp1
+
+   create : myapp1/
+   create : myapp1/public/
+   create : myapp1/public/javascripts/
+   create : myapp1/public/images/
+   create : myapp1/public/stylesheets/
+   create : myapp1/public/stylesheets/style.css
+   create : myapp1/routes/
+   create : myapp1/routes/index.js
+   create : myapp1/routes/users.js
+   create : myapp1/views/
+   create : myapp1/views/error.ejs
+   create : myapp1/views/index.ejs
+   create : myapp1/app.js
+   create : myapp1/package.json
+   create : myapp1/bin/
+   create : myapp1/bin/www
+
+   change directory:
+     $ cd myapp1
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=myapp1:* npm start
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp$ cd ..
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ express --view=ejs myapp1
+
+   create : myapp1/
+   create : myapp1/public/
+   create : myapp1/public/javascripts/
+   create : myapp1/public/images/
+   create : myapp1/public/stylesheets/
+   create : myapp1/public/stylesheets/style.css
+   create : myapp1/routes/
+   create : myapp1/routes/index.js
+   create : myapp1/routes/users.js
+   create : myapp1/views/
+   create : myapp1/views/error.ejs
+   create : myapp1/views/index.ejs
+   create : myapp1/app.js
+   create : myapp1/package.json
+   create : myapp1/bin/
+   create : myapp1/bin/www
+
+   change directory:
+     $ cd myapp1
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=myapp1:* npm start
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo$ cd myapp1
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp1$ npm install
+npm notice created a lockfile as package-lock.json. You should commit this file.
+added 53 packages from 38 contributors and audited 141 packages in 1.59s
+found 0 vulnerabilities
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp1$ DEBUG=myapp1:* npm start
+
+> myapp1@0.0.0 start /home/synerzip/ExpressDemo/myapp1
+> node ./bin/www
+
+  myapp1:server Listening on port 3000 +0ms
+GET / 200 21.546 ms - 207
+GET /stylesheets/style.css 200 2.667 ms - 111
+GET / 304 1.690 ms - -
+GET /stylesheets/style.css 304 1.143 ms - -
+^C
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp1$ DEBUG=myapp1:* npm start
+
+> myapp1@0.0.0 start /home/synerzip/ExpressDemo/myapp1
+> node ./bin/www
+
+  myapp1:server Listening on port 3000 +0ms
+GET / 200 36.084 ms - 240
+GET /stylesheets/style.css 304 1.869 ms - -
+^C
+
+
+
+
+
+synerzip@ULTP-788:~/ExpressDemo/myapp1$ 
+

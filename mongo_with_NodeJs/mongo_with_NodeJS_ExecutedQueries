@@ -1,0 +1,617 @@
+synerzip@ULTP-788:~$ sudo service mongod start
+[sudo] password for synerzip: 
+synerzip@ULTP-788:~$ mongo
+MongoDB shell version v4.0.5
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ed4edc79-af8f-48c7-a719-657e823bd0ea") }
+MongoDB server version: 4.0.5
+Server has startup warnings: 
+2018-12-24T09:48:36.908+0530 I STORAGE  [initandlisten] 
+2018-12-24T09:48:36.908+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2018-12-24T09:48:36.908+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2018-12-24T09:48:39.300+0530 I CONTROL  [initandlisten] 
+2018-12-24T09:48:39.300+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-12-24T09:48:39.300+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-12-24T09:48:39.300+0530 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> 
+_____________________________________________________________________________
+synerzip@ULTP-788:~/mongo_nodeJS$ npm install mongodb
+npm WARN saveError ENOENT: no such file or directory, open '/home/synerzip/package.json'
+npm WARN enoent ENOENT: no such file or directory, open '/home/synerzip/package.json'
+npm WARN synerzip No description
+npm WARN synerzip No repository field.
+npm WARN synerzip No README data
+npm WARN synerzip No license field.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
++ mongodb@3.1.10
+updated 1 package and audited 41820 packages in 5.525s
+found 0 vulnerabilities
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node demo_create_mongo_db.js
+(node:8078) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Database created!
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node create_Collection.js
+(node:8152) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Collection created!
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node insert_document.js
+(node:8249) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+1 document inserted
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node insertMany.js
+(node:8328) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Number of documents inserted: 14
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findOne.js
+(node:8424) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Company Inc
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findAll.js
+(node:8446) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' },
+  { _id: 5c207baad29a8d2088e4750e,
+    name: 'Hannah',
+    address: 'Mountain 21' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Michael',
+    address: 'Valley 345' },
+  { _id: 5c207baad29a8d2088e47510,
+    name: 'Sandy',
+    address: 'Ocean blvd 2' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47513,
+    name: 'Susan',
+    address: 'One way 98' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' } ]
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findSome.js
+(node:8486) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { name: 'Company Inc', address: 'Highway 37' },
+  { name: 'Company Inc', address: 'Highway 37' },
+  { name: 'Company Inc', address: 'Highway 37' },
+  { name: 'John', address: 'Highway 71' },
+  { name: 'Peter', address: 'Lowstreet 4' },
+  { name: 'Amy', address: 'Apple st 652' },
+  { name: 'Hannah', address: 'Mountain 21' },
+  { name: 'Michael', address: 'Valley 345' },
+  { name: 'Sandy', address: 'Ocean blvd 2' },
+  { name: 'Betty', address: 'Green Grass 1' },
+  { name: 'Richard', address: 'Sky st 331' },
+  { name: 'Susan', address: 'One way 98' },
+  { name: 'Vicky', address: 'Yellow Garden 2' },
+  { name: 'Ben', address: 'Park Lane 38' },
+  { name: 'William', address: 'Central st 954' },
+  { name: 'Chuck', address: 'Main Road 989' },
+  { name: 'Viola', address: 'Sideway 1633' } ]
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node find_ExcludeAddress.js
+(node:8518) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62, name: 'Company Inc' },
+  { _id: 5c207b284f2de220573c6a70, name: 'Company Inc' },
+  { _id: 5c207b77dce7b2207188828d, name: 'Company Inc' },
+  { _id: 5c207baad29a8d2088e4750b, name: 'John' },
+  { _id: 5c207baad29a8d2088e4750c, name: 'Peter' },
+  { _id: 5c207baad29a8d2088e4750d, name: 'Amy' },
+  { _id: 5c207baad29a8d2088e4750e, name: 'Hannah' },
+  { _id: 5c207baad29a8d2088e4750f, name: 'Michael' },
+  { _id: 5c207baad29a8d2088e47510, name: 'Sandy' },
+  { _id: 5c207baad29a8d2088e47511, name: 'Betty' },
+  { _id: 5c207baad29a8d2088e47512, name: 'Richard' },
+  { _id: 5c207baad29a8d2088e47513, name: 'Susan' },
+  { _id: 5c207baad29a8d2088e47514, name: 'Vicky' },
+  { _id: 5c207baad29a8d2088e47515, name: 'Ben' },
+  { _id: 5c207baad29a8d2088e47516, name: 'William' },
+  { _id: 5c207baad29a8d2088e47517, name: 'Chuck' },
+  { _id: 5c207baad29a8d2088e47518, name: 'Viola' } ]
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node find_OnlyName.js
+(node:8546) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { name: 'Company Inc' },
+  { name: 'Company Inc' },
+  { name: 'Company Inc' },
+  { name: 'John' },
+  { name: 'Peter' },
+  { name: 'Amy' },
+  { name: 'Hannah' },
+  { name: 'Michael' },
+  { name: 'Sandy' },
+  { name: 'Betty' },
+  { name: 'Richard' },
+  { name: 'Susan' },
+  { name: 'Vicky' },
+  { name: 'Ben' },
+  { name: 'William' },
+  { name: 'Chuck' },
+  { name: 'Viola' } ]
+
+
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node find_ExcludeNameAndId.js
+(node:8853) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { address: 'Highway 37' },
+  { address: 'Highway 37' },
+  { address: 'Highway 37' },
+  { address: 'Highway 71' },
+  { address: 'Lowstreet 4' },
+  { address: 'Apple st 652' },
+  { address: 'Mountain 21' },
+  { address: 'Valley 345' },
+  { address: 'Ocean blvd 2' },
+  { address: 'Green Grass 1' },
+  { address: 'Sky st 331' },
+  { address: 'One way 98' },
+  { address: 'Yellow Garden 2' },
+  { address: 'Park Lane 38' },
+  { address: 'Central st 954' },
+  { address: 'Main Road 989' },
+  { address: 'Sideway 1633' } ]
+Lowstreet 4
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node query.js
+(node:9807) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' } ]
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node query_addressStartingWithS.js
+(node:9854) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' } ]
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node sort_NameAscending.js
+(node:9929) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750e,
+    name: 'Hannah',
+    address: 'Mountain 21' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Michael',
+    address: 'Valley 345' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47510,
+    name: 'Sandy',
+    address: 'Ocean blvd 2' },
+  { _id: 5c207baad29a8d2088e47513,
+    name: 'Susan',
+    address: 'One way 98' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' },
+  { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' } ]
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node sort_NameDescending.js
+(node:9949) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47513,
+    name: 'Susan',
+    address: 'One way 98' },
+  { _id: 5c207baad29a8d2088e47510,
+    name: 'Sandy',
+    address: 'Ocean blvd 2' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Michael',
+    address: 'Valley 345' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750e,
+    name: 'Hannah',
+    address: 'Mountain 21' },
+  { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' } ]
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node delete.js
+(node:10042) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+1 document deleted
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findAll.js
+(node:10061) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Michael',
+    address: 'Valley 345' },
+  { _id: 5c207baad29a8d2088e47510,
+    name: 'Sandy',
+    address: 'Ocean blvd 2' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47513,
+    name: 'Susan',
+    address: 'One way 98' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' } ]
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node deleteMany_AddressStartingWithO.js
+(node:10086) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2 document(s) deleted
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findAll.js
+(node:10098) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Michael',
+    address: 'Valley 345' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' } ]
+
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node updateOne.js
+(node:10170) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+1 document updated
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findAll.js
+(node:10178) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Mickey',
+    address: 'Canyon 123' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Richard',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Viola',
+    address: 'Sideway 1633' } ]
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node updateMany_addressStartingWithS.js
+(node:10206) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2 document(s) updated
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node findAll.js
+(node:10214) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' },
+  { _id: 5c207baad29a8d2088e4750d,
+    name: 'Amy',
+    address: 'Apple st 652' },
+  { _id: 5c207baad29a8d2088e4750f,
+    name: 'Mickey',
+    address: 'Canyon 123' },
+  { _id: 5c207baad29a8d2088e47511,
+    name: 'Betty',
+    address: 'Green Grass 1' },
+  { _id: 5c207baad29a8d2088e47512,
+    name: 'Minnie',
+    address: 'Sky st 331' },
+  { _id: 5c207baad29a8d2088e47514,
+    name: 'Vicky',
+    address: 'Yellow Garden 2' },
+  { _id: 5c207baad29a8d2088e47515,
+    name: 'Ben',
+    address: 'Park Lane 38' },
+  { _id: 5c207baad29a8d2088e47516,
+    name: 'William',
+    address: 'Central st 954' },
+  { _id: 5c207baad29a8d2088e47517,
+    name: 'Chuck',
+    address: 'Main Road 989' },
+  { _id: 5c207baad29a8d2088e47518,
+    name: 'Minnie',
+    address: 'Sideway 1633' } ]
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node limit.js
+(node:10232) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+[ { _id: 5c207aa459746620397d5d62,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b284f2de220573c6a70,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207b77dce7b2207188828d,
+    name: 'Company Inc',
+    address: 'Highway 37' },
+  { _id: 5c207baad29a8d2088e4750b,
+    name: 'John',
+    address: 'Highway 71' },
+  { _id: 5c207baad29a8d2088e4750c,
+    name: 'Peter',
+    address: 'Lowstreet 4' } ]
+
+
+
+
+synerzip@ULTP-788:~/mongo_nodeJS$ node join.js
+(node:10471) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Collection orders1 created!
+Collection products1 created!
+1 document inserted
+Number of documents inserted: 3
+[{"_id":1,"product_id":154,"status":1,"orderdetails":[{"_id":154,"name":"Chocolate Heaven"}]}]
+synerzip@ULTP-788:~/mongo_nodeJS$
