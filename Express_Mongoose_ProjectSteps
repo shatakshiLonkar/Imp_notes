@@ -1,0 +1,7 @@
+npm init
+npm install express-generator -g
+express --view=ejs ttmm
+npm install mongoose
+npm install ejs
+npm install express
+npm install mongodb

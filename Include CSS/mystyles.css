@@ -1,0 +1,80 @@
+body
+{
+    text-align: center;
+}
+
+.main{
+    text-align: center;
+    
+}
+.cloud1
+{
+    position:absolute;
+    right:100px;
+    top:20px;
+}
+.cloud2
+{
+    position:relative;
+    right:160px;  
+    top:0
+}
+
+
+
+.introduction
+{
+    font-family: Felipa; 
+}
+.temp
+{
+    background-color:papayawhip
+}
+.mountain
+{
+    height:40%;
+    width :40%;
+    margin-left:65px;
+} 
+/* .basic
+{
+    display: block;
+  margin: 50px auto;
+} */
+.self
+{
+    
+   height:75px;
+}
+
+.myskillimage
+    {
+    text-align:center;
+    height:50%; 
+    float:left;
+    margin-left: 30%;
+    width: 10%;
+    /* text-align: left; */
+    
+}
+.data
+ {
+    text-align:center;
+    float:right;
+    margin-right:300px; 
+
+}
+
+.hiking{
+    height:30%;
+    width:10%;
+    float: right;
+    margin-right: 20%;
+    margin-bottom:20%;
+  }
+.data1
+ {
+    text-align:center;
+    float:right;
+    margin-right: 30px;
+}

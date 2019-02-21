@@ -1,0 +1,882 @@
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ gem install rails
+Fetching: rails-dom-testing-2.0.3.gem (100%)
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /var/lib/gems/2.5.0 directory.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ sudo gem install rails
+[sudo] password for synerzip: 
+Fetching: rails-dom-testing-2.0.3.gem (100%)
+Successfully installed rails-dom-testing-2.0.3
+Fetching: erubi-1.8.0.gem (100%)
+Successfully installed erubi-1.8.0
+Fetching: actionview-5.2.2.gem (100%)
+Successfully installed actionview-5.2.2
+Fetching: actionpack-5.2.2.gem (100%)
+Successfully installed actionpack-5.2.2
+Fetching: activemodel-5.2.2.gem (100%)
+Successfully installed activemodel-5.2.2
+Fetching: arel-9.0.0.gem (100%)
+Successfully installed arel-9.0.0
+Fetching: activerecord-5.2.2.gem (100%)
+Successfully installed activerecord-5.2.2
+Fetching: globalid-0.4.2.gem (100%)
+Successfully installed globalid-0.4.2
+Fetching: activejob-5.2.2.gem (100%)
+Successfully installed activejob-5.2.2
+Fetching: mini_mime-1.0.1.gem (100%)
+Successfully installed mini_mime-1.0.1
+Fetching: mail-2.7.1.gem (100%)
+Successfully installed mail-2.7.1
+Fetching: actionmailer-5.2.2.gem (100%)
+Successfully installed actionmailer-5.2.2
+Fetching: nio4r-2.3.1.gem (100%)
+Building native extensions. This could take a while...
+ERROR:  Error installing rails:
+	ERROR: Failed to build gem native extension.
+
+    current directory: /var/lib/gems/2.5.0/gems/nio4r-2.3.1/ext/nio4r
+/usr/bin/ruby2.5 -r ./siteconf20190218-12862-170n8zy.rb extconf.rb
+mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+
+extconf failed, exit code 1
+
+Gem files will remain installed in /var/lib/gems/2.5.0/gems/nio4r-2.3.1 for inspection.
+Results logged to /var/lib/gems/2.5.0/extensions/x86_64-linux/2.5.0/nio4r-2.3.1/gem_make.out
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ rails -v
+Rails 4.2.10
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ rails new event_app
+      create  
+      create  README.rdoc
+      create  Rakefile
+      create  config.ru
+      create  .gitignore
+      create  Gemfile
+      create  app
+      create  app/assets/javascripts/application.js
+      create  app/assets/stylesheets/application.css
+      create  app/controllers/application_controller.rb
+      create  app/helpers/application_helper.rb
+      create  app/views/layouts/application.html.erb
+      create  app/assets/images/.keep
+      create  app/mailers/.keep
+      create  app/models/.keep
+      create  app/controllers/concerns/.keep
+      create  app/models/concerns/.keep
+      create  bin
+      create  bin/bundle
+      create  bin/rails
+      create  bin/rake
+      create  bin/setup
+      create  config
+      create  config/routes.rb
+      create  config/application.rb
+      create  config/environment.rb
+      create  config/secrets.yml
+      create  config/environments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/assets.rb
+      create  config/initializers/backtrace_silencers.rb
+      create  config/initializers/cookies_serializer.rb
+      create  config/initializers/filter_parameter_logging.rb
+      create  config/initializers/inflections.rb
+      create  config/initializers/mime_types.rb
+      create  config/initializers/session_store.rb
+      create  config/initializers/to_time_preserves_timezone.rb
+      create  config/initializers/wrap_parameters.rb
+      create  config/locales
+      create  config/locales/en.yml
+      create  config/boot.rb
+      create  config/database.yml
+      create  db
+      create  db/seeds.rb
+      create  lib
+      create  lib/tasks
+      create  lib/tasks/.keep
+      create  lib/assets
+      create  lib/assets/.keep
+      create  log
+      create  log/.keep
+      create  public
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/favicon.ico
+      create  public/robots.txt
+      create  test/fixtures
+      create  test/fixtures/.keep
+      create  test/controllers
+      create  test/controllers/.keep
+      create  test/mailers
+      create  test/mailers/.keep
+      create  test/models
+      create  test/models/.keep
+      create  test/helpers
+      create  test/helpers/.keep
+      create  test/integration
+      create  test/integration/.keep
+      create  test/test_helper.rb
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor/assets/javascripts
+      create  vendor/assets/javascripts/.keep
+      create  vendor/assets/stylesheets
+      create  vendor/assets/stylesheets/.keep
+         run  bundle install --local
+Traceback (most recent call last):
+	19: from /usr/bin/rails:9:in `<main>'
+	18: from /usr/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+	17: from /usr/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+	16: from /usr/lib/ruby/vendor_ruby/rails/cli.rb:14:in `<top (required)>'
+	15: from /usr/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+	14: from /usr/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+	13: from /usr/lib/ruby/vendor_ruby/rails/commands/application.rb:17:in `<top (required)>'
+	12: from /usr/lib/ruby/vendor_ruby/thor/base.rb:444:in `start'
+	11: from /usr/lib/ruby/vendor_ruby/thor/group.rb:232:in `dispatch'
+	10: from /usr/lib/ruby/vendor_ruby/thor/invocation.rb:133:in `invoke_all'
+	 9: from /usr/lib/ruby/vendor_ruby/thor/invocation.rb:133:in `map'
+	 8: from /usr/lib/ruby/vendor_ruby/thor/invocation.rb:133:in `each'
+	 7: from /usr/lib/ruby/vendor_ruby/thor/invocation.rb:133:in `block in invoke_all'
+	 6: from /usr/lib/ruby/vendor_ruby/thor/invocation.rb:126:in `invoke_command'
+	 5: from /usr/lib/ruby/vendor_ruby/thor/command.rb:27:in `run'
+	 4: from (eval):1:in `run_bundle'
+	 3: from /usr/lib/ruby/vendor_ruby/rails/generators/app_base.rb:351:in `run_bundle'
+	 2: from /usr/lib/ruby/vendor_ruby/rails/generators/app_base.rb:335:in `bundle_command'
+	 1: from /usr/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+/usr/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require': cannot load such file -- bundler (LoadError)
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ bundle install
+
+Command 'bundle' not found, but can be installed with:
+
+sudo snap install ruby          # version 2.6.1, or
+sudo apt  install ruby-bundler
+
+See 'snap info ruby' for additional versions.
+
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ sudo apt  install ruby-bundler
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libncursesw5 libtinfo5 linux-headers-4.18.0-12 linux-headers-4.18.0-12-generic linux-image-4.18.0-12-generic
+  linux-modules-4.18.0-12-generic linux-modules-extra-4.18.0-12-generic python-chardet python-cliapp python-markdown python-pygments
+  python-ttystatus python-yaml
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  ruby-molinillo ruby-net-http-persistent
+The following NEW packages will be installed:
+  ruby-bundler ruby-molinillo ruby-net-http-persistent
+0 upgraded, 3 newly installed, 0 to remove and 55 not upgraded.
+Need to get 273 kB of archives.
+After this operation, 1,315 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://in.archive.ubuntu.com/ubuntu cosmic/universe amd64 ruby-molinillo all 0.6.4-1 [19.8 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu cosmic/universe amd64 ruby-net-http-persistent all 2.9.4-1 [15.9 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu cosmic/universe amd64 ruby-bundler all 1.16.1-3 [237 kB]
+Fetched 273 kB in 1s (194 kB/s)   
+Selecting previously unselected package ruby-molinillo.
+(Reading database ... 222968 files and directories currently installed.)
+Preparing to unpack .../ruby-molinillo_0.6.4-1_all.deb ...
+Unpacking ruby-molinillo (0.6.4-1) ...
+Selecting previously unselected package ruby-net-http-persistent.
+Preparing to unpack .../ruby-net-http-persistent_2.9.4-1_all.deb ...
+Unpacking ruby-net-http-persistent (2.9.4-1) ...
+Selecting previously unselected package ruby-bundler.
+Preparing to unpack .../ruby-bundler_1.16.1-3_all.deb ...
+Unpacking ruby-bundler (1.16.1-3) ...
+Setting up ruby-net-http-persistent (2.9.4-1) ...
+Processing triggers for man-db (2.8.4-2) ...
+Setting up ruby-molinillo (0.6.4-1) ...
+Setting up ruby-bundler (1.16.1-3) ...
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ rails new event_app
+       exist  
+   identical  README.rdoc
+   identical  Rakefile
+   identical  config.ru
+   identical  .gitignore
+   identical  Gemfile
+       exist  app
+   identical  app/assets/javascripts/application.js
+   identical  app/assets/stylesheets/application.css
+   identical  app/controllers/application_controller.rb
+   identical  app/helpers/application_helper.rb
+   identical  app/views/layouts/application.html.erb
+   identical  app/assets/images/.keep
+   identical  app/mailers/.keep
+   identical  app/models/.keep
+   identical  app/controllers/concerns/.keep
+   identical  app/models/concerns/.keep
+       exist  bin
+   identical  bin/bundle
+   identical  bin/rails
+   identical  bin/rake
+   identical  bin/setup
+       exist  config
+   identical  config/routes.rb
+   identical  config/application.rb
+   identical  config/environment.rb
+    conflict  config/secrets.yml
+Overwrite /home/synerzip/all Examples EXecuted/Rails/event_app/config/secrets.yml? (enter "h" for help) [Ynaqdh] 
+synerzip@ULTP-395:~/all Examples EXecuted/Rails$ cd event_app/
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails g scaffold events title:string description:text event_date:date
+Could not find gem 'rails (= 4.2.10)' in any of the gem sources listed in your Gemfile.
+Run `bundle install` to install missing gems.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails g scaffold events title:string description:text event_date:date
+Could not find gem 'rails (= 4.2.10)' in any of the gem sources listed in your Gemfile.
+Run `bundle install` to install missing gems.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ ^C
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies.....
+Fetching rake 12.3.2
+
+
+Your user account isn't allowed to install to the system RubyGems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to RubyGems using sudo.
+
+  Password: 
+Installing rake 12.3.2
+Using concurrent-ruby 1.1.4
+Fetching i18n 0.9.5
+Installing i18n 0.9.5
+Using minitest 5.11.3
+Using thread_safe 0.3.6
+Using tzinfo 1.2.5
+Using activesupport 4.2.10
+Using builder 3.2.3
+Using erubis 2.7.0
+Using mini_portile2 2.4.0
+Fetching nokogiri 1.10.1
+Installing nokogiri 1.10.1 with native extensions
+Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+
+    current directory: /tmp/bundler20190218-13509-st9dcjnokogiri-1.10.1/gems/nokogiri-1.10.1/ext/nokogiri
+/usr/bin/ruby2.5 -r ./siteconf20190218-13509-1rwy4ku.rb extconf.rb
+mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+
+extconf failed, exit code 1
+
+Gem files will remain installed in /tmp/bundler20190218-13509-st9dcjnokogiri-1.10.1/gems/nokogiri-1.10.1 for inspection.
+Results logged to /tmp/bundler20190218-13509-st9dcjnokogiri-1.10.1/extensions/x86_64-linux/2.5.0/nokogiri-1.10.1/gem_make.out
+
+An error occurred while installing nokogiri (1.10.1), and Bundler cannot continue.
+Make sure that `gem install nokogiri -v '1.10.1'` succeeds before bundling.
+
+In Gemfile:
+  rails was resolved to 4.2.10, which depends on
+    actionmailer was resolved to 4.2.10, which depends on
+      actionpack was resolved to 4.2.10, which depends on
+        actionview was resolved to 4.2.10, which depends on
+          rails-dom-testing was resolved to 1.0.9, which depends on
+            nokogiri
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails g scaffold events title:string description:text event_date:date
+Could not find gem 'rails (= 4.2.10)' in any of the gem sources listed in your Gemfile.
+Run `bundle install` to install missing gems.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ gem install nokogiri -v '1.10.1'
+Fetching: nokogiri-1.10.1.gem (100%)
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /var/lib/gems/2.5.0 directory.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ sudo gem install nokogiri -v '1.10.1'
+Building native extensions. This could take a while...
+ERROR:  Error installing nokogiri:
+	ERROR: Failed to build gem native extension.
+
+    current directory: /var/lib/gems/2.5.0/gems/nokogiri-1.10.1/ext/nokogiri
+/usr/bin/ruby2.5 -r ./siteconf20190218-13645-1q3t6h3.rb extconf.rb
+mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+
+extconf failed, exit code 1
+
+Gem files will remain installed in /var/lib/gems/2.5.0/gems/nokogiri-1.10.1 for inspection.
+Results logged to /var/lib/gems/2.5.0/extensions/x86_64-linux/2.5.0/nokogiri-1.10.1/gem_make.out
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ sudo em install nokogiri -v 1.6.2.1 -- --use-system-libraries
+sudo: em: command not found
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ sudo gem install nokogiri -v 1.6.2.1 -- --use-system-libraries
+Fetching: mini_portile-0.6.0.gem (100%)
+Successfully installed mini_portile-0.6.0
+Fetching: nokogiri-1.6.2.1.gem (100%)
+Building native extensions with: '--use-system-libraries'
+This could take a while...
+ERROR:  Error installing nokogiri:
+	ERROR: Failed to build gem native extension.
+
+    current directory: /var/lib/gems/2.5.0/gems/nokogiri-1.6.2.1/ext/nokogiri
+/usr/bin/ruby2.5 -r ./siteconf20190218-13765-1a621in.rb extconf.rb --use-system-libraries
+mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+
+extconf failed, exit code 1
+
+Gem files will remain installed in /var/lib/gems/2.5.0/gems/nokogiri-1.6.2.1 for inspection.
+Results logged to /var/lib/gems/2.5.0/extensions/x86_64-linux/2.5.0/nokogiri-1.6.2.1/gem_make.out
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ sudo apt-get install build-essential patch
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+build-essential is already the newest version (12.5ubuntu2).
+patch is already the newest version (2.7.6-3).
+patch set to manually installed.
+The following packages were automatically installed and are no longer required:
+  libncursesw5 libtinfo5 linux-headers-4.18.0-12 linux-headers-4.18.0-12-generic linux-image-4.18.0-12-generic
+  linux-modules-4.18.0-12-generic linux-modules-extra-4.18.0-12-generic python-chardet python-cliapp python-markdown python-pygments
+  python-ttystatus python-yaml
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 55 not upgraded.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ sudo apt-get install ruby-dev zlib1g-dev liblzma-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2).
+The following packages were automatically installed and are no longer required:
+  libncursesw5 libtinfo5 linux-headers-4.18.0-12 linux-headers-4.18.0-12-generic linux-image-4.18.0-12-generic
+  linux-modules-4.18.0-12-generic linux-modules-extra-4.18.0-12-generic python-chardet python-cliapp python-markdown python-pygments
+  python-ttystatus python-yaml
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  ruby2.5-dev ruby2.5-doc
+Suggested packages:
+  liblzma-doc
+The following NEW packages will be installed:
+  liblzma-dev ruby-dev ruby2.5-dev ruby2.5-doc
+0 upgraded, 4 newly installed, 0 to remove and 55 not upgraded.
+Need to get 2,020 kB of archives.
+After this operation, 19.3 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://in.archive.ubuntu.com/ubuntu cosmic-updates/main amd64 ruby2.5-dev amd64 2.5.1-5ubuntu4.1 [63.7 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu cosmic/main amd64 ruby-dev amd64 1:2.5.1 [4,604 B]
+Get:3 http://in.archive.ubuntu.com/ubuntu cosmic-updates/main amd64 ruby2.5-doc all 2.5.1-5ubuntu4.1 [1,806 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu cosmic/main amd64 liblzma-dev amd64 5.2.2-1.3 [145 kB]
+Fetched 2,020 kB in 6s (354 kB/s)
+Selecting previously unselected package ruby2.5-dev:amd64.
+(Reading database ... 223282 files and directories currently installed.)
+Preparing to unpack .../ruby2.5-dev_2.5.1-5ubuntu4.1_amd64.deb ...
+Unpacking ruby2.5-dev:amd64 (2.5.1-5ubuntu4.1) ...
+Selecting previously unselected package ruby-dev:amd64.
+Preparing to unpack .../ruby-dev_1%3a2.5.1_amd64.deb ...
+Unpacking ruby-dev:amd64 (1:2.5.1) ...
+Selecting previously unselected package ruby2.5-doc.
+Preparing to unpack .../ruby2.5-doc_2.5.1-5ubuntu4.1_all.deb ...
+Unpacking ruby2.5-doc (2.5.1-5ubuntu4.1) ...
+Selecting previously unselected package liblzma-dev:amd64.
+Preparing to unpack .../liblzma-dev_5.2.2-1.3_amd64.deb ...
+Unpacking liblzma-dev:amd64 (5.2.2-1.3) ...
+Setting up ruby2.5-dev:amd64 (2.5.1-5ubuntu4.1) ...
+Setting up ruby2.5-doc (2.5.1-5ubuntu4.1) ...
+Setting up liblzma-dev:amd64 (5.2.2-1.3) ...
+Setting up ruby-dev:amd64 (1:2.5.1) ...
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies.....
+Using rake 12.3.2
+Using concurrent-ruby 1.1.4
+Using i18n 0.9.5
+Using minitest 5.11.3
+Using thread_safe 0.3.6
+Using tzinfo 1.2.5
+Using activesupport 4.2.10
+Using builder 3.2.3
+Using erubis 2.7.0
+Using mini_portile2 2.4.0
+Fetching nokogiri 1.10.1
+
+
+Your user account isn't allowed to install to the system RubyGems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to RubyGems using sudo.
+
+  Password: 
+Installing nokogiri 1.10.1 with native extensions
+Using rails-deprecated_sanitizer 1.0.3
+Fetching rails-dom-testing 1.0.9
+Installing rails-dom-testing 1.0.9
+Fetching crass 1.0.4
+Installing crass 1.0.4
+Fetching loofah 2.2.3
+Installing loofah 2.2.3
+Using rails-html-sanitizer 1.0.4
+Using actionview 4.2.10
+Fetching rack 1.6.11
+Installing rack 1.6.11
+Using rack-test 0.7.0
+Using actionpack 4.2.10
+Using globalid 0.4.2
+Fetching activejob 4.2.10
+Installing activejob 4.2.10
+Using mini_mime 1.0.1
+Using mail 2.7.1
+Fetching actionmailer 4.2.10
+Installing actionmailer 4.2.10
+Fetching activemodel 4.2.10
+Installing activemodel 4.2.10
+Fetching arel 6.0.4
+Installing arel 6.0.4
+Fetching activerecord 4.2.10
+Installing activerecord 4.2.10
+Fetching debug_inspector 0.0.3
+Installing debug_inspector 0.0.3 with native extensions
+Fetching binding_of_caller 0.8.0
+Installing binding_of_caller 0.8.0 with native extensions
+Using bundler 1.16.1
+Fetching byebug 11.0.0
+Installing byebug 11.0.0 with native extensions
+Fetching coffee-script-source 1.12.2
+Installing coffee-script-source 1.12.2
+Fetching execjs 2.7.0
+Installing execjs 2.7.0
+Fetching coffee-script 2.4.1
+Installing coffee-script 2.4.1
+Fetching thor 0.20.3
+Installing thor 0.20.3
+Using railties 4.2.10
+Fetching coffee-rails 4.1.1
+Installing coffee-rails 4.1.1
+Fetching ffi 1.10.0
+Installing ffi 1.10.0 with native extensions
+Fetching multi_json 1.13.1
+Installing multi_json 1.13.1
+Fetching jbuilder 2.8.0
+Installing jbuilder 2.8.0
+Fetching jquery-rails 4.3.3
+Installing jquery-rails 4.3.3
+Fetching sprockets 3.7.2
+Installing sprockets 3.7.2
+Fetching sprockets-rails 3.2.1
+Installing sprockets-rails 3.2.1
+Fetching rails 4.2.10
+Installing rails 4.2.10
+Fetching rb-fsevent 0.10.3
+Installing rb-fsevent 0.10.3
+Fetching rb-inotify 0.10.0
+Installing rb-inotify 0.10.0
+Fetching rdoc 6.1.1
+Installing rdoc 6.1.1
+Fetching sass-listen 4.0.0
+Installing sass-listen 4.0.0
+Fetching sass 3.7.3
+Installing sass 3.7.3
+Fetching tilt 2.0.9
+Installing tilt 2.0.9
+Fetching sass-rails 5.0.7
+Installing sass-rails 5.0.7
+Fetching sdoc 1.0.0
+Installing sdoc 1.0.0
+Fetching spring 2.0.2
+Installing spring 2.0.2
+Fetching sqlite3 1.4.0
+Installing sqlite3 1.4.0 with native extensions
+Fetching turbolinks-source 5.2.0
+Installing turbolinks-source 5.2.0
+Fetching turbolinks 5.2.0
+Installing turbolinks 5.2.0
+Fetching uglifier 4.1.20
+Installing uglifier 4.1.20
+Fetching web-console 2.3.0
+Installing web-console 2.3.0
+Bundle complete! 12 Gemfile dependencies, 59 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+Post-install message from sass:
+
+Ruby Sass is deprecated and will be unmaintained as of 26 March 2019.
+
+* If you use Sass as a command-line tool, we recommend using Dart Sass, the new
+  primary implementation: https://sass-lang.com/install
+
+* If you use Sass as a plug-in for a Ruby web framework, we recommend using the
+  sassc gem: https://github.com/sass/sassc-ruby#readme
+
+* For more details, please refer to the Sass blog:
+  http://sass.logdown.com/posts/7081811
+
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails g scaffold events title:string description:text event_date:date
+[WARNING] The model name 'events' was recognized as a plural, using the singular 'event' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+Traceback (most recent call last):
+	50: from bin/rails:4:in `<main>'
+	49: from bin/rails:4:in `require'
+	48: from /usr/lib/ruby/vendor_ruby/rails/commands.rb:17:in `<top (required)>'
+	47: from /usr/lib/ruby/vendor_ruby/rails/commands/commands_tasks.rb:39:in `run_command!'
+	46: from /usr/lib/ruby/vendor_ruby/rails/commands/commands_tasks.rb:50:in `generate'
+	45: from /usr/lib/ruby/vendor_ruby/rails/commands/commands_tasks.rb:130:in `generate_or_destroy'
+	44: from /usr/lib/ruby/vendor_ruby/rails/commands/commands_tasks.rb:123:in `require_command!'
+	43: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:274:in `require'
+	42: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:240:in `load_dependency'
+	41: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:274:in `block in require'
+	40: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:274:in `require'
+	39: from /usr/lib/ruby/vendor_ruby/rails/commands/generate.rb:13:in `<top (required)>'
+	38: from /usr/lib/ruby/vendor_ruby/rails/generators.rb:157:in `invoke'
+	37: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/base.rb:466:in `start'
+	36: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/group.rb:232:in `dispatch'
+	35: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `invoke_all'
+	34: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `map'
+	33: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `each'
+	32: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `block in invoke_all'
+	31: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:126:in `invoke_command'
+	30: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/command.rb:27:in `run'
+	29: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/group.rb:134:in `_invoke_from_option_orm'
+	28: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/group.rb:266:in `_invoke_for_class_method'
+	27: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/shell.rb:68:in `with_padding'
+	26: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/group.rb:277:in `block in _invoke_for_class_method'
+	25: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:115:in `invoke'
+	24: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/group.rb:232:in `dispatch'
+	23: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `invoke_all'
+	22: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `map'
+	21: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `each'
+	20: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:133:in `block in invoke_all'
+	19: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/invocation.rb:126:in `invoke_command'
+	18: from /var/lib/gems/2.5.0/gems/thor-0.20.3/lib/thor/command.rb:27:in `run'
+	17: from /var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/rails/generators/active_record/model/model_generator.rb:21:in `create_migration_file'
+	16: from /usr/lib/ruby/vendor_ruby/rails/generators/named_base.rb:119:in `table_name'
+	15: from /usr/lib/ruby/vendor_ruby/rails/generators/named_base.rb:179:in `pluralize_table_names?'
+	14: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:274:in `require'
+	13: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:240:in `load_dependency'
+	12: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:274:in `block in require'
+	11: from /usr/lib/ruby/vendor_ruby/active_support/dependencies.rb:274:in `require'
+	10: from /var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/active_record/base.rb:26:in `<top (required)>'
+	 9: from /var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/active_record/base.rb:315:in `<module:ActiveRecord>'
+	 8: from /usr/lib/ruby/vendor_ruby/active_support/lazy_load_hooks.rb:44:in `run_load_hooks'
+	 7: from /usr/lib/ruby/vendor_ruby/active_support/lazy_load_hooks.rb:44:in `each'
+	 6: from /usr/lib/ruby/vendor_ruby/active_support/lazy_load_hooks.rb:45:in `block in run_load_hooks'
+	 5: from /usr/lib/ruby/vendor_ruby/active_support/lazy_load_hooks.rb:38:in `execute_hook'
+	 4: from /usr/lib/ruby/vendor_ruby/active_support/lazy_load_hooks.rb:38:in `instance_eval'
+	 3: from /var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/active_record/railtie.rb:122:in `block (2 levels) in <class:Railtie>'
+	 2: from /var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/active_record/connection_handling.rb:50:in `establish_connection'
+	 1: from /var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/active_record/connection_adapters/connection_specification.rb:174:in `spec'
+/var/lib/gems/2.5.0/gems/activerecord-4.2.10/lib/active_record/connection_adapters/connection_specification.rb:177:in `rescue in spec': Specified 'sqlite3' for database adapter, but the gem is not loaded. Add `gem 'sqlite3'` to your Gemfile (and ensure its version is at the minimum required by ActiveRecord). (Gem::LoadError)
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ gedit Gemfile
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ bundle update
+Fetching gem metadata from https://rubygems.org/..........
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies.....
+Using rake 12.3.2
+Using concurrent-ruby 1.1.4
+Using i18n 0.9.5
+Using minitest 5.11.3
+Using thread_safe 0.3.6
+Using tzinfo 1.2.5
+Using activesupport 4.2.10
+Using builder 3.2.3
+Using erubis 2.7.0
+Using mini_portile2 2.4.0
+Using nokogiri 1.10.1
+Using rails-deprecated_sanitizer 1.0.3
+Using rails-dom-testing 1.0.9
+Using crass 1.0.4
+Using loofah 2.2.3
+Using rails-html-sanitizer 1.0.4
+Using actionview 4.2.10
+Using rack 1.6.11
+Using rack-test 0.7.0
+Using actionpack 4.2.10
+Using globalid 0.4.2
+Using activejob 4.2.10
+Using mini_mime 1.0.1
+Using mail 2.7.1
+Using actionmailer 4.2.10
+Using activemodel 4.2.10
+Using arel 6.0.4
+Using activerecord 4.2.10
+Using debug_inspector 0.0.3
+Using binding_of_caller 0.8.0
+Using bundler 1.16.1
+Using byebug 11.0.0
+Using coffee-script-source 1.12.2
+Using execjs 2.7.0
+Using coffee-script 2.4.1
+Using thor 0.20.3
+Using railties 4.2.10
+Using coffee-rails 4.1.1
+Using ffi 1.10.0
+Using multi_json 1.13.1
+Using jbuilder 2.8.0
+Using jquery-rails 4.3.3
+Using sprockets 3.7.2
+Using sprockets-rails 3.2.1
+Using rails 4.2.10
+Using rb-fsevent 0.10.3
+Using rb-inotify 0.10.0
+Using rdoc 6.1.1
+Using sass-listen 4.0.0
+Using sass 3.7.3
+Using tilt 2.0.9
+Using sass-rails 5.0.7
+Using sdoc 1.0.0
+Using spring 2.0.2
+Fetching sqlite3 1.3.13 (was 1.4.0)
+
+
+Your user account isn't allowed to install to the system RubyGems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to RubyGems using sudo.
+
+  Password: 
+Sorry, try again.
+
+
+Your user account isn't allowed to install to the system RubyGems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to RubyGems using sudo.
+
+  Password: 
+Installing sqlite3 1.3.13 (was 1.4.0) with native extensions
+Using turbolinks-source 5.2.0
+Using turbolinks 5.2.0
+Using uglifier 4.1.20
+Using web-console 2.3.0
+Bundle updated!
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails g scaffold events title:string description:text event_date:date
+[WARNING] The model name 'events' was recognized as a plural, using the singular 'event' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20190218094805_create_events.rb
+      create    app/models/event.rb
+      invoke    test_unit
+      create      test/models/event_test.rb
+      create      test/fixtures/events.yml
+      invoke  resource_route
+       route    resources :events
+      invoke  scaffold_controller
+      create    app/controllers/events_controller.rb
+      invoke    erb
+      create      app/views/events
+      create      app/views/events/index.html.erb
+      create      app/views/events/edit.html.erb
+      create      app/views/events/show.html.erb
+      create      app/views/events/new.html.erb
+      create      app/views/events/_form.html.erb
+      invoke    test_unit
+      create      test/controllers/events_controller_test.rb
+      invoke    helper
+      create      app/helpers/events_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/events/index.json.jbuilder
+      create      app/views/events/show.json.jbuilder
+      create      app/views/events/_event.json.jbuilder
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/events.coffee
+      invoke    scss
+      create      app/assets/stylesheets/events.scss
+      invoke  scss
+      create    app/assets/stylesheets/scaffolds.scss
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails db:create
+Error: Command 'db:create' not recognized
+Did you mean: `$ rake db:create` ?
+
+Usage: rails COMMAND [ARGS]
+
+The most common rails commands are:
+ generate    Generate new code (short-cut alias: "g")
+ console     Start the Rails console (short-cut alias: "c")
+ server      Start the Rails server (short-cut alias: "s")
+ dbconsole   Start a console for the database specified in config/database.yml
+             (short-cut alias: "db")
+ new         Create a new Rails application. "rails new my_app" creates a
+             new application called MyApp in "./my_app"
+
+In addition to those, there are:
+ destroy      Undo code generated with "generate" (short-cut alias: "d")
+ plugin new   Generates skeleton for developing a Rails plugin
+ runner       Run a piece of code in the application environment (short-cut alias: "r")
+
+All commands can be run with -h (or --help) for more information.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rake db:create
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails -v
+Rails 4.2.10
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ bundle install
+Using rake 12.3.2
+Using concurrent-ruby 1.1.4
+Using i18n 0.9.5
+Using minitest 5.11.3
+Using thread_safe 0.3.6
+Using tzinfo 1.2.5
+Using activesupport 4.2.10
+Using builder 3.2.3
+Using erubis 2.7.0
+Using mini_portile2 2.4.0
+Using nokogiri 1.10.1
+Using rails-deprecated_sanitizer 1.0.3
+Using rails-dom-testing 1.0.9
+Using crass 1.0.4
+Using loofah 2.2.3
+Using rails-html-sanitizer 1.0.4
+Using actionview 4.2.10
+Using rack 1.6.11
+Using rack-test 0.7.0
+Using actionpack 4.2.10
+Using globalid 0.4.2
+Using activejob 4.2.10
+Using mini_mime 1.0.1
+Using mail 2.7.1
+Using actionmailer 4.2.10
+Using activemodel 4.2.10
+Using arel 6.0.4
+Using activerecord 4.2.10
+Using debug_inspector 0.0.3
+Using binding_of_caller 0.8.0
+Using bundler 1.16.1
+Using byebug 11.0.0
+Using coffee-script-source 1.12.2
+Using execjs 2.7.0
+Using coffee-script 2.4.1
+Using thor 0.20.3
+Using railties 4.2.10
+Using coffee-rails 4.1.1
+Using ffi 1.10.0
+Using multi_json 1.13.1
+Using jbuilder 2.8.0
+Using jquery-rails 4.3.3
+Using sprockets 3.7.2
+Using sprockets-rails 3.2.1
+Using rails 4.2.10
+Using rb-fsevent 0.10.3
+Using rb-inotify 0.10.0
+Using rdoc 6.1.1
+Using sass-listen 4.0.0
+Using sass 3.7.3
+Using tilt 2.0.9
+Using sass-rails 5.0.7
+Using sdoc 1.0.0
+Using spring 2.0.2
+Using sqlite3 1.3.13
+Using turbolinks-source 5.2.0
+Using turbolinks 5.2.0
+Using uglifier 4.1.20
+Using web-console 2.3.0
+Bundle complete! 12 Gemfile dependencies, 59 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails g scaffold events title:string description:text event_date:date
+[WARNING] The model name 'events' was recognized as a plural, using the singular 'event' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+   identical    db/migrate/20190218094805_create_events.rb
+   identical    app/models/event.rb
+      invoke    test_unit
+   identical      test/models/event_test.rb
+   identical      test/fixtures/events.yml
+      invoke  resource_route
+       route    resources :events
+      invoke  scaffold_controller
+   identical    app/controllers/events_controller.rb
+      invoke    erb
+       exist      app/views/events
+   identical      app/views/events/index.html.erb
+   identical      app/views/events/edit.html.erb
+   identical      app/views/events/show.html.erb
+   identical      app/views/events/new.html.erb
+   identical      app/views/events/_form.html.erb
+      invoke    test_unit
+   identical      test/controllers/events_controller_test.rb
+      invoke    helper
+   identical      app/helpers/events_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+   identical      app/views/events/index.json.jbuilder
+   identical      app/views/events/show.json.jbuilder
+   identical      app/views/events/_event.json.jbuilder
+      invoke  assets
+      invoke    coffee
+   identical      app/assets/javascripts/events.coffee
+      invoke    scss
+   identical      app/assets/stylesheets/events.scss
+      invoke  scss
+   identical    app/assets/stylesheets/scaffolds.scss
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rake db:create
+db/development.sqlite3 already exists
+db/test.sqlite3 already exists
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rake db:migrate
+== 20190218094805 CreateEvents: migrating =====================================
+-- create_table(:events)
+   -> 0.0005s
+== 20190218094805 CreateEvents: migrated (0.0005s) ============================
+
+synerzip@ULTP-395:~/all Examples EXecuted/Rails/event_app$ rails s
+=> Booting WEBrick
+=> Rails 4.2.10 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+=> Ctrl-C to shutdown server
+[2019-02-18 15:20:35] INFO  WEBrick 1.4.2
+[2019-02-18 15:20:35] INFO  ruby 2.5.1 (2018-03-29) [x86_64-linux-gnu]
+[2019-02-18 15:20:35] INFO  WEBrick::HTTPServer#start: pid=25387 port=3000
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-18 15:21:02 +0530
+  ActiveRecord::SchemaMigration Load (0.1ms)  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/vendor_ruby/rails/templates/rails/welcome/index.html.erb (1.1ms)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-02-18 15:21:25 +0530
+Processing by EventsController#index as HTML
+  Event Load (0.1ms)  SELECT "events".* FROM "events"
+  Rendered events/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 1981ms (Views: 1978.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/events.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/scaffolds.self-925d411120c180f446133d389a8e0ca490aa687094c4ede90031808dbf291205.css?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/events.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2019-02-18 15:21:27 +0530
+
+
+Started GET "/events/new" for 127.0.0.1 at 2019-02-18 15:21:30 +0530
+Processing by EventsController#new as HTML
+  Rendered events/_form.html.erb (14.6ms)
+  Rendered events/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 34ms (Views: 29.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2019-02-18 15:21:41 +0530
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YOvtDo+DqqKaxOq9w50DCq7i9/JV2oI4zcxDOmOUjdxUoHw/GWT6yZcBNQKJdQnQ6rHWV/0br7Rku93wMdMJLA==", "event"=>{"title"=>"Induction", "description"=>"hi", "event_date(1i)"=>"2019", "event_date(2i)"=>"2", "event_date(3i)"=>"18"}, "commit"=>"Create Event"}
+   (0.1ms)  begin transaction
+  SQL (0.2ms)  INSERT INTO "events" ("title", "description", "event_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Induction"], ["description", "hi"], ["event_date", "2019-02-18"], ["created_at", "2019-02-18 09:51:41.148317"], ["updated_at", "2019-02-18 09:51:41.148317"]]
+   (263.9ms)  commit transaction
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 268ms (ActiveRecord: 264.2ms)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2019-02-18 15:21:41 +0530
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Event Load (0.1ms)  SELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered events/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 16ms (Views: 9.1ms | ActiveRecord: 0.1ms)
+
+

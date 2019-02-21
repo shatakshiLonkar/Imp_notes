@@ -1,0 +1,9 @@
+Serverless architecture
+
+
+Serverless microframeworks for AWS
+
+	Chalice
+	Serverless
+	Zappa----for python applications
+	Claudia---for NodeJS applications

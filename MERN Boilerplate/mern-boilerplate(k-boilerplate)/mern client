@@ -1,0 +1,118 @@
+synerzip@ULTP-788:~$ cd signup/
+synerzip@ULTP-788:~/signup$ cd sign-up/
+synerzip@ULTP-788:~/signup/sign-up$ ls
+k-boilerplate  node_modules  package-lock.json  README.md      src
+kirthi         package.json  public             README.old.md  yarn.lock
+synerzip@ULTP-788:~/signup/sign-up$ cd k-boilerplate/
+synerzip@ULTP-788:~/signup/sign-up/k-boilerplate$ ks
+ks: command not found
+synerzip@ULTP-788:~/signup/sign-up/k-boilerplate$ ls
+api     node_modules  package-lock.json  seeder.js
+client  package.json  README.md          server.js
+synerzip@ULTP-788:~/signup/sign-up/k-boilerplate$ cd client/
+synerzip@ULTP-788:~/signup/sign-up/k-boilerplate/client$ npm run dev
+
+> k-boilerplate-front-end@1.0.0 dev /home/synerzip/signup/sign-up/k-boilerplate/client
+> node scripts/dev.js
+
+App is running on 3000
+⚠ ｢wdm｣: Hash: 1f9e62751ed1b05cc3e3
+Version: webpack 4.28.4
+Time: 1534ms
+Built at: 01/14/2019 11:31:52 AM
+              Asset       Size  Chunks             Chunk Names
+         index.html  367 bytes          [emitted]  
+static/js/bundle.js    882 KiB    main  [emitted]  main
+Entrypoint main = static/js/bundle.js
+[./node_modules/css-loader/index.js!./src/App.css] ./node_modules/css-loader!./src/App.css 541 bytes {main} [built]
+[./node_modules/css-loader/lib/css-base.js] 2.21 KiB {main} [built]
+[./node_modules/object-assign/index.js] 2.06 KiB {main} [built]
+[./node_modules/prop-types/checkPropTypes.js] 3.45 KiB {main} [built]
+[./node_modules/react-dom/cjs/react-dom.development.js] 722 KiB {main} [built]
+[./node_modules/react-dom/index.js] 1.33 KiB {main} [built]
+[./node_modules/react/cjs/react.development.js] 61.3 KiB {main} [built]
+[./node_modules/react/index.js] 190 bytes {main} [built]
+[./node_modules/scheduler/index.js] 198 bytes {main} [built]
+[./node_modules/scheduler/tracing.js] 214 bytes {main} [built]
+[./node_modules/style-loader/lib/addStyles.js] 9.77 KiB {main} [built]
+[./node_modules/style-loader/lib/urls.js] 2.94 KiB {main} [built]
+[./src/App.css] 1.04 KiB {main} [built]
+[./src/App.js] 4.58 KiB {main} [built] [1 warning]
+[./src/index.js] 490 bytes {main} [built]
+    + 4 hidden modules
+
+WARNING in ./src/App.js
+Module Warning (from ./node_modules/eslint-loader/index.js):
+
+  Line 26:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+
+ @ ./src/index.js 11:11-27
+Child html-webpack-plugin for "index.html":
+         Asset     Size  Chunks  Chunk Names
+    index.html  551 KiB       0  
+    Entrypoint undefined = index.html
+    [./node_modules/html-webpack-plugin/lib/loader.js!./public/index.html] 485 bytes {0} [built]
+    [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
+    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {0} [built]
+ℹ ｢wdm｣: Compiled with warnings.
+^C
+synerzip@ULTP-788:~/signup/sign-up/k-boilerplate/client$ npm run prod
+
+> k-boilerplate-front-end@1.0.0 prod /home/synerzip/signup/sign-up/k-boilerplate/client
+> node scripts/prod.js
+
+Production build in process....
+ℹ ｢wdm｣: 
+ℹ ｢wdm｣: Compiled successfully.
+^C
+synerzip@ULTP-788:~/signup/sign-up/k-boilerplate/client$ npm run dev
+
+> k-boilerplate-front-end@1.0.0 dev /home/synerzip/signup/sign-up/k-boilerplate/client
+> node scripts/dev.js
+
+App is running on 3000
+⚠ ｢wdm｣: Hash: 1f9e62751ed1b05cc3e3
+Version: webpack 4.28.4
+Time: 1502ms
+Built at: 01/14/2019 11:43:26 AM
+              Asset       Size  Chunks             Chunk Names
+         index.html  367 bytes          [emitted]  
+static/js/bundle.js    882 KiB    main  [emitted]  main
+Entrypoint main = static/js/bundle.js
+[./node_modules/css-loader/index.js!./src/App.css] ./node_modules/css-loader!./src/App.css 541 bytes {main} [built]
+[./node_modules/css-loader/lib/css-base.js] 2.21 KiB {main} [built]
+[./node_modules/object-assign/index.js] 2.06 KiB {main} [built]
+[./node_modules/prop-types/checkPropTypes.js] 3.45 KiB {main} [built]
+[./node_modules/react-dom/cjs/react-dom.development.js] 722 KiB {main} [built]
+[./node_modules/react-dom/index.js] 1.33 KiB {main} [built]
+[./node_modules/react/cjs/react.development.js] 61.3 KiB {main} [built]
+[./node_modules/react/index.js] 190 bytes {main} [built]
+[./node_modules/scheduler/index.js] 198 bytes {main} [built]
+[./node_modules/scheduler/tracing.js] 214 bytes {main} [built]
+[./node_modules/style-loader/lib/addStyles.js] 9.77 KiB {main} [built]
+[./node_modules/style-loader/lib/urls.js] 2.94 KiB {main} [built]
+[./src/App.css] 1.04 KiB {main} [built]
+[./src/App.js] 4.58 KiB {main} [built] [1 warning]
+[./src/index.js] 490 bytes {main} [built]
+    + 4 hidden modules
+
+WARNING in ./src/App.js
+Module Warning (from ./node_modules/eslint-loader/index.js):
+
+  Line 26:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+
+ @ ./src/index.js 11:11-27
+Child html-webpack-plugin for "index.html":
+         Asset     Size  Chunks  Chunk Names
+    index.html  551 KiB       0  
+    Entrypoint undefined = index.html
+    [./node_modules/html-webpack-plugin/lib/loader.js!./public/index.html] 485 bytes {0} [built]
+    [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
+    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {0} [built]
+ℹ ｢wdm｣: Compiled with warnings.
+
+

@@ -1,0 +1,56 @@
+---------------------------------------------QA Day1-----------------------------------------------
+
+
+QA means assuring the quality of the product
+
+unit testing--->integration testing---->system testing---->acceptance testing
+
+
+
+
+Functional                         Vs                   Non-Functional
+
+unit/component						Performance--response time----(tools-Jmeter,loadrunner)				
+integration						Load testing
+system							Stress testing
+regression/retest					Compatibilty(forward and backward)----checking for different versions
+Blackbox						Configuration----checking for different hardwares
+Smoke/Sanity						Security
+UAT(User Acceptance Testing)---Alpha/Beta		Localization----checking for different languages(eg-English,Hindi,etc)
+
+
+
+
+
+
+
+Functional testing(Soap UI)
+
+unit testing--to find bugs/defects as early as possible
+integration testing----in top-down approach,stubs are used if component below is not ready.in bottom-up approach,drivers are used if above 				component is not ready
+Smoke/Sanity----purpose is not to find defects,but to test the health of the application
+
+
+
+---------------------------------------------QA Day3-----------------------------------------------
+
+
+
+Scrum---
+
+Automation---meaning,advantages
+
+
+Automation process:-
+1)test tool selection
+2)define scope of automation
+3)planniing,design and development
+4)test execution
+5)maintenance
+
+
+cost,time,coverage--------->increasing
+unit tests--->integration tests--->E2E(end to end) tests
+
+
+

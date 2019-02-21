@@ -1,0 +1,11 @@
+				Entity(user)
+
+UI                                  Server                                 Client
+container(react+redux)             model[DB]				components[react component]
+  -signup				-user					-Signup[user]
+				   routes[REST API]	 		container[react+redux connection]
+					-user					-Signup[user]
+									actions
+										-Signup[user]
+									reducer
+										-Signup[user]

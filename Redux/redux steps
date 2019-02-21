@@ -1,0 +1,156 @@
+synerzip@ULTP-788:~/reduxeg$ npm init
+
+synerzip@ULTP-788:~/reduxeg$ npm install redux --save
+n
+
+synerzip@ULTP-788:~/reduxeg$ node reduxtest.js
+State change{"age":31}
+State change{"age":26}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+/home/synerzip/reduxeg/todotest.js:34
+  const visibilityFilterstore =createStore(visibilityFilter);
+                               ^
+
+ReferenceError: createStore is not defined
+    at Object.<anonymous> (/home/synerzip/reduxeg/todotest.js:34:32)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:742:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+NaN
+NaN
+NaN
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+{ todos: [ { text: 'Go to swimming pool', completed: false } ],
+  visibilityFilter: 'SHOW_ALL' }
+NaN
+NaN
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+[ { text: 'Go to swimming pool', completed: false } ]
+NaN
+NaN
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+/home/synerzip/reduxeg/todotest.js:40
+  store.subscribe(()=>{
+  ^
+
+ReferenceError: store is not defined
+    at Object.<anonymous> (/home/synerzip/reduxeg/todotest.js:40:3)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:742:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+state change[object Object]
+state change[object Object]
+state change[object Object]
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false},{"text":"Go to restaurant","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false},{"text":"Go to restaurant","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false},{"text":"Go to restaurant","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change[{"text":"Go to meet shata","completed":false}]
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change{"todos":[{"text":"Go to swimming pool","completed":false},{"text":"Go to restaurant","completed":false}],"visibilityFilter":"SHOW_ALL"}
+state change[{"text":"Go to meet shata","completed":false}]
+state change[{"text":"Go to meet shata","completed":false},{"text":"A","completed":false}]
+state change[{"text":"Go to meet shata","completed":false},{"text":"A","completed":true}]
+state change"SHOW_ALL"
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"Go to swimming pool","completed":false},{"text":"Go to restaurant","completed":false}],"visibilityFilter":"SHOW_ALL"}
+ todo state change[{"text":"Go to meet shata","completed":false}]
+ todo state change[{"text":"Go to meet shata","completed":false},{"text":"A","completed":false}]
+ todo state change[{"text":"Go to meet shata","completed":false},{"text":"A","completed":true}]
+filter state change"SHOW_ALL"
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false},{"text":"b)Go to restaurant","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+filter state change"SHOW_ALL"
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+filter state change"SHOW_ALL_FILTERS"
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+filter state change"SHOW_ALL_FILTERS"
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL_FILTERS"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+filter state change"SHOW_ALL_FILTERS"
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL_FILTERS"}
+synerzip@ULTP-788:~/reduxeg$ node todotest.js
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL"}
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL_FILTERS"}
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+ todo state change[{"text":"B)Go to meet shata","completed":false}]
+filter state change"SHOW_ALL_FILTERS2"
+app state change{"todos":[{"text":"A)Go to swimming pool","completed":false}],"visibilityFilter":"SHOW_ALL_FILTERS"}
+synerzip@ULTP-788:~/reduxeg$

@@ -1,0 +1,43 @@
+Ruby
+
+Duck type..no need to define datatypes
+so, we can store any type of data in same array
+scripting lang
+object roiented
+
+
+irb on console
+for interactive mode of ruby
+
+if we write puts someting in single quotes then it prints as it is
+and we write in " " then it prints the value which we want 
+is called as Ruby Interpolation
+
+
+when self define some method then it is classs method
+or else instance method
+
+
+include----is instance method
+extend-----is class method
+
+we ccannot create object of module we have to initialize first in class by extend or include then only we can create
+
+
+
+
+Rails
+iss a framework
+DRY is do not repeat ypurself
+
+MVC
+Model used for databasse related operations
+no nly database any operation
+
+controller
+appln logic
+
+
+Partial File
+this is used by more than one function 
+and is started with _

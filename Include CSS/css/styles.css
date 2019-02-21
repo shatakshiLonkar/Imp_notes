@@ -1,0 +1,29 @@
+body
+{
+   background-color:burlywood;
+}
+p{
+    color:blueviolet;
+}
+h1
+{
+    font-family: Felipa;
+}
+/* .mango{
+    position: sticky;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+  } */
+  /* div.absolute {
+
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+  }
+   */

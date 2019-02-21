@@ -1,0 +1,8 @@
+shell script
+
+1.First, make the .sh file with the function
+2.make it executable
+ command:chmod +x filename.sh
+3.add the source ~/.filename.sh in .bashrc file
+4.clone the repo by github
+5.now call the GIT_SHATAKSHI

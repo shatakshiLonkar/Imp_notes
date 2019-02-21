@@ -1,0 +1,14 @@
+synerzip@ULTP-395:~/Pthon numpy/Tutorials$ make deps
+
+synerzip@ULTP-395:~/Pthon numpy/Tutorials$ sudo apt install virtualenv
+
+synerzip@ULTP-395:~/Pthon numpy/Tutorials$ make deps
+virtualenv --python=python3 .env
+make: virtualenv: Command not found
+make: *** [Makefile:9: .env] Error 127
+synerzip@ULTP-395:~/Pthon numpy/Tutorials$ sudo apt install virtualenv
+synerzip@ULTP-395:~/Pthon numpy/Tutorials$ make deps
+synerzip@ULTP-395:~/Pthon numpy/Tutorials$ make start
+
+
+

@@ -1,0 +1,4958 @@
+what is allow http method?
+
+------------------------------------------
+----Javascript
+hapi==========
+express=======servers
+
+
+var--for variable declaration and initialisation
+-------------------
+let-limits var locally to a specific block
+	let, unlike var, does not create a property on the global object. For example:
+
+	var x = 'global';
+	let y = 'global';
+	console.log(this.x); // "global"
+	console.log(this.y); // undefined
+
+
+
+	Redeclaring the same variable within the same function or block scope raises a SyntaxError.
+
+	if (x) {
+  		let foo;
+  		let foo; // SyntaxError thrown.
+	}
+	
+	
+
+
+	You may encounter errors in switch statements because there is only one block.
+
+	let x = 1;
+	switch(x) {
+  	case 0:
+    		let foo;
+    		break;
+    
+  	case 1:
+    		let foo; // SyntaxError for redeclaration.
+    		break;
+	}
+
+
+
+
+	
+
+	However, it's important to point out that a block nested inside a case clause will create 	a new block scoped lexical environment, which will not produce the redeclaration errors 		shown above.
+
+	let x = 1;
+
+	switch(x) {
+  		case 0: {
+    			let foo;
+    			break;
+ 		 }  
+  		case 1: {
+    			let foo;
+    			break;
+  		}
+	}
+
+
+
+
+
+
+	let bindings are created at the top of the (block) scope containing the declaration, commonly referred to as "hoisting". Unlike variables declared with var, which will start with the value undefined, let variables are not initialized until their definition is evaluated. Accessing the variable before the initialization results in a ReferenceError. The variable is in a "temporal dead zone" from the start of the block until the initialization is processed.
+
+function do_something() {
+  console.log(bar); // undefined
+  console.log(foo); // ReferenceError
+  var bar = 1;
+  let foo = 2;
+}
+
+
+
+
+
+
+
+
+When used inside a block, let limits the variable's scope to that block. Note the difference between var whose scope is inside the function where it is declared.
+
+var a = 1;
+var b = 2;
+
+if (a === 1) {
+  var a = 11; // the scope is global
+  let b = 22; // the scope is inside the if-block
+
+  console.log(a);  // 11
+  console.log(b);  // 22
+} 
+
+console.log(a); // 11
+console.log(b); // 2
+
+
+
+-----------------
+
+const====
+Constants are block-scoped, much like variables defined using the let statement. The value of a constant cannot change through reassignment, and it can't be redeclare
+const number = 42;
+
+try {
+  number = 99;
+} catch(err) {
+  console.log(err);
+  // expected output: TypeError: invalid assignment to const `number'
+  // Note - error messages will vary depending on browser
+}
+
+console.log(number);
+// expected output: 42
+
+
+
+
+Syntax
+const name1 = value1 [, name2 = value2 [, ... [, nameN = valueN]]];
+nameN
+The constant's name, which can be any legal identifier.
+valueN
+The constant's value; this can be any legal expression, including a function expression.
+
+
+
+A constant cannot share its name with a function or a variable in the same scope.
+
+
+
+
+
+// NOTE: Constants can be declared with uppercase or lowercase, but a common
+// convention is to use all-uppercase letters.
+
+// define MY_FAV as a constant and give it the value 7
+const MY_FAV = 7;
+
+// this will throw an error - Uncaught TypeError: Assignment to constant variable.
+MY_FAV = 20;
+
+// MY_FAV is 7
+console.log('my favorite number is: ' + MY_FAV);
+
+// trying to redeclare a constant throws an error -  Uncaught SyntaxError: Identifier 'MY_FAV' has already been declared
+const MY_FAV = 20;
+
+// the name MY_FAV is reserved for constant above, so this will fail too
+var MY_FAV = 20;
+
+// this throws an error too
+let MY_FAV = 20;
+
+// it's important to note the nature of block scoping
+if (MY_FAV === 7) { 
+    // this is fine and creates a block scoped MY_FAV variable 
+    // (works equally well with let to declare a block scoped non const variable)
+    let MY_FAV = 20;
+
+    // MY_FAV is now 20
+    console.log('my favorite number is ' + MY_FAV);
+
+    // this gets hoisted into the global context and throws an error
+    var MY_FAV = 20;
+}
+
+// MY_FAV is still 7
+console.log('my favorite number is ' + MY_FAV);
+
+// throws an error - Uncaught SyntaxError: Missing initializer in const declaration
+const FOO; 
+
+// const also works on objects
+const MY_OBJECT = {'key': 'value'};
+
+// Attempting to overwrite the object throws an error - Uncaught TypeError: Assignment to constant variable.
+MY_OBJECT = {'OTHER_KEY': 'value'};
+
+// However, object keys are not protected,
+// so the following statement is executed without problem
+MY_OBJECT.key = 'otherValue'; // Use Object.freeze() to make object immutable
+
+// The same applies to arrays
+const MY_ARRAY = [];
+// It's possible to push items into the array
+MY_ARRAY.push('A'); // ["A"]
+// However, assigning a new array to the variable throws an error - Uncaught TypeError: Assignment to constant variable.
+MY_ARRAY = ['B'];
+
+
+
+
+
+ properties of objects assigned to constants are not protected, so the following statement is executed without problems.
+
+const MY_OBJECT = {'key': 'value'};
+MY_OBJECT.key = 'otherValue';
+Also, the contents of an array are not protected, so the following statement is executed without problems.
+
+const MY_ARRAY = ['HTML','CSS'];
+MY_ARRAY.push('JAVASCRIPT');
+console.log(MY_ARRAY); //logs ['HTML','CSS','JAVASCRIPT'];
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+What is JavaScript?
+JavaScript is a cross-platform, object-oriented scripting language used to make webpages interactive (e.g. having complex animations, clickable buttons, popup menus, etc.).  There are also more advanced server side versions of JavaScript such as Node.Js 
+
+
+Client-side JavaScript------For example, client-side extensions allow an application to place elements on an HTML form and respond to user events such as mouse clicks, form input, and page navigation.
+Server-side JavaScript------For example, server-side extensions allow an application to communicate with a database, provide continuity of information from one invocation to another of the application, or perform file manipulations on a server.
+
+
+it was renamed from LiveScript to JavaScript.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+JavaScript compared to Java
+JavaScript									Java
+---------------------------------------------------------------------------------------------------------------
+Object-oriented. 								Class-based. 
+No distinction between types of objects. 					Objects are divided into classes and instances with all Inheritance is through the prototype mechanism, 				inheritance through the class hierarchy. 
+and properties and methods can be added to any object dynamically.		Classes and instances cannot have properties or methods added 												dynamically.
+
+
+Variable data types are not declared (dynamic typing, loosely typed).		Variable data types must be declared (static typing, strongly 											typed).
+
+Cannot automatically write to hard disk.					Can automatically write to hard disk.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Basics
+JavaScript is case-sensitive and uses the Unicode character set. For example, the word Früh (which means "early" in German) could be used as a variable name.
+
+var Früh = "foobar";
+But, the variable früh is not the same as Früh because JavaScript is case sensitive.
+
+In JavaScript, instructions are called statements and are separated by semicolons (;).
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Declarations
+There are three kinds of declarations in JavaScript.
+
+var
+Declares a variable, optionally initializing it to a value.
+let
+Declares a block-scoped, local variable, optionally initializing it to a value.
+const
+Declares a block-scoped, read-only named constant.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+A]--VARIABLES
+
+A JavaScript identifier must start with a letter, underscore (_), or dollar sign ($); subsequent characters can also be digits (0-9). Because JavaScript is case sensitive, letters include the characters "A" through "Z" (uppercase) and the characters "a" through "z" (lowercase).
+Some examples of legal names are Number_hits, temp99, $credit, and _name.
+
+
+Declaring variables
+You can declare a variable in three ways:
+
+	1)With the keyword var. For example, var x = 42. This syntax can be used to declare both local and global variables.
+	2)By simply assigning it a value. For example, x = 42. If this form is used outside of a function, it declares a global variable. It generates a strict JavaScript warning. You shouldn't use this variant.
+	3)With the keyword let. For example, let y = 13. This syntax can be used to declare a block-scope local variable.
+
+
+
+Evaluating variables
+A variable declared using the var or let statement with no assigned value specified has the value of undefined.
+
+An attempt to access an undeclared variable results in a ReferenceError exception being thrown:
+
+var a;
+console.log('The value of a is ' + a); // The value of a is undefined
+
+console.log('The value of b is ' + b); // The value of b is undefined
+var b;
+// This one may puzzle you until you read 'Variable hoisting' below
+
+console.log('The value of c is ' + c); // Uncaught ReferenceError: c is not defined
+
+let x;
+console.log('The value of x is ' + x); // The value of x is undefined
+
+console.log('The value of y is ' + y); // Uncaught ReferenceError: y is not defined
+let y;
+
+
+
+You can use undefined to determine whether a variable has a value. In the following code, the variable input is not assigned a value, and the if statement evaluates to true.
+var input;
+if (input === undefined) {
+  doThis();
+} else {
+  doThat();
+}
+
+
+The undefined value behaves as false when used in a boolean context. For example, the following code executes the function myFunction because the myArray element is undefined:
+var myArray = [];
+if (!myArray[0]) myFunction();
+
+
+The undefined value converts to NaN when used in numeric context.
+var a;
+a + 2;  // Evaluates to NaN
+
+When you evaluate a null variable, the null value behaves as 0 in numeric contexts and as false in boolean contexts. For example:
+var n = null;
+console.log(n * 32); // Will log 0 to the console
+
+
+
+
+Variable scope
+When you declare a variable outside of any function, it is called a global variable, because it is available to any other code in the current document. When you declare a variable within a function, it is called a local variable, because it is available only within that function.
+
+
+A variable declared within a block is local to the function (or global scope) that the block resides within. For example the following code will log 5, because the scope of x is the global context (or the function if the following codes are part of the function), not the immediate if statement block.
+
+if (true) {
+  var x = 5;
+}
+console.log(x);  // x is 5
+
+This behavior changes, when using the let declaration introduced in ECMAScript 2015.
+
+if (true) {
+  let y = 5;
+}
+console.log(y);  // ReferenceError: y is not defined
+
+
+
+
+
+Variable hoisting
+In JavaScript you can refer to a variable declared later, without getting an exception. This concept is known as hoisting; variables in JavaScript are in a sense "hoisted" or lifted to the top of the function or statement. However, variables that are hoisted return a value of undefined. So even if you declare and initialize after you use or refer to this variable, it still returns undefined.
+
+/**
+ * Example 1
+ */
+console.log(x === undefined); // true
+var x = 3;
+
+/**
+ * Example 2
+ */
+// will return a value of undefined
+var myvar = 'my value';
+ 
+(function() {
+  console.log(myvar); // undefined
+  var myvar = 'local value';
+})();
+
+
+The above examples will be interpreted the same as:
+
+/**
+ * Example 1
+ */
+var x;
+console.log(x === undefined); // true
+x = 3;
+ 
+/**
+ * Example 2
+ */
+var myvar = 'my value';
+ 
+(function() {
+  var myvar;
+  console.log(myvar); // undefined
+  myvar = 'local value';
+})();
+
+
+Because of hoisting, all var statements in a function should be placed as near to the top of the function as possible. This best practice increases the clarity of the code.
+
+In ECMAScript 2015, let (const) does not hoist the variable to the top of the block. Referencing the variable in the block before the variable declaration results in a ReferenceError. The variable is in a "temporal dead zone" from the start of the block until the declaration is processed.
+
+console.log(x); // ReferenceError
+let x = 3;
+
+
+
+
+
+
+
+
+Function hoisting
+
+For functions, only the function declaration gets hoisted to the top and not the function expression.
+
+/* Function declaration */
+
+foo(); // "bar"
+
+function foo() {
+  console.log('bar');
+}
+
+
+/* Function expression */
+
+baz(); // TypeError: baz is not a function
+
+var baz = function() {
+  console.log('bar2');
+};
+
+
+
+
+
+Global variables
+Global variables are in fact properties of the global object. In web pages, the global object is window, so you can set and access global variables using the window.variable syntax.
+
+Consequently, you can access global variables declared in one window or frame from another window or frame by specifying the window or frame name. For example, if a variable called phoneNumber is declared in a document, you can refer to this variable from an iframe as parent.phoneNumber.
+
+
+Constants
+You can create a read-only, named constant with the const keyword. The syntax of a constant identifier is the same as for a variable identifier: it must start with a letter, underscore or dollar sign ($) and can contain alphabetic, numeric, or underscore characters.
+
+const PI = 3.14;
+A constant cannot change value through assignment or be re-declared while the script is running. It must be initialized to a value.
+
+The scope rules for constants are the same as those for let block-scope variables. If the const keyword is omitted, the identifier is assumed to represent a variable.
+
+
+
+You cannot declare a constant with the same name as a function or variable in the same scope. For example:
+
+// THIS WILL CAUSE AN ERROR
+function f() {};
+const f = 5;
+
+// THIS WILL CAUSE AN ERROR TOO
+function f() {
+  const g = 5;
+  var g;
+
+  //statements
+}
+
+
+However, the properties of objects assigned to constants are not protected, so the following statement is executed without problems.
+
+const MY_OBJECT = {'key': 'value'};
+MY_OBJECT.key = 'otherValue';
+Also, the contents of an array are not protected, so the following statement is executed without problems.
+
+const MY_ARRAY = ['HTML','CSS'];
+MY_ARRAY.push('JAVASCRIPT');
+console.log(MY_ARRAY); //logs ['HTML','CSS','JAVASCRIPT'];
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Data types
+The latest ECMAScript standard defines seven data types:
+
+Six data types that are primitives:
+	1)Boolean. true and false.
+	2)null. A special keyword denoting a null value. Because JavaScript is case-sensitive, 		  null is not the same as Null, NULL, or any other variant.
+	3)undefined. A top-level property whose value is not defined.
+	4)Number. An integer or floating point number. For example: 42 or 3.14159.
+	5)String. A sequence of characters that represent a text value. For example:  "Howdy"
+	6)Symbol (new in ECMAScript 2015). A data type whose instances are unique and immutable.
+and Object
+
+Objects and functions are the other fundamental elements in the language. You can think of objects as named containers for values, and functions as procedures that your application can perform.
+
+
+
+
+
+Data type conversion
+JavaScript is a dynamically typed language. That means you don't have to specify the data type of a variable when you declare it, and data types are converted automatically as needed during script execution. So, for example, you could define a variable as follows:
+
+var answer = 42;
+
+And later, you could assign the same variable a string value, for example:
+
+answer = 'Thanks for all the fish...';
+
+
+In expressions involving numeric and string values with the + operator, JavaScript converts numeric values to strings. For example, consider the following statements:
+
+x = 'The answer is ' + 42 // "The answer is 42"
+y = 42 + ' is the answer' // "42 is the answer"
+
+
+
+In statements involving other operators, JavaScript does not convert numeric values to strings. For example:
+
+'37' - 7 // 30
+'37' + 7 // "377"
+
+
+
+
+Converting strings to numbers
+In the case that a value representing a number is in memory as a string, there are methods for conversion.
+
+parseInt()
+parseFloat()
+parseInt only returns whole numbers, so its use is diminished for decimals. Additionally, a best practice for parseInt is to always include the radix parameter. The radix parameter is used to specify which numerical system is to be used.
+
+An alternative method of retrieving a number from a string is with the + (unary plus) operator:
+
+'1.1' + '1.1' // '1.11.1'
+(+'1.1') + (+'1.1') // 2.2   
+// Note: the parentheses are added for clarity, not required.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Literals
+You use literals to represent values in JavaScript. These are fixed values, not variables, that you literally provide in your script. 
+1)-Array literals
+
+An array literal is a list of zero or more expressions, each of which represents an array element, enclosed in square brackets ([]). When you create an array using an array literal, it is initialized with the specified values as its elements, and its length is set to the number of arguments specified.
+
+The following example creates the coffees array with three elements and a length of three:
+
+var coffees = ['French Roast', 'Colombian', 'Kona'];
+
+JavaScript interprets the array each time it evaluates the expression containing the array literal. In addition, a literal used in a function is created each time the function is called.
+
+
+var fish = ['Lion', , 'Angel'];
+This array has two elements with values and one empty element (fish[0] is "Lion", fish[1] is undefined, and fish[2] is "Angel").
+
+
+If you include a trailing comma at the end of the list of elements, the comma is ignored. In the following example, the length of the array is three. All other commas in the list indicate a new element.
+
+
+2)-Boolean literals
+
+The Boolean type has two literal values: true and false.
+
+
+
+3)-Floating-point literals
+
+A floating-point literal can have the following parts:
+
+A decimal integer which can be signed (preceded by "+" or "-"),
+A decimal point ("."),
+A fraction (another decimal number),
+An exponent.
+The exponent part is an "e" or "E" followed by an integer, which can be signed (preceded by "+" or "-"). A floating-point literal must have at least one digit and either a decimal point or "e" (or "E").
+
+More succinctly, the syntax is:
+
+[(+|-)][digits].[digits][(E|e)[(+|-)]digits]
+
+For example:
+
+3.1415926
+-.123456789
+-3.1E+12
+.1e-23
+
+
+
+4)-Integers/Numeric literals
+
+Integers can be expressed in decimal (base 10), hexadecimal (base 16), octal (base 8) and binary (base 2).
+
+A decimal integer literal consists of a sequence of digits without a leading 0 (zero).
+A leading 0 (zero) on an integer literal, or a leading 0o (or 0O) indicates it is in octal. Octal integers can include only the digits 0-7.
+A leading 0x (or 0X) indicates a hexadecimal integer literal. Hexadecimal integers can include digits (0-9) and the letters a-f and A-F. (The case of a character does not change its value, e.g. 0xa = 0xA = 10 and 0xf = 0xF = 15.)
+A leading 0b (or 0B) indicates a binary integer literal. Binary integers can only include the digits 0 and 1.
+
+Some examples of integer literals are:
+
+0, 117 and -345 (decimal, base 10)
+015, 0001 and -0o77 (octal, base 8) 
+0x1123, 0x00111 and -0xF1A7 (hexadecimal, "hex" or base 16)
+0b11, 0b0011 and -0b11 (binary, base 2)
+
+
+5)-Object literals
+
+
+An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}). Do not use an object literal at the beginning of a statement. This will lead to an error or not behave as you expect, because the { will be interpreted as the beginning of a block.
+
+The following is an example of an object literal. The first element of the car object defines a property, myCar, and assigns to it a new string, "Saturn"; the second element, the getCar property, is immediately assigned the result of invoking the function (carTypes("Honda")); the third element, the special property, uses an existing variable (sales).
+
+var sales = 'Toyota';
+
+function carTypes(name) {
+  if (name === 'Honda') {
+    return name;
+  } else {
+    return "Sorry, we don't sell " + name + ".";
+  }
+}
+
+var car = { myCar: 'Saturn', getCar: carTypes('Honda'), special: sales };
+
+console.log(car.myCar);   // Saturn
+console.log(car.getCar);  // Honda
+console.log(car.special); // Toyota
+
+
+
+Additionally, you can use a numeric or string literal for the name of a property or nest an object inside another. The following example uses these options.
+
+var car = { manyCars: {a: 'Saab', b: 'Jeep'}, 7: 'Mazda' };
+
+console.log(car.manyCars.b); // Jeep
+console.log(car[7]); // Mazda
+Object property names can be any string, including the empty string. If the property name would not be a valid JavaScript identifier or number, it must be enclosed in quotes. Property names that are not valid identifiers also cannot be accessed as a dot (.) property, but can be accessed and set with the array-like notation("[]").
+
+var unusualPropertyNames = {
+  '': 'An empty string',
+  '!': 'Bang!'
+}
+console.log(unusualPropertyNames.'');   // SyntaxError: Unexpected string
+console.log(unusualPropertyNames['']);  // An empty string
+console.log(unusualPropertyNames.!);    // SyntaxError: Unexpected token !
+console.log(unusualPropertyNames['!']); // Bang!
+
+
+
+6)-RegExp literals
+
+A regex literal is a pattern enclosed between slashes. The following is an example of a regex literal.
+
+var re = /ab+c/;
+
+
+7)-String literals
+
+A string literal is zero or more characters enclosed in double (") or single (') quotation marks. A string must be delimited by quotation marks of the same type; that is, either both single quotation marks or both double quotation marks. The following are examples of string literals:
+
+'foo'
+"bar"
+'1234'
+'one line \n another line'
+"John's cat"
+
+You can also use the String.length property with a string literal:
+
+console.log("John's cat".length) 
+// Will print the number of symbols in the string including whitespace. 
+// In this case, 10.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Using special characters in strings
+In addition to ordinary characters, you can also include special characters in strings, as shown in the following example.
+
+'one line \n another line'
+
+
+
+JavaScript special characters
+Character	Meaning
+\0		Null Byte
+\b		Backspace
+\f		Form feed
+\n		New line
+\r		Carriage return
+\t		Tab
+\v		Vertical tab
+\'		Apostrophe or single quote
+\"		Double quote
+\\		Backslash character
+\XXX		The character with the Latin-1 encoding specified by up to three octal digits XXX between 0 and 377. For example, \251 is the 			octal sequence for the copyright symbol.
+\xXX		The character with the Latin-1 encoding specified by the two hexadecimal digits XX between 00 and FF. For example, \xA9 is the 			hexadecimal sequence for the copyright symbol.
+\uXXXX		The Unicode character specified by the four hexadecimal digits XXXX. For example, \u00A9 is the Unicode sequence for the 			copyright symbol. 
+\u{XXXXX}	Unicode code point escapes. For example, \u{2F804} is the same as the simple Unicode escapes \uD87E\uDC04.
+
+
+
+
+
+
+
+Escaping characters
+You can insert a quotation mark inside a string by preceding it with a backslash. This is known as escaping the quotation mark. For example:
+
+var quote = "He read \"The Cremation of Sam McGee\" by R.W. Service.";
+console.log(quote);
+The result of this would be:
+
+He read "The Cremation of Sam McGee" by R.W. Service.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+B]----Control statements
+
+
+1)-Block Statement
+
+ block statement is used to group statements. The block is delimited by a pair of curly brackets:
+
+{
+  statement_1;
+  statement_2;
+  .
+  .
+  .
+  statement_n;
+}
+
+Example
+Block statements are commonly used with control flow statements (e.g. if, for, while).
+
+while (x < 10) {
+  x++;
+}
+Here, { x++; } is the block statement.
+
+
+
+block statements do not define a scope. 
+
+var x = 1;
+{
+  var x = 2;
+}
+console.log(x); // outputs 2
+This outputs 2 because the var x statement within the block is in the same scope as the var x statement before the block. In C or Java, the equivalent code would have outputted 1.
+
+
+
+
+
+2)-Conditional statements
+A conditional statement is a set of commands that executes if a specified condition is true. JavaScript supports two conditional statements: if...else and switch.
+
+if...else statement
+Use the if statement to execute a statement if a logical condition is true. Use the optional else clause to execute a statement if the condition is false. An if-else statement looks as follows:
+
+if (condition) {
+  statement_1;
+} else {
+  statement_2;
+}
+
+
+You may also compound the statements using else if to have multiple conditions tested in sequence, as follows:
+
+if (condition_1) {
+  statement_1;
+} else if (condition_2) {
+  statement_2;
+} else if (condition_n) {
+  statement_n;
+} else {
+  statement_last;
+} 
+
+
+
+
+
+
+
+3)--switch statement
+A switch statement allows a program to evaluate an expression and attempt to match the expression's value to a case label. If a match is found, the program executes the associated statement. A switch statement looks as follows:
+
+switch (expression) {
+  case label_1:
+    statements_1
+    [break;]
+  case label_2:
+    statements_2
+    [break;]
+    ...
+  default:
+    statements_def
+    [break;]
+}
+The program first looks for a case clause with a label matching the value of expression and then transfers control to that clause, executing the associated statements. If no matching label is found, the program looks for the optional default clause, and if found, transfers control to that clause, executing the associated statements. If no default clause is found, the program continues execution at the statement following the end of switch. By convention, the default clause is the last clause, but it does not need to be so.
+
+The optional break statement associated with each case clause ensures that the program breaks out of switch once the matched statement is executed and continues execution at the statement following switch. If break is omitted, the program continues execution at the next statement in the switch statement.
+
+
+
+
+
+
+-------------------
+Exception handling statements
+You can throw exceptions using the throw statement and handle them using the try...catch statements.
+
+
+
+throw statement
+
+Use the throw statement to throw an exception. When you throw an exception, you specify the expression containing the value to be thrown:
+
+Syntax:
+throw expression;
+
+You may throw any expression, not just expressions of a specific type. The following code throws several exceptions of varying types:
+
+throw 'Error2';   // String type
+throw 42;         // Number type
+throw true;       // Boolean type
+throw {toString: function() { return "I'm an object!"; } };
+
+
+
+
+try...catch statement
+
+The try...catch statement consists of a try block, which contains one or more statements, and a catch block, containing statements that specify what to do if an exception is thrown in the try block. That is, you want the try block to succeed, and if it does not succeed, you want control to pass to the catch block. If any statement within the try block (or in a function called from within the try block) throws an exception, control immediately shifts to the catch block. If no exception is thrown in the try block, the catch block is skipped. The finally block executes after the try and catch blocks execute but before the statements following the try...catch statement.
+
+
+The example calls a function that retrieves a month name from an array based on the value passed to the function. If the value does not correspond to a month number (1-12), an exception is thrown with the value "InvalidMonthNo" and the statements in the catch block set the monthName variable to unknown.
+
+function getMonthName(mo) {
+  mo = mo - 1; // Adjust month number for array index (1 = Jan, 12 = Dec)
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+                'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  if (months[mo]) {
+    return months[mo];
+  } else {
+    throw 'InvalidMonthNo'; //throw keyword is used here
+  }
+}
+
+try { // statements to try
+  monthName = getMonthName(myMonth); // function could throw exception
+}
+catch (e) {
+  monthName = 'unknown';
+  logMyErrors(e); // pass exception object to error handler -> your own function
+}
+
+
+
+The catch block
+
+catch (catchID) {
+  statements
+}
+
+The catch block specifies an identifier (catchID in the preceding syntax) that holds the value specified by the throw statement; you can use this identifier to get information about the exception that was thrown. JavaScript creates this identifier when the catch block is entered; the identifier lasts only for the duration of the catch block; after the catch block finishes executing, the identifier is no longer available.
+
+
+try {
+  throw 'myException'; // generates an exception
+}
+catch (e) {
+  // statements to handle any exceptions
+  logMyErrors(e); // pass exception object to error handler
+}
+
+
+
+
+
+The Finally Block
+
+The finally block executes whether or not an exception is thrown. If an exception is thrown, the statements in the finally block execute even if no catch block handles the exception
+
+
+If the finally block returns a value, this value becomes the return value of the entire try-catch-finally production, regardless of any return statements in the try and catch blocks:
+
+function f() {
+  try {
+    console.log(0);
+    throw 'bogus';
+  } catch(e) {
+    console.log(1);
+    return true; // this return statement is suspended
+                 // until finally block has completed
+    console.log(2); // not reachable
+  } finally {
+    console.log(3);
+    return false; // overwrites the previous "return"
+    console.log(4); // not reachable
+  }
+  // "return false" is executed now  
+  console.log(5); // not reachable
+}
+f(); // console 0, 1, 3; returns false
+
+
+
+
+
+-----------------------
+Promises
+
+
+
+JavaScript gains support for Promise objects allowing you to control the flow of deferred and asynchronous operations.
+
+A Promise is in one of these states:
+
+pending: initial state, not fulfilled or rejected.
+fulfilled: successful operation
+rejected: failed operation.
+settled: the Promise is either fulfilled or rejected, but not pending.
+
+
+
+----------------------
+Loops
+
+
+There are many different kinds of loops, but they all essentially do the same thing: they repeat an action some number of times (and it's actually possible that number could be zero).
+
+The statements for loops provided in JavaScript are:
+
+
+
+1)=for statement
+
+
+A for loop repeats until a specified condition evaluates to false. The JavaScript for loop is similar to the Java and C for loop. A for statement looks as follows:
+
+for ([initialExpression]; [condition]; [incrementExpression])
+  statement
+When a for loop executes, the following occurs:
+
+The initializing expression initialExpression, if any, is executed. This expression usually initializes one or more loop counters, but the syntax allows an expression of any degree of complexity. This expression can also declare variables.
+The condition expression is evaluated. If the value of condition is true, the loop statements execute. If the value of condition is false, the for loop terminates. If the condition expression is omitted entirely, the condition is assumed to be true.
+The statement executes. To execute multiple statements, use a block statement ({ ... }) to group those statements.
+If present, the update expression incrementExpression is executed.
+Control returns to step 2.
+
+
+
+
+
+2)=do...while statement
+
+The do...while statement repeats until a specified condition evaluates to false. A do...while statement looks as follows:
+
+do
+  statement
+while (condition);
+
+statement is always executed once before the condition is checked (and then again until the while condition returns false). To execute multiple statements, use a block statement ({ ... }) to group those statements. If condition is true, the statement executes again. At the end of every execution, the condition is checked. When the condition is false, execution stops and control passes to the statement following do...while.
+
+
+
+
+3)=while statement
+
+A while statement executes its statements as long as a specified condition evaluates to true. A while statement looks as follows:
+
+while (condition)
+  statement
+If the condition becomes false, statement within the loop stops executing and control passes to the statement following the loop.
+
+The condition test occurs before statement in the loop is executed. If the condition returns true, statement is executed and the condition is tested again. If the condition returns false, execution stops and control is passed to the statement following while.
+
+Example 
+The following while loop iterates as long as n is less than three:
+
+var n = 0;
+var x = 0;
+while (n < 3) {
+  n++;
+  x += n;
+}
+
+With each iteration, the loop increments n and adds that value to x. Therefore, x and n take on the following values:
+
+After the first pass: n = 1 and x = 1
+After the second pass: n = 2 and x = 3
+After the third pass: n = 3 and x = 6
+After completing the third pass, the condition n < 3 is no longer true, so the loop terminates.
+
+
+
+4)=labeled statement
+
+A label provides a statement with an identifier that lets you refer to it elsewhere in your program. For example, you can use a label to identify a loop, and then use the break or continue statements to indicate whether a program should interrupt the loop or continue its execution.
+
+The syntax of the labeled statement looks like the following:
+
+label :
+   statement
+
+
+
+5)=break statement
+
+Use the break statement to terminate a loop, switch, or in conjunction with a labeled statement.
+
+When you use break without a label, it terminates the innermost enclosing while, do-while, for, or switch immediately and transfers control to the following statement.
+When you use break with a label, it terminates the specified labeled statement.
+The syntax of the break statement looks like this:
+
+break [label];
+
+
+
+6)=continue statement
+
+The continue statement can be used to restart a while, do-while, for, or label statement.
+
+When you use continue without a label, it terminates the current iteration of the innermost enclosing while, do-while, or for statement and continues execution of the loop with the next iteration. In contrast to the break statement, continue does not terminate the execution of the loop entirely. In a while loop, it jumps back to the condition. In a for loop, it jumps to the increment-expression.
+When you use continue with a label, it applies to the looping statement identified with that label.
+The syntax of the continue statement looks like the following:
+
+continue [label];
+
+
+
+
+7)=for...in statement
+
+The for...in statement iterates a specified variable over all the enumerable properties of an object. For each distinct property, JavaScript executes the specified statements. A for...in statement looks as follows:
+
+for (variable in object) {
+  statements
+}
+
+
+
+
+
+8)=for...of statement
+
+The for...of statement creates a loop Iterating over iterable objects (including Array, Map, Set, arguments object and so on), invoking a custom iteration hook with statements to be executed for the value of each distinct property.
+
+for (variable of object) {
+  statement
+}
+
+
+NOTE:The following example shows the difference between a for...of loop and a for...in loop. While for...in iterates over property names, for...of iterates over property values:
+
+var arr = [3, 5, 7];
+arr.foo = 'hello';
+
+for (var i in arr) {
+   console.log(i); // logs "0", "1", "2", "foo"
+}
+
+for (var i of arr) {
+   console.log(i); // logs 3, 5, 7
+}
+
+
+
+---------------------
+Function
+
+
+ A function is a JavaScript procedure—a set of statements that performs a task or calculates a value. 
+
+
+Function declarations
+A function definition (also called a function declaration, or function statement) consists of the function keyword,  followed by:
+
+	(a)The name of the function.
+	(b)A list of parameters to the function, enclosed in parentheses and separated by commas.
+	(c)The JavaScript statements that define the function, enclosed in curly brackets, { }.
+
+For example, the following code defines a simple function named square:
+
+function square(number) {
+  return number * number;
+}
+
+
+
+The function square takes one parameter, called number. The function consists of one statement that says to return the parameter of the function (that is, number) multiplied by itself. The statement return specifies the value returned by the function.
+
+return number * number;
+
+
+Primitive parameters (such as a number) are passed to functions by value; the value is passed to the function, but if the function changes the value of the parameter, this change is not reflected globally or in the calling function.
+
+If you pass an object (i.e. a non-primitive value, such as Array or a user-defined object) as a parameter and the function changes the object's properties, that change is visible outside the function, as shown in the following example:
+
+function myFunc(theObject) {
+  theObject.make = 'Toyota';
+}
+
+var mycar = {make: 'Honda', model: 'Accord', year: 1998};
+var x, y;
+
+x = mycar.make; // x gets the value "Honda"
+
+myFunc(mycar);
+y = mycar.make; // y gets the value "Toyota"
+                // (the make property was changed by the function)
+
+
+
+
+Function expressions
+
+While the function declaration above is syntactically a statement, functions can also be created by a function expression. Such a function can be anonymous; it does not have to have a name. For example, the function square could have been defined as:
+
+var square = function(number) { return number * number; };
+var x = square(4); // x gets the value 16
+
+
+However, a name can be provided with a function expression and can be used inside the function to refer to itself, or in a debugger to identify the function in stack traces:
+
+var factorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1); };
+
+console.log(factorial(3));
+
+
+
+Function expressions are convenient when passing a function as an argument to another function. The following example shows a map function that should receive a function as first argument and an array as second argument. 
+
+function map(f, a) {
+  var result = [],i; // Create a new Array
+  for (i = 0; i != a.length; i++)
+    result[i] = f(a[i]);
+  return result;
+}
+
+
+
+In the following code our function receives a function defined by a function expression and executes it for every element of the array received as a second argument. 
+
+function map(f, a) {
+  var result = []; // Create a new Array
+  var i; // Declare variable
+  for (i = 0; i != a.length; i++)
+    result[i] = f(a[i]);
+  return result;
+}
+var f = function(x) {
+   return x * x * x; 
+}
+var numbers = [0, 1, 2, 5, 10];
+var cube = map(f,numbers);
+console.log(cube);
+
+Function returns: [0, 1, 8, 125, 1000].
+
+
+
+
+
+In JavaScript, a function can be defined based on a condition. For example, the following function definition defines myFunc only if num equals 0:
+
+var myFunc;
+if (num === 0) {
+  myFunc = function(theObject) {
+    theObject.make = 'Toyota';
+  }
+}
+In addition to defining functions as described here, you can also use the Function constructor to create functions from a string at runtime, much like eval().
+
+A method is a function that is a property of an object.
+
+
+
+
+
+Calling functions
+ Calling the function actually performs the specified actions with the indicated parameters. For example, if you define the function square, you could call it as follows:
+
+square(5);
+
+The preceding statement calls the function with an argument of 5. The function executes its statements and returns the value 25.
+
+
+
+
+
+A function can call itself. For example, here is a function that computes factorials recursively:
+
+function factorial(n) {
+  if ((n === 0) || (n === 1))
+    return 1;
+  else
+    return (n * factorial(n - 1));
+}
+You could then compute the factorials of one through five as follows:
+
+var a, b, c, d, e;
+a = factorial(1); // a gets the value 1
+b = factorial(2); // b gets the value 2
+c = factorial(3); // c gets the value 6
+d = factorial(4); // d gets the value 24
+e = factorial(5); // e gets the value 120
+
+
+
+
+
+Function scope
+Variables defined inside a function cannot be accessed from anywhere outside the function, because the variable is defined only in the scope of the function. However, a function can access all variables and functions defined inside the scope in which it is defined. In other words, a function defined in the global scope can access all variables defined in the global scope. A function defined inside another function can also access all variables defined in its parent function and any other variable to which the parent function has access.
+
+// The following variables are defined in the global scope
+var num1 = 20,
+    num2 = 3,
+    name = 'Chamahk';
+
+// This function is defined in the global scope
+function multiply() {
+  return num1 * num2;
+}
+
+multiply(); // Returns 60
+
+// A nested function example
+function getScore() {
+  var num1 = 2,
+      num2 = 3;
+  
+  function add() {
+    return name + ' scored ' + (num1 + num2);
+  }
+  
+  return add();
+}
+
+getScore(); // Returns "Chamahk scored 5"
+
+
+
+
+
+Recursion
+
+A function can refer to and call itself. There are three ways for a function to refer to itself:
+
+	(a)the function's name
+	(b)arguments.callee
+	(c)an in-scope variable that refers to the function
+
+For example, consider the following function definition:
+
+var foo = function bar() {
+   // statements go here
+};
+Within the function body, the following are all equivalent:
+
+bar()
+arguments.callee()
+foo()
+
+
+A function that calls itself is called a recursive function. In some ways, recursion is analogous to a loop. Both execute the same code multiple times, and both require a condition (to avoid an infinite loop, or rather, infinite recursion in this case). For example, the following loop:
+
+var x = 0;
+while (x < 10) { // "x < 10" is the loop condition
+   // do stuff
+   x++;
+}
+
+can be converted into a recursive function and a call to that function:
+
+function loop(x) {
+  if (x >= 10) // "x >= 10" is the exit condition (equivalent to "!(x < 10)")
+    return;
+  // do stuff
+  loop(x + 1); // the recursive call
+}
+loop(0);
+
+
+
+
+
+Nested functions and closures
+
+The inner function can be accessed only from statements in the outer function.
+The inner function forms a closure: the inner function can use the arguments and variables of the outer function, while the outer function cannot use the arguments and variables of the inner function.
+
+
+
+The following example shows nested functions:
+
+function addSquares(a, b) {
+  function square(x) {
+    return x * x;
+  }
+  return square(a) + square(b);
+}
+a = addSquares(2, 3); // returns 13
+b = addSquares(3, 4); // returns 25
+c = addSquares(4, 5); // returns 41
+
+
+
+
+Multiply-nested functions
+Functions can be multiply-nested, i.e. a function (A) containing a function (B) containing a function (C). Both functions B and C form closures here, so B can access A and C can access B. In addition, since C can access B which can access A, C can also access A. Thus, the closures can contain multiple scopes; they recursively contain the scope of the functions containing it. This is called scope chaining. 
+
+
+Consider the following example:
+
+function A(x) {
+  function B(y) {
+    function C(z) {
+      console.log(x + y + z);
+    }
+    C(3);
+  }
+  B(2);
+}
+A(1); // logs 6 (1 + 2 + 3)
+
+In this example, C accesses B's y and A's x. This can be done because:
+
+B forms a closure including A, i.e. B can access A's arguments and variables.
+C forms a closure including B.
+Because B's closure includes A, C's closure includes A, C can access both B and A's arguments and variables. In other words, C chains the scopes of B and A in that order.
+The reverse, however, is not true. A cannot access C, because A cannot access any argument or variable of B, which C is a variable of. Thus, C remains private to only B.
+
+
+
+
+
+
+Name conflicts
+When two arguments or variables in the scopes of a closure have the same name, there is a name conflict. More inner scopes take precedence, so the inner-most scope takes the highest precedence, while the outer-most scope takes the lowest. This is the scope chain. The first on the chain is the inner-most scope, and the last is the outer-most scope. Consider the following:
+
+function outside() {
+  var x = 5;
+  function inside(x) {
+    return x * 2;
+  }
+  return inside;
+}
+
+outside()(10); // returns 20 instead of 10
+The name conflict happens at the statement return x and is between inside's parameter x and outside's variable x. The scope chain here is {inside, outside, global object}. Therefore inside's x takes precedences over outside's x, and 20 (inside's x) is returned instead of 10 (outside's x).
+
+
+
+
+
+Closures
+Closures are one of the most powerful features of JavaScript. JavaScript allows for the nesting of functions and grants the inner function full access to all the variables and functions defined inside the outer function (and all other variables and functions that the outer function has access to). However, the outer function does not have access to the variables and functions defined inside the inner function. This provides a sort of encapsulation for the variables of the inner function. 
+
+
+var pet = function(name) {   // The outer function defines a variable called "name"
+  var getName = function() {
+    return name;             // The inner function has access to the "name" variable of the outer 
+                             //function
+  }
+  return getName;            // Return the inner function, thereby exposing it to outer scopes
+}
+myPet = pet('Vivie');
+   
+myPet();                     // Returns "Vivie"
+
+
+
+
+
+var createPet = function(name) {
+  var sex;
+  
+  return {
+    setName: function(newName) {
+      name = newName;
+    },
+    
+    getName: function() {
+      return name;
+    },
+    
+    getSex: function() {
+      return sex;
+    },
+    
+    setSex: function(newSex) {
+      if(typeof newSex === 'string' && (newSex.toLowerCase() === 'male' || 
+        newSex.toLowerCase() === 'female')) {
+        sex = newSex;
+      }
+    }
+  }
+}
+
+var pet = createPet('Vivie');
+pet.getName();                  // Vivie
+
+pet.setName('Oliver');
+pet.setSex('male');
+pet.getSex();                   // male
+pet.getName();                  // Oliver
+
+In the code above, the name variable of the outer function is accessible to the inner functions, and there is no other way to access the inner variables except through the inner functions. The inner variables of the inner functions act as safe stores for the outer arguments and variables. They hold "persistent" and "encapsulated" data for the inner functions to work with. The functions do not even have to be assigned to a variable, or have a name.
+
+
+
+
+
+Using the arguments object
+
+The arguments of a function are maintained in an array-like object. Within a function, you can address the arguments passed to it as follows:
+
+arguments[i]
+where i is the ordinal number of the argument, starting at zero. So, the first argument passed to a function would be arguments[0]. The total number of arguments is indicated by arguments.length.
+
+Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function. You can use arguments.length to determine the number of arguments actually passed to the function, and then access each argument using the arguments object.
+
+For example, consider a function that concatenates several strings. The only formal argument for the function is a string that specifies the characters that separate the items to concatenate. The function is defined as follows:
+
+function myConcat(separator) {
+   var result = ''; // initialize list
+   var i;
+   // iterate through arguments
+   for (i = 1; i < arguments.length; i++) {
+      result += arguments[i] + separator;
+   }
+   return result;
+}
+You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
+
+// returns "red, orange, blue, "
+myConcat(', ', 'red', 'orange', 'blue');
+
+// returns "elephant; giraffe; lion; cheetah; "
+myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
+
+// returns "sage. basil. oregano. pepper. parsley. "
+myConcat('. ', 'sage', 'basil', 'oregano', 'pepper', 'parsley');
+
+
+
+
+
+Function parameters
+
+There are two new kinds of parameters: default parameters and rest parameters.
+
+1)-Default parametersSection
+In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is where default parameters can help.
+
+In the past, the general strategy for setting defaults was to test parameter values in the body of the function and assign a value if they are undefined. If in the following example, no value is provided for b in the call, its value would be undefined  when evaluating a*b and the call to multiply would have returned NaN. However, this is caught with the second line in this example:
+
+function multiply(a, b) {
+  b = typeof b !== 'undefined' ?  b : 1;
+
+  return a * b;
+}
+
+multiply(5); // 5
+
+
+With default parameters, the check in the function body is no longer necessary. Now, you can simply put 1 as the default value for b in the function head:
+
+function multiply(a, b = 1) {
+  return a * b;
+}
+
+multiply(5); // 5
+
+
+
+2)-Rest parameters
+The rest parameter syntax allows us to represent an indefinite number of arguments as an array. In the example, we use the rest parameters to collect arguments from the second one to the end. We then multiply them by the first one. 
+
+function multiply(multiplier, ...theArgs) {
+  return theArgs.map(x => multiplier * x);
+}
+
+var arr = multiply(2, 1, 2, 3);
+console.log(arr); // [2, 4, 6]
+
+
+
+
+
+
+Arrow functions
+An arrow function expression (previously, and now incorrectly known as fat arrow function) has a shorter syntax compared to function expressions and does not have its own this, arguments, super, or new.target. Arrow functions are always anonymous. 
+
+Two factors influenced the introduction of arrow functions: shorter functions and non-binding of this.
+
+Shorter functions
+Compare:
+
+var a = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+var a2 = a.map(function(s) { return s.length; });
+
+console.log(a2); // logs [8, 6, 7, 9]
+
+var a3 = a.map(s => s.length);
+
+console.log(a3); // logs [8, 6, 7, 9]
+
+
+No separate this
+Until arrow functions, every new function defined its own this value (a new object in the case of a constructor, undefined in strict mode function calls, the base object if the function is called as an "object method", etc.). This proved to be less than ideal with an object-oriented style of programming.
+
+function Person() {
+  // The Person() constructor defines `this` as itself.
+  this.age = 0;
+
+  setInterval(function growUp() {
+    // In nonstrict mode, the growUp() function defines `this` 
+    // as the global object, which is different from the `this`
+    // defined by the Person() constructor.
+    this.age++;
+  }, 1000);
+}
+
+var p = new Person();
+In ECMAScript 3/5, this issue was fixed by assigning the value in this to a variable that could be closed over.
+
+function Person() {
+  var self = this; // Some choose `that` instead of `self`. 
+                   // Choose one and be consistent.
+  self.age = 0;
+
+  setInterval(function growUp() {
+    // The callback refers to the `self` variable of which
+    // the value is the expected object.
+    self.age++;
+  }, 1000);
+}
+Alternatively, a bound function could be created so that the proper this value would be passed to the growUp() function.
+
+An arrow function does not have its own this; the this value of the enclosing execution context is used. Thus, in the following code, the this within the function that is passed to setInterval has the same value as this in the enclosing function:
+
+function Person() {
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; // |this| properly refers to the person object
+  }, 1000);
+}
+
+var p = new Person();
+
+
+
+
+
+Predefined functions
+
+JavaScript has several top-level, built-in functions:
+
+1)-eval()
+The eval() method evaluates JavaScript code represented as a string.
+
+
+console.log(eval('2 + 2'));
+// expected output: 4
+
+console.log(eval(new String('2 + 2')));
+// expected output: 2 + 2
+
+console.log(eval('2 + 2') === eval('4'));
+// expected output: true
+
+console.log(eval('2 + 2') === eval(new String('2 + 2')));
+// expected output: false
+
+
+
+Syntax
+eval(string)
+
+Parameters
+string
+A string representing a JavaScript expression, statement, or sequence of statements. The expression can include variables and properties of existing objects.
+
+
+
+
+eval() is a function property of the global object.
+
+The argument of the eval() function is a string. If the string represents an expression, eval() evaluates the expression. If the argument represents one or more JavaScript statements, eval() evaluates the statements. Do not call eval() to evaluate an arithmetic expression; JavaScript evaluates arithmetic expressions automatically.
+
+
+If the argument of eval() is not a string, eval() returns the argument unchanged. In the following example, the String constructor is specified and eval() returns a String object rather than evaluating the string.
+
+eval(new String('2 + 2')); // returns a String object containing "2 + 2"
+eval('2 + 2');             // returns 4
+
+
+
+If you use the eval function indirectly, by invoking it via a reference other than eval, it works in the global scope rather than the local scope. This means, for instance, that function declarations create global functions, and that the code being evaluated doesn't have access to local variables within the scope where it's being called.
+
+function test() {
+  var x = 2, y = 4;
+  console.log(eval('x + y'));  // Direct call, uses local scope, result is 6
+  var geval = eval; // equivalent to calling eval in the global scope
+  console.log(geval('x + y')); // Indirect call, uses global scope, throws ReferenceError because `x` is undefined
+  (0, eval)('x + y'); // another example of Indirect call
+}
+
+
+
+
+2)-isFinite()
+The global isFinite() function determines whether the passed value is a finite number. If needed, the parameter is first converted to a number.
+
+
+function div(x) {
+  if (isFinite(1000 / x)) {
+    return 'Number is NOT Infinity.';
+  }
+  return "Number is Infinity!";
+}
+
+console.log(div(0));
+// expected output: "Number is Infinity!""
+
+console.log(div(1));
+// expected output: "Number is NOT Infinity."
+
+
+
+Syntax
+isFinite(testValue)
+
+Parameters
+testValue
+The value to be tested for finiteness.
+
+
+isFinite is a top-level function and is not associated with any object.
+
+You can use this function to determine whether a number is a finite number. The isFinite function examines the number in its argument. If the argument is NaN, positive infinity, or negative infinity, this method returns false; otherwise, it returns true.
+
+
+
+
+isFinite(Infinity);  // false
+isFinite(NaN);       // false
+isFinite(-Infinity); // false
+
+isFinite(0);         // true
+isFinite(2e64);      // true
+isFinite(910);       // true
+
+isFinite(null);      // true, would've been false with the 
+                     // more robust Number.isFinite(null)
+
+isFinite('0');       // true, would've been false with the 
+                     // more robust Number.isFinite("0")
+
+
+
+
+
+3)-isNaN()------NaN means Not-a-Number
+The isNaN() function determines whether a value is NaN or not. 
+
+
+function milliseconds(x) {
+  if (isNaN(x)) {
+    return 'Not a Number!';
+  }
+  return x * 1000;
+}
+
+console.log(milliseconds('100F'));
+// expected output: "Not a Number!"
+
+console.log(milliseconds('0.0314E+2'));
+// expected output: 3140
+
+
+
+
+
+Syntax
+
+isNaN(value)
+
+Parameters
+value
+The value to be tested.
+
+
+
+
+
+4)-parseFloat()
+The parseFloat() function parses a string argument and returns a floating point number.
+
+
+
+function circumference(r) {
+  return parseFloat(r) * 2.0 * Math.PI;
+}
+
+console.log(circumference(4.567));
+// expected output: 28.695307297889173
+
+console.log(circumference('4.567abcdefgh'));
+// expected output: 28.695307297889173
+
+console.log(circumference('abcdefgh'));
+// expected output: NaN
+
+
+
+
+
+Syntax
+parseFloat(value)
+
+Parameters
+value
+The value you want to parse.
+
+
+
+parseFloat parses its argument, and returns a floating point number. If it encounters a character other than a sign (+ or -), numeral (0-9), a decimal point, or an exponent, it returns the value up to that point and ignores that character and all succeeding characters. Leading and trailing spaces are allowed.
+
+If the value is a string and first character cannot be converted to a number, parseFloat returns NaN.
+
+
+
+Examples
+
+parseFloat returning a number
+The following examples all return 3.14
+
+parseFloat(3.14);
+parseFloat('3.14');
+parseFloat('314e-2');
+parseFloat('0.0314E+2');
+parseFloat('3.14more non-digit characters');
+
+var foo = Object.create(null);
+foo.toString = function () { return "3.14"; };
+parseFloat(foo);
+
+var foo = Object.create(null);
+foo.valueOf = function () { return "3.14"; }; 
+parseFloat(foo);​​​​​
+ 
+
+parseFloat returning NaN
+The following example returns NaN
+
+parseFloat('FF2');
+
+
+
+
+
+6)-parseInt()
+The parseInt() function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).
+
+function roughScale(x, base) {
+  var parsed = parseInt(x, base);
+  if (isNaN(parsed)) { return 0 }
+  return parsed * 100;
+}
+
+console.log(roughScale(' 0xF', 16));
+// expected output: 1500
+
+console.log(roughScale('321', 2));
+// expected output: 0
+
+
+
+Syntax
+parseInt(string, radix);
+
+Parameters
+string
+The value to parse. If the string argument is not a string, then it is converted to a string (using the ToString abstract operation). Leading whitespace in the string argument is ignored.
+radix
+An integer between 2 and 36 that represents the radix (the base in mathematical numeral systems) of the above mentioned string. 
+
+
+
+The parseInt function converts its first argument to a string, parses it, and returns an integer or NaN. If not NaN, the returned value will be the integer that is the first argument taken as a number in the specified radix (base). For example, a radix of 10 indicates to convert from a decimal number, 8 octal, 16 hexadecimal, and so on. For radices above 10, the letters of the alphabet indicate numerals greater than 9. For example, for hexadecimal numbers (base 16), A through F are used.
+
+If parseInt encounters a character that is not a numeral in the specified radix, it ignores it and all succeeding characters and returns the integer value parsed up to that point. parseInt truncates numbers to integer values. Leading and trailing spaces are allowed.
+
+Because some numbers include the e character in their string representation (e.g. 6.022e23), using parseInt to truncate numeric values will produce unexpected results when used on very large or very small numbers. parseInt should not be used as a substitute for Math.floor().
+
+If radix is undefined or 0 (or absent), JavaScript assumes the following:
+
+	(a)If the input string begins with "0x" or "0X", radix is 16 (hexadecimal) and the 		remainder of the string is parsed.
+	(b)If the input string begins with "0", radix is eight (octal) or 10 (decimal).  Exactly 		which radix is chosen is implementation-dependent.  ECMAScript 5 specifies that 10 		(decimal) is used, but not all browsers support this yet.  For this reason always specify 		a radix when using parseInt.
+	(c)If the input string begins with any other value, the radix is 10 (decimal).
+
+
+
+If the first character cannot be converted to a number, parseInt returns NaN.
+
+For arithmetic purposes, the NaN value is not a number in any radix. If NaN is passed on to arithmetic operations, the operation results will also be NaN.
+
+To convert number to its string literal in a particular radix use intValue.toString(radix).
+
+
+
+Examples
+Using parseInt
+
+The following examples all return 15:
+parseInt('0xF', 16);
+parseInt('F', 16);
+parseInt('17', 8);
+parseInt(021, 8);
+parseInt('015', 10);   // parseInt(015, 10); will return 15
+parseInt(15.99, 10);
+parseInt('15,123', 10);
+parseInt('FXX123', 16);
+parseInt('1111', 2);
+parseInt('15 * 3', 10);
+parseInt('15e2', 10);
+parseInt('15px', 10);
+parseInt('12', 13);
+
+
+The following examples all return NaN:
+parseInt('Hello', 8); // Not a number at all
+parseInt('546', 2);   // Digits are not valid for binary representations
+
+
+The following examples all return -15:
+parseInt('-F', 16);
+parseInt('-0F', 16);
+parseInt('-0XF', 16);
+parseInt(-15.1, 10);
+parseInt('-17', 8);
+parseInt('-15', 10);
+parseInt('-1111', 2);
+parseInt('-15e1', 10);
+parseInt('-12', 13);
+
+
+The following examples all return 4:
+parseInt(4.7, 10);
+parseInt(4.7 * 1e22, 10); // Very large number becomes 4
+parseInt(0.00000000000434, 10); // Very small number becomes 4
+
+
+The following example returns 224:
+parseInt('0e0', 16);
+
+
+
+
+-----------------------------------------
+
+Expressions and operators
+
+Operators
+
+JavaScript has the following types of operators. 
+
+1)-Assignment operators
+
+
+An assignment operator assigns a value to its left operand based on the value of its right operand. The simple assignment operator is equal (=), which assigns the value of its right operand to its left operand. That is, x = y assigns the value of y to x.
+
+There are also compound assignment operators that are shorthand for the operations listed in the following table:
+
+Compound assignment operators
+Name				Shorthand operator	Meaning
+Assignment			x = y			x = y
+Addition assignment		x += y			x = x + y
+Subtraction assignment		x -= y			x = x - y
+Multiplication assignment	x *= y			x = x * y
+Division assignment		x /= y			x = x / y
+Remainder assignment		x %= y			x = x % y
+Exponentiation assignment	x **= y			x = x ** y
+Left shift assignment		x <<= y			x = x << y
+Right shift assignment		x >>= y			x = x >> y
+Unsigned right shift assignment	x >>>= y		x = x >>> y
+Bitwise AND assignment		x &= y			x = x & y
+Bitwise XOR assignment		x ^= y			x = x ^ y
+Bitwise OR assignment		x |= y			x = x | y
+
+
+
+
+
+2)-Comparison operators
+
+
+A comparison operator compares its operands and returns a logical value based on whether the comparison is true. The operands can be numerical, string, logical, or object values. Strings are compared based on standard lexicographical ordering, using Unicode values. In most cases, if the two operands are not of the same type, JavaScript attempts to convert them to an appropriate type for the comparison. This behavior generally results in comparing the operands numerically. The sole exceptions to type conversion within comparisons involve the === and !== operators, which perform strict equality and inequality comparisons. These operators do not attempt to convert the operands to compatible types before checking equality. The following table describes the comparison operators in terms of this sample code:
+
+var var1 = 3;
+var var2 = 4;
+Comparison operators
+Operator	Description					    Examples returning true
+Equal (==)	Returns true if the operands are equal.	3 == var1		"3" == var1
+										 3 == '3'
+
+Not equal (!=)	Returns true if the operands are not equal.			var1 != 4
+										var2 != "3"
+
+Strict equal (===)	Returns true if the operands are equal and of the same type. 	3 === var1
+
+Strict not equal (!==)	Returns true if the operands are of the same type but not equal, or are of 				different type.						    var1 !== "3"
+										    3 !== '3'
+
+Greater than (>)	Returns true if the left operand is greater than the right 			       operand.							     var2 > var1
+										     "12" > 2
+
+Greater than or equal (>=)	Returns true if the left operand is greater than or equal to the 					right operand.					    var2 >= var1
+										    var1 >= 3
+
+Less than (<)		Returns true if the left operand is less than the right operand.									     var1 < var2
+										     "2" < 12
+
+Less than or equal (<=)		Returns true if the left operand is less than or equal to the 					right operand.					    var1 <= var2
+										     var2 <= 5
+
+
+
+
+
+
+3)-Arithmetic operators
+
+An arithmetic operator takes numerical values (either literals or variables) as their operands and returns a single numerical value. The standard arithmetic operators are addition (+), subtraction (-), multiplication (*), and division (/). These operators work as they do in most other programming languages when used with floating point numbers (in particular, note that division by zero produces Infinity). For example:
+
+1 / 2; // 0.5
+1 / 2 == 1.0 / 2.0; // this is true
+
+
+Arithmetic operators
+
+Operator	Description								Example
+Remainder (%)	Binary operator. 
+		Returns the integer remainder of dividing the two operands.	12 % 5 returns 2.
+
+Increment (++)	Unary operator. 
+		Adds one to its operand. 
+		If used as a prefix operator (++x), 
+		returns the value of its operand after adding one;
+		if used as a postfix operator (x++), 
+		returns the value of its operand before adding one; one		If x is 3, then 
+										++x sets x to 4 										and returns 4, 										whereas x++ returns 3 and, 										only then, sets x to 4.
+
+Decrement (--)	Unary operator. Subtracts one from its operand. 
+		The return value is analogous to that for the increment operator.	If x is 3, 										then --x sets x to 2 and 									returns 2, whereas x-- returns 3 									and, only then, sets x to 2.
+
+Unary negation (-)   Unary operator. Returns the negation of its operand.	If x is 3, then -x 											returns -3.
+
+Unary plus (+)	     Unary operator. Attempts to convert the operand to a number, 
+		     if it is not already.					+"3" returns 3.
+										+true returns 1.
+
+Exponentiation operator (**) 	Calculates the base to the exponent power,
+			 	that is, baseexponent				2 ** 3 returns 8.
+									10 ** -1 returns 0.1.
+
+
+
+
+
+
+4)-Bitwise operators
+
+A bitwise operator treats their operands as a set of 32 bits (zeros and ones), rather than as decimal, hexadecimal, or octal numbers. For example, the decimal number nine has a binary representation of 1001. Bitwise operators perform their operations on such binary representations, but they return standard JavaScript numerical values.
+
+The following table summarizes JavaScript's bitwise operators.
+
+Bitwise operators
+Operator	Usage	Description
+Bitwise AND	a & b	Returns a one in each bit position for which the corresponding bits of 				both operands are ones.
+
+Bitwise OR	a | b	Returns a zero in each bit position for which the corresponding bits of 			both operands are zeros.
+
+Bitwise XOR	a ^ b	Returns a zero in each bit position for which the corresponding bits are 				the same.
+			[Returns a one in each bit position for which the corresponding bits are 				different.]
+
+Bitwise NOT	~ a	Inverts the bits of its operand.
+
+Left shift	a << b	Shifts a in binary representation b bits to the left, shifting in zeros 			from the right.
+
+Sign-propagating right shift	a >> b	Shifts a in binary representation b bits to the right, 						discarding bits shifted off.
+
+Zero-fill right shift	a >>> b		Shifts a in binary representation b bits to the right, 						discarding bits shifted off, and shifting in zeros from 					the left.
+
+
+
+
+5)-Logical operators
+
+Logical operators are typically used with Boolean (logical) values; when they are, they return a Boolean value. However, the && and || operators actually return the value of one of the specified operands, so if these operators are used with non-Boolean values, they may return a non-Boolean value. The logical operators are described in the following table.
+
+Logical operators
+Operator		Usage			Description
+Logical AND (&&)	expr1 && expr2		Returns expr1 if it can be converted to false; 							otherwise, returns expr2. Thus, when used with 							Boolean values, && returns true if both operands 							are true; otherwise, returns false.
+
+Logical OR (||)		expr1 || expr2		Returns expr1 if it can be converted to true; 							otherwise, returns expr2. Thus, when used with 							Boolean values, || returns true if either operand 							is true; if both are false, returns false.
+
+Logical NOT (!)		!expr			Returns false if its single operand that can be 						converted to true; otherwise, returns true.
+
+
+NOTE:Short-circuit evaluation
+As logical expressions are evaluated left to right, they are tested for possible "short-circuit" evaluation using the following rules:
+
+false && anything is short-circuit evaluated to false.
+true || anything is short-circuit evaluated to true.
+
+
+
+
+
+6)-String operators
+
+In addition to the comparison operators, which can be used on string values, the concatenation operator (+) concatenates two string values together, returning another string that is the union of the two operand strings.
+
+For example,
+
+console.log('my ' + 'string'); // console logs the string "my string".
+
+
+The shorthand assignment operator += can also be used to concatenate strings.
+
+For example,
+var mystring = 'alpha';
+mystring += 'bet'; // evaluates to "alphabet" and assigns this value to mystring.
+
+
+
+
+
+7)-Conditional (ternary) operator
+
+The conditional operator is the only JavaScript operator that takes three operands. The operator can have one of two values based on a condition. The syntax is:
+
+condition ? val1 : val2
+If condition is true, the operator has the value of val1. Otherwise it has the value of val2. You can use the conditional operator anywhere you would use a standard operator.
+
+For example,
+
+var status = (age >= 18) ? 'adult' : 'minor';
+This statement assigns the value "adult" to the variable status if age is eighteen or more. Otherwise, it assigns the value "minor" to status.
+
+
+
+
+8)-Comma operator
+
+The comma operator (,) simply evaluates both of its operands and returns the value of the last operand. This operator is primarily used inside a for loop, to allow multiple variables to be updated each time through the loop.
+
+For example, if a is a 2-dimensional array with 10 elements on a side, the following code uses the comma operator to update two variables at once. The code prints the values of the diagonal elements in the array:
+
+var x = [0,1,2,3,4,5,6,7,8,9]
+var a = [x, x, x, x, x];
+
+for (var i = 0, j = 9; i <= j; i++, j--)
+  console.log('a[' + i + '][' + j + ']= ' + a[i][j]);
+
+
+
+
+
+
+9)-Unary operators
+
+A unary operation is an operation with only one operand.
+
+
+delete
+The delete operator deletes an object, an object's property, or an element at a specified index in an array. The syntax is:
+
+delete objectName;
+delete objectName.property;
+delete objectName[index];
+delete property; // legal only within a with statement
+where objectName is the name of an object, property is an existing property, and index is an integer representing the location of an element in an array.
+
+The fourth form is legal only within a with statement, to delete a property from an object.
+
+You can use the delete operator to delete variables declared implicitly but not those declared with the var statement.
+
+If the delete operator succeeds, it sets the property or element to undefined. The delete operator returns true if the operation is possible; it returns false if the operation is not possible.
+
+x = 42;
+var y = 43;
+myobj = new Number();
+myobj.h = 4;    // create property h
+delete x;       // returns true (can delete if declared implicitly)
+delete y;       // returns false (cannot delete if declared with var)
+delete Math.PI; // returns false (cannot delete predefined properties)
+delete myobj.h; // returns true (can delete user-defined properties)
+delete myobj;   // returns true (can delete if declared implicitly)
+
+
+
+
+
+
+Deleting array elements
+
+When you delete an array element, the array length is not affected. For example, if you delete a[3], a[4] is still a[4] and a[3] is undefined.
+
+When the delete operator removes an array element, that element is no longer in the array. In the following example, trees[3] is removed with delete. However, trees[3] is still addressable and returns undefined.
+
+var trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+delete trees[3];
+if (3 in trees) {
+  // this does not get executed
+}
+If you want an array element to exist but have an undefined value, use the undefined keyword instead of the delete operator. In the following example, trees[3] is assigned the value undefined, but the array element still exists:
+
+var trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+trees[3] = undefined;
+if (3 in trees) {
+  // this gets executed
+}
+
+
+
+
+
+typeof
+
+The typeof operator is used in either of the following ways:
+
+typeof operand
+typeof (operand)
+The typeof operator returns a string indicating the type of the unevaluated operand. operand is the string, variable, keyword, or object for which the type is to be returned. The parentheses are optional.
+
+Suppose you define the following variables:
+
+var myFun = new Function('5 + 2');
+var shape = 'round';
+var size = 1;
+var foo = ['Apple', 'Mango', 'Orange'];
+var today = new Date();
+
+The typeof operator returns the following results for these variables:
+
+typeof myFun;       // returns "function"
+typeof shape;       // returns "string"
+typeof size;        // returns "number"
+typeof foo;         // returns "object"
+typeof today;       // returns "object"
+typeof doesntExist; // returns "undefined"
+
+
+
+For the keywords true and null, the typeof operator returns the following results:
+
+typeof true; // returns "boolean"
+typeof null; // returns "object"
+
+
+For a number or string, the typeof operator returns the following results:
+
+typeof 62;            // returns "number"
+typeof 'Hello world'; // returns "string"
+
+
+For property values, the typeof operator returns the type of value the property contains:
+
+typeof document.lastModified; // returns "string"
+typeof window.length;         // returns "number"
+typeof Math.LN2;              // returns "number"
+
+
+For methods and functions, the typeof operator returns results as follows:
+
+typeof blur;        // returns "function"
+typeof eval;        // returns "function"
+typeof parseInt;    // returns "function"
+typeof shape.split; // returns "function"
+
+
+For predefined objects, the typeof operator returns results as follows:
+
+typeof Date;     // returns "function"
+typeof Function; // returns "function"
+typeof Math;     // returns "object"
+typeof Option;   // returns "function"
+typeof String;   // returns "function"
+
+
+
+
+void
+
+The void operator is used in either of the following ways:
+
+void (expression)
+void expression
+
+The void operator specifies an expression to be evaluated without returning a value. expression is a JavaScript expression to evaluate. The parentheses surrounding the expression are optional, but it is good style to use them.
+
+You can use the void operator to specify an expression as a hypertext link. The expression is evaluated but is not loaded in place of the current document.
+
+The following code creates a hypertext link that does nothing when the user clicks it. When the user clicks the link, void(0) evaluates to undefined, which has no effect in JavaScript.
+
+<a href="javascript:void(0)">Click here to do nothing</a>
+
+
+The following code creates a hypertext link that submits a form when the user clicks it.
+
+<a href="javascript:void(document.form.submit())">
+Click here to submit</a>
+
+
+
+
+
+
+
+
+10)-Relational operators
+
+A relational operator compares its operands and returns a Boolean value based on whether the comparison is true.
+
+
+
+
+in
+
+The in operator returns true if the specified property is in the specified object. The syntax is:
+
+propNameOrNumber in objectName
+
+where propNameOrNumber is a string, numeric, or symbol expression representing a property name or array index, and objectName is the name of an object.
+
+The following examples show some uses of the in operator.
+
+// Arrays
+var trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+0 in trees;        // returns true
+3 in trees;        // returns true
+6 in trees;        // returns false
+'bay' in trees;    // returns false (you must specify the index number,
+                   // not the value at that index)
+'length' in trees; // returns true (length is an Array property)
+
+// built-in objects
+'PI' in Math;          // returns true
+var myString = new String('coral');
+'length' in myString;  // returns true
+
+// Custom objects
+var mycar = { make: 'Honda', model: 'Accord', year: 1998 };
+'make' in mycar;  // returns true
+'model' in mycar; // returns true
+
+
+
+
+
+
+
+instanceof
+
+The instanceof operator returns true if the specified object is of the specified object type. The syntax is:
+
+objectName instanceof objectType
+
+where objectName is the name of the object to compare to objectType, and objectType is an object type, such as Date or Array.
+
+For example, the following code uses instanceof to determine whether theDay is a Date object. Because theDay is a Date object, the statements in the if statement execute.
+
+var theDay = new Date(1995, 12, 17);
+if (theDay instanceof Date) {
+  // statements to execute
+}
+
+
+
+
+
+
+Operator precedence
+
+The precedence of operators determines the order they are applied when evaluating an expression. You can override operator precedence by using parentheses.
+
+The following table describes the precedence of operators, from highest to lowest.
+
+Operator precedence
+Operator type			Individual operators
+member				. []
+call / create instance		() new
+negation/increment		! ~ - + ++ -- typeof void delete
+multiply/divide			* / %
+addition/subtraction		+ -
+bitwise shift			<< >> >>>
+relational			< <= > >= in instanceof
+equality			== != === !==
+bitwise-and			&
+bitwise-xor			^
+bitwise-or			|
+logical-and			&&
+logical-or			||
+conditional			?:
+assignment			= += -= *= /= %= <<= >>= >>>= &= ^= |=
+comma				,
+
+
+
+
+JavaScript has both binary and unary operators, and one special ternary operator, the conditional operator. A binary operator requires two operands, one before the operator and one after the operator:
+
+operand1 operator operand2
+For example, 3+4 or x*y.
+
+
+A unary operator requires a single operand, either before or after the operator:
+
+operator operand
+
+
+or
+
+operand operator
+For example, x++ or ++x.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Expressions
+
+An expression is any valid unit of code that resolves to a value.
+
+Every syntactically valid expression resolves to some value but conceptually, there are two types of expressions: with side effects (for example: those that assign value to a variable) and those that in some sense evaluate and therefore resolve to a value.
+
+The expression x = 7 is an example of the first type. This expression uses the = operator to assign the value seven to the variable x. The expression itself evaluates to seven.
+
+The code 3 + 4 is an example of the second expression type. This expression uses the + operator to add three and four together without assigning the result, seven, to a variable.
+
+
+
+JavaScript has the following expression categories:
+
+Arithmetic: evaluates to a number, for example 3.14159. (Generally uses arithmetic operators.)
+String: evaluates to a character string, for example, "Fred" or "234". (Generally uses string operators.)
+Logical: evaluates to true or false. (Often involves logical operators.)
+Primary expressions: Basic keywords and general expressions in JavaScript.
+Left-hand-side expressions: Left values are the destination of an assignment.
+
+
+
+
+
+1)-Primary expressions
+
+
+this
+Use the this keyword to refer to the current object. In general, this refers to the calling object in a method. Use this either with the dot or the bracket notation:
+
+this['propertyName']
+this.propertyName
+
+
+
+
+Grouping operator
+The grouping operator ( ) controls the precedence of evaluation in expressions. For example, you can override multiplication and division first, then addition and subtraction to evaluate addition first.
+
+var a = 1;
+var b = 2;
+var c = 3;
+
+// default precedence
+a + b * c     // 7
+// evaluated by default like this
+a + (b * c)   // 7
+
+// now overriding precedence 
+// addition before multiplication   
+(a + b) * c   // 9
+
+// which is equivalent to
+a * c + b * c // 9
+
+
+
+
+2)-Left-hand-side expressions
+
+
+
+new
+You can use the new operator to create an instance of a user-defined object type or of one of the built-in object types. Use new as follows:
+
+var objectName = new objectType([param1, param2, ..., paramN]);
+
+
+
+
+super
+The super keyword is used to call functions on an object's parent. It is useful with classes to call the parent constructor, for example.
+
+super([arguments]); // calls the parent constructor.
+super.functionOnParent([arguments]);
+
+
+
+
+
+
+Spread operator
+The spread operator allows an expression to be expanded in places where multiple arguments (for function calls) or multiple elements (for array literals) are expected.
+
+Example: Today if you have an array and want to create a new array with the existing one being part of it, the array literal syntax is no longer sufficient and you have to fall back to imperative code, using a combination of push, splice, concat, etc. With spread syntax this becomes much more succinct:
+
+var parts = ['shoulders', 'knees'];
+var lyrics = ['head', ...parts, 'and', 'toes'];
+Similarly, the spread operator works with function calls:
+
+function f(x, y, z) { }
+var args = [0, 1, 2];
+f(...args);
+
+
+
+
+
+-----------------------------------------------
+Numbers and dates
+
+
+
+Numbers
+
+
+In JavaScript, all numbers are implemented in double-precision 64-bit binary format IEEE 754 (i.e. a number between -(263 -1) and 263 -1). There is no specific type for integers. In addition to being able to represent floating-point numbers, the number type has three symbolic values: +Infinity, -Infinity, and NaN (not-a-number). See also JavaScript data types and structures for context with other primitive types in JavaScript.
+
+You can use four types of number literals: decimal, binary, octal, and hexadecimal.
+
+
+1)-Decimal numbers
+
+example:
+1234567890
+42
+
+// Caution when using leading zeros:
+
+0888 // 888 parsed as decimal
+0777 // parsed as octal in non-strict mode (511 in decimal)
+
+Note that decimal literals can start with a zero (0) followed by another decimal digit, but if every digit after the leading 0 is smaller than 8, the number gets parsed as an octal number.
+
+
+
+
+
+2)-Binary numbers
+Binary number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "B" (0b or 0B). If the digits after the 0b are not 0 or 1, the following SyntaxError is thrown: "Missing binary digits after 0b".
+
+var FLT_SIGNBIT  = 0b10000000000000000000000000000000; // 2147483648
+var FLT_EXPONENT = 0b01111111100000000000000000000000; // 2139095040
+var FLT_MANTISSA = 0B00000000011111111111111111111111; // 8388607
+
+
+
+
+
+
+3)-Octal numbers
+Octal number syntax uses a leading zero. If the digits after the 0 are outside the range 0 through 7, the number will be interpreted as a decimal number.
+
+var n = 0755; // 493
+var m = 0644; // 420
+Strict mode in ECMAScript 5 forbids octal syntax. In ECMAScript 2015, octal numbers are supported if they are prefixed with 0o, e.g.: 
+
+var a = 0o10; // ES2015: 8
+
+
+
+
+
+
+
+4)-Hexadecimal numbers
+Hexadecimal number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "X" (0x or 0X). If the digits after 0x are outside the range (0123456789ABCDEF),  the following SyntaxError is thrown: "Identifier starts immediately after numeric literal".
+
+0xFFFFFFFFFFFFFFFFF // 295147905179352830000
+0x123456789ABCDEF   // 81985529216486900
+0XA                 // 10
+
+
+
+
+
+
+5)-Exponentiation
+1E3   // 1000
+2e6   // 2000000
+0.1e2 // 10
+
+
+
+
+
+
+
+
+Number object
+The built-in Number object has properties for numerical constants, such as maximum value, not-a-number, and infinity. You cannot change the values of these properties and you use them as follows:
+
+var biggestNum = Number.MAX_VALUE;
+var smallestNum = Number.MIN_VALUE;
+var infiniteNum = Number.POSITIVE_INFINITY;
+var negInfiniteNum = Number.NEGATIVE_INFINITY;
+var notANum = Number.NaN;
+
+You always refer to a property of the predefined Number object as shown above, and not as a property of a Number object you create yourself.
+
+
+
+
+The following table summarizes the Number object's properties.
+
+Properties of Number
+
+Property			Description
+Number.MAX_VALUE		The largest representable number
+Number.MIN_VALUE		The smallest representable number
+Number.NaN			Special "not a number" value
+Number.NEGATIVE_INFINITY	Special negative infinite value; returned on overflow
+Number.POSITIVE_INFINITY	Special positive infinite value; returned on overflow
+Number.EPSILON			Difference between one and the smallest value greater than one 					that can be represented as a Number.
+Number.MIN_SAFE_INTEGER		Minimum safe integer in JavaScript.
+Number.MAX_SAFE_INTEGER		Maximum safe integer in JavaScript.
+
+
+
+Methods of Number
+
+Method			Description
+Number.parseFloat()	Parses a string argument and returns a floating point number.
+			Same as the global parseFloat() function.
+Number.parseInt()	Parses a string argument and returns an integer of the specified radix or 				base.
+			Same as the global parseInt() function.
+Number.isFinite()	Determines whether the passed value is a finite number.
+Number.isInteger()	Determines whether the passed value is an integer.
+Number.isNaN()		Determines whether the passed value is NaN. More robust version of the 				original global isNaN().
+Number.isSafeInteger()	Determines whether the provided value is a number that is a safe integer.
+
+
+
+
+The Number prototype provides methods for retrieving information from Number objects in various formats. The following table summarizes the methods of Number.prototype.
+
+Methods of Number.prototype
+
+Method			Description
+toExponential()		Returns a string representing the number in exponential notation.
+toFixed()		Returns a string representing the number in fixed-point notation.
+toPrecision()		Returns a string representing the number to a specified precision in 
+			fixed-point notation.
+
+
+
+
+
+
+Math object
+The built-in Math object has properties and methods for mathematical constants and functions. For example, the Math object's PI property has the value of pi (3.141...), which you would use in an application as
+
+Math.PI
+
+Similarly, standard mathematical functions are methods of Math. These include trigonometric, logarithmic, exponential, and other functions. For example, if you want to use the trigonometric function sine, you would write
+
+Math.sin(1.56)
+
+Note that all trigonometric methods of Math take arguments in radians.
+
+The following table summarizes the Math object's methods.
+
+Methods of Math
+
+Method					Description
+abs()					Absolute value
+
+sin(), cos(), tan()			Standard trigonometric functions; with the argument in 						radians.
+
+asin(), acos(), atan(), atan2()		Inverse trigonometric functions; return values in radians.
+
+sinh(), cosh(), tanh()			Hyperbolic functions; argument in hyperbolic angle.
+
+asinh(), acosh(), atanh()		Inverse hyperbolic functions; return values in hyperbolic 						angle.
+
+pow(), exp(), expm1(), log10(), log1p(), log2()		Exponential and logarithmic functions.
+
+floor(), ceil()				Returns the largest/smallest integer less/greater than or 						equal to an argument.
+
+min(), max()				Returns the minimum or maximum (respectively) value of a 						comma separated list of numbers as arguments.
+
+random()				Returns a random number between 0 and 1.
+
+round(), fround(), trunc(),		Rounding and truncation functions.
+
+sqrt(), cbrt(), hypot()			Square root, cube root, Square root of the sum of square 						arguments.
+
+sign()					The sign of a number, indicating whether the number is 						positive, negative or zero.
+
+clz32(),imul()				Number of leading zero bits in the 32-bit binary 						representation.
+					The result of the C-like 32-bit multiplication of the two 						arguments.
+
+
+Unlike many other objects, you never create a Math object of your own. You always use the built-in Math object.
+
+
+
+
+
+
+
+
+
+Date object
+JavaScript does not have a date data type. However, you can use the Date object and its methods to work with dates and times in your applications. The Date object has a large number of methods for setting, getting, and manipulating dates. It does not have any properties.
+
+JavaScript handles dates similarly to Java. The two languages have many of the same date methods, and both languages store dates as the number of milliseconds since January 1, 1970, 00:00:00, with a Unix Timestamp being the number of seconds since January 1, 1970, 00:00:00.
+
+The Date object range is -100,000,000 days to 100,000,000 days relative to 01 January, 1970 UTC.
+
+To create a Date object:
+
+var dateObjectName = new Date([parameters]);
+
+where dateObjectName is the name of the Date object being created; it can be a new object or a property of an existing object.
+
+
+
+Calling Date without the new keyword returns a string representing the current date and time.
+
+The parameters in the preceding syntax can be any of the following:
+
+	(a)Nothing: creates today's date and time. For example, today = new Date();.
+	(b)A string representing a date in the following form: "Month day, year 			hours:minutes:seconds." For example, var Xmas95 = new Date("December 25, 		  1995 13:30:00"). If you omit hours, minutes, or seconds, the value will be set to zero.
+	(c)A set of integer values for year, month, and day. For example, var Xmas95 = new 
+		Date(1995, 11, 25).
+	(d)A set of integer values for year, month, day, hour, minute, and seconds. For example, 			var Xmas95 = new Date(1995, 11, 25, 9, 30, 0);.
+
+
+
+
+Methods of the Date object
+The Date object methods for handling dates and times fall into these broad categories:
+
+	a)"set" methods, for setting date and time values in Date objects.
+	b)"get" methods, for getting date and time values from Date objects.
+	c)"to" methods, for returning string values from Date objects.
+	d)parse and UTC methods, for parsing Date strings.
+
+With the "get" and "set" methods you can get and set seconds, minutes, hours, day of the month, day of the week, months, and years separately. There is a getDay method that returns the day of the week, but no corresponding setDay method, because the day of the week is set automatically. These methods use integers to represent these values as follows:
+
+Seconds and minutes: 0 to 59
+Hours: 0 to 23
+Day: 0 (Sunday) to 6 (Saturday)
+Date: 1 to 31 (day of the month)
+Months: 0 (January) to 11 (December)
+Year: years since 1900
+For example, suppose you define the following date:
+
+var Xmas95 = new Date('December 25, 1995');
+
+
+Then Xmas95.getMonth() returns 11, and Xmas95.getFullYear() returns 1995.
+
+The getTime and setTime methods are useful for comparing dates. The getTime method returns the number of milliseconds since January 1, 1970, 00:00:00 for a Date object.
+
+For example, the following code displays the number of days left in the current year:
+
+var today = new Date();
+var endYear = new Date(1995, 11, 31, 23, 59, 59, 999); // Set day and month
+endYear.setFullYear(today.getFullYear()); // Set year to this year
+var msPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds per day
+var daysLeft = (endYear.getTime() - today.getTime()) / msPerDay;
+var daysLeft = Math.round(daysLeft); //returns days left in the year
+
+This example creates a Date object named today that contains today's date. It then creates a Date object named endYear and sets the year to the current year. Then, using the number of milliseconds per day, it computes the number of days between today and endYear, using getTime and rounding to a whole number of days.
+
+
+
+
+The parse method is useful for assigning values from date strings to existing Date objects. For example, the following code uses parse and setTime to assign a date value to the IPOdate object:
+
+var IPOdate = new Date();
+IPOdate.setTime(Date.parse('Aug 9, 1995'));
+
+
+Example
+In the following example, the function JSClock() returns the time in the format of a digital clock.
+
+function JSClock() {
+  var time = new Date();
+  var hour = time.getHours();
+  var minute = time.getMinutes();
+  var second = time.getSeconds();
+  var temp = '' + ((hour > 12) ? hour - 12 : hour);
+  if (hour == 0)
+    temp = '12';
+  temp += ((minute < 10) ? ':0' : ':') + minute;
+  temp += ((second < 10) ? ':0' : ':') + second;
+  temp += (hour >= 12) ? ' P.M.' : ' A.M.';
+  return temp;
+}
+
+
+The JSClock function first creates a new Date object called time; since no arguments are given, time is created with the current date and time. Then calls to the getHours, getMinutes, and getSeconds methods assign the value of the current hour, minute, and second to hour, minute, and second.
+
+The next four statements build a string value based on the time. The first statement creates a variable temp, assigning it a value using a conditional expression; if hour is greater than 12, (hour - 12), otherwise simply hour, unless hour is 0, in which case it becomes 12.
+
+The next statement appends a minute value to temp. If the value of minute is less than 10, the conditional expression adds a string with a preceding zero; otherwise it adds a string with a demarcating colon. Then a statement appends a seconds value to temp in the same way.
+
+Finally, a conditional expression appends "P.M." to temp if hour is 12 or greater; otherwise, it appends "A.M." to temp.
+
+
+
+
+
+
+
+
+
+
+--------------------------------
+Text Formatting
+
+Strings
+JavaScript's String type is used to represent textual data. It is a set of "elements" of 16-bit unsigned integer values  (UTF-16 code units). Each element in the String occupies a position in the String. The first element is at index 0, the next at index 1, and so on. The length of a String is the number of elements in it. You can create strings using string literals or string objects.
+
+
+String literals
+You can create simple strings using either single or double quotes:
+
+'foo'
+"bar"
+
+
+More advanced strings can be created using escape sequences:
+
+Hexadecimal escape sequences
+The number after \x is interpreted as a hexadecimal number.
+
+'\xA9' // "©"
+
+
+Unicode escape sequences
+The Unicode escape sequences require at least four hexadecimal digits following \u.
+
+'\u00A9' // "©"
+
+
+
+Unicode code point escapes
+New in ECMAScript 2015. With Unicode code point escapes, any character can be escaped using hexadecimal numbers so that it is possible to use Unicode code points up to 0x10FFFF. With simple Unicode escapes it is often necessary to write the surrogate halves separately to achieve the same result.
+
+
+'\u{2F804}'
+
+// the same with simple Unicode escapes
+'\uD87E\uDC04'
+
+
+
+
+
+
+
+String objects
+The String object is a wrapper around the string primitive data type.
+
+var s = new String('foo'); // Creates a String object
+console.log(s); // Displays: {'0': 'f', '1': 'o', '2': 'o'}
+typeof s; // Returns 'object'
+
+You can call any of the methods of the String object on a string literal value—JavaScript automatically converts the string literal to a temporary String object, calls the method, then discards the temporary String object. You can also use the String.length property with a string literal.
+
+You should use string literals unless you specifically need to use a String object, because String objects can have counterintuitive behavior. For example:
+
+var s1 = '2 + 2'; // Creates a string literal value
+var s2 = new String('2 + 2'); // Creates a String object
+eval(s1); // Returns the number 4
+eval(s2); // Returns the string "2 + 2"
+
+A String object has one property, length, that indicates the number of UTF-16 code units in the string. For example, the following code assigns x the value 13, because "Hello, World!" has 13 characters, each represented by one UTF-16 code unit. You can access each code unit using an array bracket style. You can't change individual characters because strings are immutable array-like objects:
+
+var mystring = 'Hello, World!';
+var x = mystring.length;
+mystring[0] = 'L'; // This has no effect, because strings are immutable
+mystring[0]; // This returns "H"
+
+
+
+
+
+
+The following table summarizes the methods of String objects.
+
+Methods of String
+
+Method					Description
+charAt, charCodeAt, codePointAt		Return the character or character code at the specified 					position in string.
+
+indexOf, lastIndexOf			Return the position of specified substring in the string 						or last position of specified substring, respectively.
+
+startsWith, endsWith, includes		Returns whether or not the string starts, ends or contains 						a specified string.
+
+concat					Combines the text of two strings and returns a new string.
+fromCharCode, fromCodePoint		Constructs a string from the specified sequence of Unicode 						values. This is a method of the String class, not a String 						instance.
+
+split					Splits a String object into an array of strings by 						separating the string into substrings.
+
+slice					Extracts a section of a string and returns a new string.
+
+substring, substr			Return the specified subset of the string, either by 						specifying the start and end indexes or the start index 					and a length.
+
+match, replace, search			Work with regular expressions.
+
+toLowerCase, toUpperCase		Return the string in all lowercase or all uppercase, 						respectively.
+
+normalize				Returns the Unicode Normalization Form of the calling 						string value.
+
+repeat					Returns a string consisting of the elements of the object 						repeated the given times.
+
+trim					Trims whitespace from the beginning and end of the string.
+
+
+
+
+
+
+
+Multi-line template literals
+Template literals are string literals allowing embedded expressions. You can use multi-line strings and string interpolation features with them.
+
+Template literals are enclosed by the back-tick (` `) (grave accent) character instead of double or single quotes. Template literals can contain place holders. These are indicated by the Dollar sign and curly braces (${expression}).
+
+
+
+
+
+
+
+
+Multi-lines
+Any new line characters inserted in the source are part of the template literal. Using normal strings, you would have to use the following syntax in order to get multi-line strings:
+
+console.log('string text line 1\n\
+string text line 2');
+// "string text line 1
+// string text line 2"
+To get the same effect with multi-line strings, you can now write:
+
+console.log(`string text line 1
+string text line 2`);
+// "string text line 1
+// string text line 2"
+
+
+
+
+
+
+Embedded expressions
+In order to embed expressions within normal strings, you would use the following syntax:
+
+var a = 5;
+var b = 10;
+console.log('Fifteen is ' + (a + b) + ' and\nnot ' + (2 * a + b) + '.');
+// "Fifteen is 15 and
+// not 20."
+
+
+Now, with template literals, you are able to make use of the syntactic sugar making substitutions like this more readable:
+
+var a = 5;
+var b = 10;
+console.log(`Fifteen is ${a + b} and\nnot ${2 * a + b}.`);
+// "Fifteen is 15 and
+// not 20."
+
+
+
+
+
+
+
+
+
+Date and time formatting
+The DateTimeFormat object is useful for formatting date and time. The following formats a date for English as used in the United States. (The result is different in another time zone.)
+
+var msPerDay = 24 * 60 * 60 * 1000;
+ 
+// July 17, 2014 00:00:00 UTC.
+var july172014 = new Date(msPerDay * (44 * 365 + 11 + 197));
+
+var options = { year: '2-digit', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
+var americanDateTime = new Intl.DateTimeFormat('en-US', options).format;
+ 
+console.log(americanDateTime(july172014)); // 07/16/14, 5:00 PM PDT
+
+
+
+
+
+
+Number formatting
+The NumberFormat object is useful for formatting numbers, for example currencies.
+
+var gasPrice = new Intl.NumberFormat('en-US',
+                        { style: 'currency', currency: 'USD',
+                          minimumFractionDigits: 3 });
+ 
+console.log(gasPrice.format(5.259)); // $5.259
+
+var hanDecimalRMBInChina = new Intl.NumberFormat('zh-CN-u-nu-hanidec',
+                        { style: 'currency', currency: 'CNY' });
+ 
+console.log(hanDecimalRMBInChina.format(1314.25)); // ￥ 一,三一四.二五
+
+
+
+
+
+
+
+Collation
+The Collator object is useful for comparing and sorting strings.
+
+
+-----------------------------------------
+Indexed Collections
+
+This chapter introduces collections of data which are ordered by an index value. This includes arrays and array-like constructs such as Array objects and TypedArray objects.
+
+
+
+Array object
+
+An array is an ordered set of values that you refer to with a name and an index. For example, you could have an array called emp that contains employees' names indexed by their numerical employee number. So emp[1] would be employee number one, emp[2] employee number two, and so on.
+
+JavaScript does not have an explicit array data type. However, you can use the predefined Array object and its methods to work with arrays in your applications. The Array object has methods for manipulating arrays in various ways, such as joining, reversing, and sorting them. It has a property for determining the array length and other properties for use with regular expressions.
+
+Creating an array
+The following statements create equivalent arrays:
+
+var arr = new Array(element0, element1, ..., elementN);
+var arr = Array(element0, element1, ..., elementN);
+var arr = [element0, element1, ..., elementN];
+
+element0, element1, ..., elementN is a list of values for the array's elements. When these values are specified, the array is initialized with them as the array's elements. The array's length property is set to the number of arguments.
+
+The bracket syntax is called an "array literal" or "array initializer." It's shorter than other forms of array creation, and so is generally preferred. 
+
+
+
+
+To create an array with non-zero length, but without any items, either of the following can be used:
+
+var arr = new Array(arrayLength);
+var arr = Array(arrayLength);
+
+// This has exactly the same effect
+var arr = [];
+arr.length = arrayLength;
+
+Note : in the above code, arrayLength must be a Number. Otherwise, an array with a single element (the provided value) will be created. Calling arr.length will return arrayLength, but the array actually contains empty (undefined) elements. Running a for...in loop on the array will return none of the array's elements.
+
+
+
+
+In addition to a newly defined variable as shown above, arrays can also be assigned as a property of a new or an existing object:
+
+var obj = {};
+// ...
+obj.prop = [element0, element1, ..., elementN];
+
+// OR
+var obj = {prop: [element0, element1, ...., elementN]};
+If you wish to initialize an array with a single element, and the element happens to be a Number, you must use the bracket syntax. When a single Number value is passed to the Array() constructor or function, it is interpreted as an arrayLength, not as a single element.
+
+var arr = [42];      // Creates an array with only one element:
+                     // the number 42.
+
+var arr = Array(42); // Creates an array with no elements
+                     // and arr.length set to 42; this is
+                     // equivalent to:
+var arr = [];
+arr.length = 42;
+
+
+
+
+
+Calling Array(N) results in a RangeError, if N is a non-whole number whose fractional portion is non-zero. The following example illustrates this behavior.
+
+var arr = Array(9.3);  // RangeError: Invalid array length
+If your code needs to create arrays with single elements of an arbitrary data type, it is safer to use array literals. Or, create an empty array first before adding the single element to it.
+
+In ES2015, you can use Array.of static method to create arrays with single element.
+
+let wisenArray = Array.of(9.3);  // wisenArray contains only one element 9.3
+
+
+
+
+
+Populating an array
+You can populate an array by assigning values to its elements. For example,
+
+var emp = [];
+emp[0] = 'Casey Jones';
+emp[1] = 'Phil Lesh';
+emp[2] = 'August West';
+
+
+Note : if you supply a non-integer value to the array operator in the code above, a property will be created in the object representing the array, instead of an array element.
+
+var arr = [];
+arr[3.4] = 'Oranges';
+console.log(arr.length);                // 0
+console.log(arr.hasOwnProperty(3.4));   // true
+
+
+You can also populate an array when you create it:
+
+var myArray = new Array('Hello', myVar, 3.14159);
+var myArray = ['Mango', 'Apple', 'Orange'];
+
+
+
+
+
+Referring to array elements
+You refer to an array's elements by using the element's ordinal number. For example, suppose you define the following array:
+
+var myArray = ['Wind', 'Rain', 'Fire'];
+
+You then refer to the first element of the array as myArray[0] and the second element of the array as myArray[1]. The index of the elements begins with zero.
+
+Note : the array operator (square brackets) is also used for accessing the array's properties (arrays are also objects in JavaScript). For example,
+
+var arr = ['one', 'two', 'three'];
+arr[2];  // three
+arr['length'];  // 3
+
+
+
+
+Understanding length
+At the implementation level, JavaScript's arrays actually store their elements as standard object properties, using the array index as the property name. The length property is special; it always returns the index of the last element plus one (in the following example, Dusty is indexed at 30, so cats.length returns 30 + 1). Remember, JavaScript Array indexes are 0-based: they start at 0, not 1. This means that the length property will be one more than the highest index stored in the array:
+
+var cats = [];
+cats[30] = ['Dusty'];
+console.log(cats.length); // 31
+
+
+You can also assign to the length property. Writing a value that is shorter than the number of stored items truncates the array; writing 0 empties it entirely:
+
+var cats = ['Dusty', 'Misty', 'Twiggy'];
+console.log(cats.length); // 3
+
+cats.length = 2;
+console.log(cats); // logs "Dusty, Misty" - Twiggy has been removed
+
+cats.length = 0;
+console.log(cats); // logs []; the cats array is empty
+
+cats.length = 3;
+console.log(cats); // logs [ <3 empty items> ]
+
+
+
+
+
+Iterating over arrays
+A common operation is to iterate over the values of an array, processing each one in some way. The simplest way to do this is as follows:
+
+var colors = ['red', 'green', 'blue'];
+for (var i = 0; i < colors.length; i++) {
+  console.log(colors[i]);
+}
+
+
+
+The forEach() method provides another way of iterating over an array:
+
+var colors = ['red', 'green', 'blue'];
+colors.forEach(function(color) {
+  console.log(color);
+});
+// red
+// green
+// blue
+
+
+Alternatively, You can shorten the code for the forEach parameter with ES2015 Arrow Functions:
+
+var colors = ['red', 'green', 'blue'];
+colors.forEach(color => console.log(color)); 
+// red
+// green
+// blue
+The function passed to forEach is executed once for every item in the array, with the array item passed as the argument to the function. Unassigned values are not iterated in a forEach loop.
+
+
+
+
+Note that the elements of an array that are omitted when the array is defined are not listed when iterating by forEach, but are listed when undefined has been manually assigned to the element:
+
+var array = ['first', 'second', , 'fourth'];
+
+array.forEach(function(element) {
+  console.log(element);
+});
+// first
+// second
+// fourth
+
+if (array[2] === undefined) { 
+  console.log('array[2] is undefined'); // true
+} 
+
+array = ['first', 'second', undefined, 'fourth'];
+
+array.forEach(function(element) {
+  console.log(element);
+});
+// first
+// second
+// undefined
+// fourth
+Since JavaScript elements are saved as standard object properties, it is not advisable to iterate through JavaScript arrays using for...in loops because normal elements and all enumerable properties will be listed.
+
+
+
+
+
+
+Array methods
+
+The Array object has the following methods:
+
+1)-concat() joins two or more arrays and returns a new array.
+
+eg1;
+var myArray = new Array('1', '2', '3');
+myArray = myArray.concat('a', 'b', 'c'); 
+// myArray is now ["1", "2", "3", "a", "b", "c"]
+
+
+
+eg2:
+var array1 = ['a', 'b', 'c'];
+var array2 = ['d', 'e', 'f'];
+
+console.log(array1.concat(array2));
+// expected output: Array ["a", "b", "c", "d", "e", "f"]
+
+
+
+
+Examples
+
+Concatenating two arrays
+The following code concatenates two arrays:
+
+var alpha = ['a', 'b', 'c'];
+var numeric = [1, 2, 3];
+
+alpha.concat(numeric);
+// result in ['a', 'b', 'c', 1, 2, 3]
+
+
+Concatenating three arrays
+The following code concatenates three arrays:
+
+var num1 = [1, 2, 3],
+    num2 = [4, 5, 6],
+    num3 = [7, 8, 9];
+
+var nums = num1.concat(num2, num3);
+
+console.log(nums); 
+// results in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+Concatenating values to an array
+The following code concatenates three values to an array:
+
+var alpha = ['a', 'b', 'c'];
+
+var alphaNumeric = alpha.concat(1, [2, 3]);
+
+console.log(alphaNumeric); 
+// results in ['a', 'b', 'c', 1, 2, 3]
+
+
+
+Concatenating nested arrays
+The following code concatenates nested arrays and demonstrates retention of references:
+
+var num1 = [[1]];
+var num2 = [2, [3]];
+
+var nums = num1.concat(num2);
+
+console.log(nums);
+// results in [[1], 2, [3]]
+
+// modify the first element of num1
+num1[0].push(4);
+
+console.log(nums);
+// results in [[1, 4], 2, [3]]
+
+
+
+
+
+
+2)-join(delimiter = ',') joins all elements of an array into a string.
+
+
+eg1:
+var myArray = new Array('Wind', 'Rain', 'Fire');
+var list = myArray.join(' - '); // list is "Wind - Rain - Fire"
+
+
+The join() method creates and returns a new string by concatenating all of the elements in an array (or an array-like object), separated by commas or a specified separator string.
+
+eg2:
+var elements = ['Fire', 'Wind', 'Rain'];
+
+console.log(elements.join());
+// expected output: Fire,Wind,Rain
+
+console.log(elements.join(''));
+// expected output: FireWindRain
+
+console.log(elements.join('-'));
+// expected output: Fire-Wind-Rain
+
+
+
+Syntax
+arr.join([separator])
+
+Parameters
+separator Optional
+	Specifies a string to separate each pair of adjacent elements of the array. The separator is converted to a string if necessary. If omitted, the array elements are separated with a comma (","). If separator is an empty string, all elements are joined without any characters in between them.
+
+Return value
+A string with all array elements joined. If arr.length is 0, the empty string is returned.
+
+
+
+
+Examples
+
+Joining an array four different ways
+The following example creates an array, a, with three elements, then joins the array four times: using the default separator, then a comma and a space, then a plus and an empty string.
+
+var a = ['Wind', 'Rain', 'Fire'];
+a.join();      // 'Wind,Rain,Fire'
+a.join(', ');  // 'Wind, Rain, Fire'
+a.join(' + '); // 'Wind + Rain + Fire'
+a.join('');    // 'WindRainFire'
+
+
+Joining an array-like object
+The following example joins array-like object (arguments), by calling Function.prototype.call on Array.prototype.join.
+
+function f(a, b, c) {
+  var s = Array.prototype.join.call(arguments);
+  console.log(s); // '1,a,true'
+}
+f(1, 'a', true);
+//expected output: "1,a,true"
+
+
+
+
+
+
+3)-push() adds one or more elements to the end of an array and returns the resulting length of the array.
+
+eg1:
+var myArray = new Array('1', '2');
+myArray.push('3'); // myArray is now ["1", "2", "3"]
+
+
+
+eg2:
+var animals = ['pigs', 'goats', 'sheep'];
+
+console.log(animals.push('cows'));
+// expected output: 4
+
+console.log(animals);
+// expected output: Array ["pigs", "goats", "sheep", "cows"]
+
+animals.push('chickens');
+
+console.log(animals);
+// expected output: Array ["pigs", "goats", "sheep", "cows", "chickens"]
+
+
+
+
+
+Syntax
+arr.push(element1[, ...[, elementN]])
+
+Parameters
+elementN
+The elements to add to the end of the array.
+
+Return value
+The new length property of the object upon which the method was called.
+
+
+
+The push method appends values to an array.
+
+push is intentionally generic. This method can be used with call() or apply() on objects resembling arrays. The push method relies on a length property to determine where to start inserting the given values. If the length property cannot be converted into a number, the index used is 0. This includes the possibility of length being nonexistent, in which case length will also be created.
+
+Although strings are native, Array-like objects, they are not suitable in applications of this method, as strings are immutable.  Similarly for the native, Array-like object arguments.
+
+
+Examples
+
+Adding elements to an array
+The following code creates the sports array containing two elements, then appends two elements to it. The total variable contains the new length of the array.
+
+var sports = ['soccer', 'baseball'];
+var total = sports.push('football', 'swimming');
+
+console.log(sports); // ['soccer', 'baseball', 'football', 'swimming']
+console.log(total);  // 4
+
+
+
+
+Merging two arrays
+This example uses apply() to push all elements from a second array.
+
+Do not use this method if the second array (moreVegs in the example) is very large, because the maximum number of parameters that one function can take is limited in practice. 
+
+var vegetables = ['parsnip', 'potato'];
+var moreVegs = ['celery', 'beetroot'];
+
+// Merge the second array into the first one
+// Equivalent to vegetables.push('celery', 'beetroot');
+Array.prototype.push.apply(vegetables, moreVegs);
+
+console.log(vegetables); // ['parsnip', 'potato', 'celery', 'beetroot']
+
+
+
+
+
+Using an object in an array-like fashion
+As mentioned above, push is intentionally generic, and we can use that to our advantage. Array.prototype.push can work on an object just fine, as this example shows. Note that we don't create an array to store a collection of objects. Instead, we store the collection on the object itself and use call on Array.prototype.push to trick the method into thinking we are dealing with an array, and it just works, thanks to the way JavaScript allows us to establish the execution context however we please.
+
+var obj = {
+    length: 0,
+
+    addElem: function addElem(elem) {
+        // obj.length is automatically incremented 
+        // every time an element is added.
+        [].push.call(this, elem);
+    }
+};
+
+// Let's add some empty objects just to illustrate.
+obj.addElem({});
+obj.addElem({});
+console.log(obj.length);
+// → 2
+
+Note that although obj is not an array, the method push successfully incremented obj's length property just like if we were dealing with an actual array.
+
+
+
+
+
+
+
+4)-pop() removes the last element from an array and returns that element.
+
+eg1:
+var myArray = new Array('1', '2', '3');
+var last = myArray.pop(); 
+// myArray is now ["1", "2"], last = "3"
+
+
+
+eg2:var plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+console.log(plants.pop());
+// expected output: "tomato"
+
+console.log(plants);
+// expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
+
+plants.pop();
+
+console.log(plants);
+// expected output: Array ["broccoli", "cauliflower", "cabbage"]
+
+
+
+Examples
+Removing the last element of an array
+The following code creates the myFish array containing four elements, then removes its last element.
+
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+
+var popped = myFish.pop();
+
+console.log(myFish); // ['angel', 'clown', 'mandarin' ] 
+
+console.log(popped); // 'sturgeon'
+
+
+
+
+
+5)-shift() removes the first element from an array and returns that element.
+
+eg1:
+var myArray = new Array('1', '2', '3');
+var first = myArray.shift(); 
+// myArray is now ["2", "3"], first is "1"
+
+
+
+
+
+eg2:var array1 = [1, 2, 3];
+
+var firstElement = array1.shift();
+
+console.log(array1);
+// expected output: Array [2, 3]
+
+console.log(firstElement);
+// expected output: 1
+
+
+The shift method removes the element at the zeroeth index and shifts the values at consecutive indexes down, then returns the removed value. If the length property is 0, undefined is returned.
+
+
+Examples
+Removing an element from an arraySection
+The following code displays the myFish array before and after removing its first element. It also displays the removed element:
+
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+console.log('myFish before:', JSON.stringify(myFish));
+// myFish before: ['angel', 'clown', 'mandarin', 'surgeon']
+
+var shifted = myFish.shift(); 
+
+console.log('myFish after:', myFish); 
+// myFish after: ['clown', 'mandarin', 'surgeon']
+
+console.log('Removed this element:', shifted); 
+// Removed this element: angel
+
+
+
+
+Using shift() method in while loop
+The shift() method is often used in condition inside while loop. In the following example every iteration will remove the next element from an array, until it is empty:
+
+var names = ["Andrew", "Edward", "Paul", "Chris" ,"John"];
+
+while( (i = names.shift()) !== undefined ) {
+    console.log(i);
+}
+// Andrew, Edward, Paul, Chris, John
+
+
+
+
+
+6)-unshift() adds one or more elements to the front of an array and returns the new length of the array.
+
+eg1:
+var myArray = new Array('1', '2', '3');
+myArray.unshift('4', '5'); 
+// myArray becomes ["4", "5", "1", "2", "3"]
+
+
+
+eg2:
+var array1 = [1, 2, 3];
+
+console.log(array1.unshift(4, 5));
+// expected output: 5
+
+console.log(array1);
+// expected output: Array [4, 5, 1, 2, 3]
+
+
+
+
+Examples
+var arr = [1, 2];
+
+arr.unshift(0); // result of call is 3, the new array length
+// arr is [0, 1, 2]
+
+arr.unshift(-2, -1); // = 5
+// arr is [-2, -1, 0, 1, 2]
+
+arr.unshift([-3]);
+// arr is [[-3], -2, -1, 0, 1, 2]
+
+
+
+
+
+7)-slice(start_index, upto_index) extracts a section of an array and returns a new array.
+
+var myArray = new Array('a', 'b', 'c', 'd', 'e');
+myArray = myArray.slice(1, 4); // starts at index 1 and extracts all elements
+                               // until index 3, returning [ "b", "c", "d"]
+
+
+The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will not be modified.
+
+
+var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+console.log(animals.slice(2));
+// expected output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4));
+// expected output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5));
+// expected output: Array ["bison", "camel", "duck", "elephant"]
+
+
+
+
+Syntax
+arr.slice([begin[, end]])
+
+Parameters
+begin Optional
+	Zero-based index at which to begin extraction.
+	A negative index can be used, indicating an offset from the end of the sequence. slice(-2) 		extracts the last two elements in the sequence.
+	If begin is undefined, slice begins from index 0.
+	If begin is greater than the length of the sequence, an empty array is returned.
+end Optional
+	Zero-based index before which to end extraction. slice extracts up to but not including 	end.
+	For example, slice(1,4) extracts the second element through the fourth element (elements 		indexed 1, 2, and 3).
+	A negative index can be used, indicating an offset from the end of the sequence. 		slice (2,-1) extracts the third element through the second-to-last element in the sequence.
+	If end is omitted, slice extracts through the end of the sequence (arr.length).
+	If end is greater than the length of the sequence, slice extracts through to the end of 	the sequence (arr.length).
+
+Return value
+A new array containing the extracted elements.
+
+
+
+
+Description
+slice does not alter the original array. It returns a shallow copy of elements from the original array. Elements of the original array are copied into the returned array as follows:
+
+For object references (and not the actual object), slice copies object references into the new array. Both the original and new array refer to the same object. If a referenced object changes, the changes are visible to both the new and original arrays.
+For strings, numbers and booleans (not String, Number and Boolean objects), slice copies the values into the new array. Changes to the string, number or boolean in one array do not affect the other array.
+If a new element is added to either array, the other array is not affected.
+
+
+
+
+
+
+Examples
+Return a portion of an existing arraySection
+var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+var citrus = fruits.slice(1, 3);
+
+// fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+// citrus contains ['Orange','Lemon']
+
+
+Using slice
+In the following example, slice creates a new array, newCar, from myCar. Both include a reference to the object myHonda. When the color of myHonda is changed to purple, both arrays reflect the change.
+
+// Using slice, create newCar from myCar.
+var myHonda = { color: 'red', wheels: 4, engine: { cylinders: 4, size: 2.2 } };
+var myCar = [myHonda, 2, 'cherry condition', 'purchased 1997'];
+var newCar = myCar.slice(0, 2);
+
+// Display the values of myCar, newCar, and the color of myHonda
+//  referenced from both arrays.
+console.log('myCar = ' + JSON.stringify(myCar));
+console.log('newCar = ' + JSON.stringify(newCar));
+console.log('myCar[0].color = ' + myCar[0].color);
+console.log('newCar[0].color = ' + newCar[0].color);
+
+// Change the color of myHonda.
+myHonda.color = 'purple';
+console.log('The new color of my Honda is ' + myHonda.color);
+
+// Display the color of myHonda referenced from both arrays.
+console.log('myCar[0].color = ' + myCar[0].color);
+console.log('newCar[0].color = ' + newCar[0].color);
+This script writes:
+
+myCar = [{color: 'red', wheels: 4, engine: {cylinders: 4, size: 2.2}}, 2,
+         'cherry condition', 'purchased 1997']
+newCar = [{color: 'red', wheels: 4, engine: {cylinders: 4, size: 2.2}}, 2]
+myCar[0].color = red 
+newCar[0].color = red
+The new color of my Honda is purple
+myCar[0].color = purple
+newCar[0].color = purple
+
+
+
+
+
+8)-splice(index, count_to_remove, addElement1, addElement2, ...) removes elements from an array and (optionally) replaces them. It returns the items which were removed from the array.
+
+var myArray = new Array('1', '2', '3', '4', '5');
+myArray.splice(1, 3, 'a', 'b', 'c', 'd'); 
+// myArray is now ["1", "a", "b", "c", "d", "5"]
+// This code started at index one (or where the "2" was), 
+// removed 3 elements there, and then inserted all consecutive
+// elements in its place.
+
+
+The splice() method changes the contents of an array by removing existing elements and/or adding new elements.
+
+
+var months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at 1st index position
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+
+months.splice(4, 1, 'May');
+// replaces 1 element at 4th index
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+
+
+
+
+Syntax
+array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+
+Parameters
+start
+	Index at which to start changing the array (with origin 0). If greater than the length of 		the array, actual starting index will be set to the length of the array. If negative, will 		begin that many elements from the end of the array (with origin -1) and will be set to 0 	if absolute value is greater than the length of the array.
+deleteCount Optional
+	An integer indicating the number of old array elements to remove.
+	If deleteCount is omitted, or if its value is larger than array.length - start (that is, 	if it is greater than the number of elements left in the array, starting at start), then 	all of the elements from start through the end of the array will be deleted.
+	If deleteCount is 0 or negative, no elements are removed. In this case, you should specify 		at least one new element (see below).
+item1, item2, ... Optional
+	The elements to add to the array, beginning at the start index. If you don't specify any 	elements, splice() will only remove elements from the array.
+
+Return value
+An array containing the deleted elements. If only one element is removed, an array of one element is returned. If no elements are removed, an empty array is returned.
+
+
+
+
+Examples
+Remove 0 (zero) elements from index 2, and insert "drum"
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(2, 0, 'drum');
+
+// myFish is ["angel", "clown", "drum", "mandarin", "sturgeon"] 
+// removed is [], no elements removed
+
+
+
+Remove 1 element from index 3
+var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(3, 1);
+
+// removed is ["mandarin"]
+// myFish is ["angel", "clown", "drum", "sturgeon"]
+
+
+
+Remove 1 element from index 2, and insert "trumpet"
+var myFish = ['angel', 'clown', 'drum', 'sturgeon'];
+var removed = myFish.splice(2, 1, 'trumpet');
+
+// myFish is ["angel", "clown", "trumpet", "sturgeon"]
+// removed is ["drum"]
+
+
+
+Remove 2 elements from index 0, and insert "parrot", "anemone" and "blue"
+var myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];
+var removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
+
+// myFish is ["parrot", "anemone", "blue", "trumpet", "sturgeon"] 
+// removed is ["angel", "clown"]
+
+
+
+Remove 2 elements from index 2
+var myFish = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
+var removed = myFish.splice(myFish.length - 3, 2);
+
+// myFish is ["parrot", "anemone", "sturgeon"] 
+// removed is ["blue", "trumpet"]
+
+
+
+Remove 1 element from index -2
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(-2, 1);
+
+// myFish is ["angel", "clown", "sturgeon"] 
+// removed is ["mandarin"]
+
+
+
+Remove all elements after index 2 (incl.)
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(2);
+
+// myFish is ["angel", "clown"] 
+// removed is ["mandarin", "sturgeon"]
+
+
+
+
+
+9)-reverse() transposes the elements of an array, in place: the first array element becomes the last and the last becomes the first. It returns a reference to the array.
+
+var myArray = new Array('1', '2', '3');
+myArray.reverse(); 
+// transposes the array so that myArray = ["3", "2", "1"]
+
+
+
+eg2:
+var array1 = ['one', 'two', 'three'];
+console.log('array1: ', array1);
+// expected output: Array ['one', 'two', 'three']
+
+var reversed = array1.reverse(); 
+console.log('reversed: ', reversed);
+// expected output: Array ['three', 'two', 'one']
+
+/* Careful: reverse is destructive. It also changes
+the original array */ 
+console.log('array1: ', array1);
+// expected output: Array ['three', 'two', 'one']
+
+
+Example
+Reversing the elements in an arraySection
+The following example creates an array a, containing three elements, then reverses the array. The call to reverse() returns a reference to the reversed array a.
+
+const a = [1, 2, 3];
+
+console.log(a); // [1, 2, 3]
+
+a.reverse();
+
+console.log(a); // [3, 2, 1]
+
+
+
+
+
+
+10)-sort() sorts the elements of an array in place, and returns a reference to the array.
+
+var myArray = new Array('Wind', 'Rain', 'Fire');
+myArray.sort(); 
+// sorts the array so that myArray = ["Fire", "Rain", "Wind"]
+
+
+
+
+The sort() method sorts the elements of an array in place and returns the array. The default sort order is built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
+
+var months = ['March', 'Jan', 'Feb', 'Dec'];
+months.sort();
+console.log(months);
+// expected output: Array ["Dec", "Feb", "Jan", "March"]
+
+var array1 = [1, 30, 4, 21];
+array1.sort();
+console.log(array1);
+// expected output: Array [1, 21, 30, 4]
+
+
+
+Syntax
+arr.sort([compareFunction])
+
+Parameters
+compareFunction Optional
+	Specifies a function that defines the sort order. If omitted, the array is sorted 		according to each character's Unicode code point value, according to the string conversion 		of each element.
+
+Return value
+The sorted array. Note that the array is sorted in place, and no copy is made.
+
+
+
+
+Description
+
+
+If compareFunction is supplied, all non-undefined array elements are sorted according to the return value of the compare function (all undefined elements are sorted to the end of the array, with no call to compareFunction). If a and b are two elements being compared, then:
+
+	(a)If compareFunction(a, b) is less than 0, sort a to an index lower than b, i.e. a comes 			first.
+	(b)If compareFunction(a, b) returns 0, leave a and b unchanged with respect to each other, 			but sorted with respect to all different elements. Note: the ECMAscript standard 			does not guarantee this behaviour, and thus not all browsers (e.g. Mozilla 			versions dating back to at least 2003) respect this.
+	(c)If compareFunction(a, b) is greater than 0, sort b to an index lower than a, i.e. b 			comes first.
+compareFunction(a, b) must always return the same value when given a specific pair of elements a and b as its two arguments. If inconsistent results are returned then the sort order is undefined.
+
+So, the compare function has the following form:
+
+function compare(a, b) {
+  if (a is less than b by some ordering criterion) {
+    return -1;
+  }
+  if (a is greater than b by the ordering criterion) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+}
+
+
+
+
+
+To compare numbers instead of strings, the compare function can simply subtract b from a. The following function will sort the array ascending (if it doesn't contain Infinity and NaN):
+
+function compareNumbers(a, b) {
+  return a - b;
+}
+
+
+
+The sort method can be conveniently used with function expressions:
+
+var numbers = [4, 2, 5, 1, 3];
+numbers.sort(function(a, b) {
+  return a - b;
+});
+console.log(numbers);
+
+// [1, 2, 3, 4, 5]
+
+
+
+
+
+
+Objects can be sorted given the value of one of their properties.
+
+var items = [
+  { name: 'Edward', value: 21 },
+  { name: 'Sharpe', value: 37 },
+  { name: 'And', value: 45 },
+  { name: 'The', value: -12 },
+  { name: 'Magnetic', value: 13 },
+  { name: 'Zeros', value: 37 }
+];
+
+// sort by value
+items.sort(function (a, b) {
+  return a.value - b.value;
+});
+
+// sort by name
+items.sort(function(a, b) {
+  var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
+
+
+
+Examples
+
+Creating, displaying, and sorting an arraySection
+The following example creates four arrays and displays the original array, then the sorted arrays. The numeric arrays are sorted without, then with, a compare function.
+
+var stringArray = ['Blue', 'Humpback', 'Beluga'];
+var numericStringArray = ['80', '9', '700'];
+var numberArray = [40, 1, 5, 200];
+var mixedNumericArray = ['80', '9', '700', 40, 1, 5, 200];
+
+function compareNumbers(a, b) {
+  return a - b;
+}
+
+console.log('stringArray:', stringArray.join());
+console.log('Sorted:', stringArray.sort());
+
+console.log('numberArray:', numberArray.join());
+console.log('Sorted without a compare function:', numberArray.sort());
+console.log('Sorted with compareNumbers:', numberArray.sort(compareNumbers));
+
+console.log('numericStringArray:', numericStringArray.join());
+console.log('Sorted without a compare function:', numericStringArray.sort());
+console.log('Sorted with compareNumbers:', numericStringArray.sort(compareNumbers));
+
+console.log('mixedNumericArray:', mixedNumericArray.join());
+console.log('Sorted without a compare function:', mixedNumericArray.sort());
+console.log('Sorted with compareNumbers:', mixedNumericArray.sort(compareNumbers));
+
+
+
+This example produces the following output. As the output shows, when a compare function is used, numbers sort correctly whether they are numbers or numeric strings.
+
+stringArray: Blue,Humpback,Beluga
+Sorted: Beluga,Blue,Humpback
+
+numberArray: 40,1,5,200
+Sorted without a compare function: 1,200,40,5
+Sorted with compareNumbers: 1,5,40,200
+
+numericStringArray: 80,9,700
+Sorted without a compare function: 700,80,9
+Sorted with compareNumbers: 9,80,700
+
+mixedNumericArray: 80,9,700,40,1,5,200
+Sorted without a compare function: 1,200,40,5,700,80,9
+Sorted with compareNumbers: 1,5,9,40,80,200,700
+
+
+
+
+
+Sorting non-ASCII characters
+For sorting strings with non-ASCII characters, i.e. strings with accented characters (e, é, è, a, ä, etc.), strings from languages other than English: use String.localeCompare. This function can compare those characters so they appear in the right order.
+
+var items = ['réservé', 'premier', 'cliché', 'communiqué', 'café', 'adieu'];
+items.sort(function (a, b) {
+  return a.localeCompare(b);
+});
+
+// items is ['adieu', 'café', 'cliché', 'communiqué', 'premier', 'réservé']
+
+
+
+
+
+
+Sorting with map
+The compareFunction can be invoked multiple times per element within the array. Depending on the compareFunction's nature, this may yield a high overhead. The more work a compareFunction does and the more elements there are to sort, the wiser it may be to consider using a map for sorting. The idea is to traverse the array once to extract the actual values used for sorting into a temporary array, sort the temporary array and then traverse the temporary array to achieve the right order.
+
+// the array to be sorted
+var list = ['Delta', 'alpha', 'CHARLIE', 'bravo'];
+
+// temporary array holds objects with position and sort-value
+var mapped = list.map(function(el, i) {
+  return { index: i, value: el.toLowerCase() };
+})
+
+// sorting the mapped array containing the reduced values
+mapped.sort(function(a, b) {
+  if (a.value > b.value) {
+    return 1;
+  }
+  if (a.value < b.value) {
+    return -1;
+  }
+  return 0;
+});
+
+// container for the resulting order
+var result = mapped.map(function(el){
+  return list[el.index];
+});
+
+
+
+
+
+
+
+
+sort() can also take a callback function to determine how array elements are compared.
+
+The sort method and other methods below that take a callback are known as iterative methods, because they iterate over the entire array in some fashion. Each one takes an optional second argument called thisObject. If provided, thisObject becomes the value of the this keyword inside the body of the callback function. If not provided, as with other cases where a function is invoked outside of an explicit object context, this will refer to the global object (window) when using arrow function as callback, or undefined when using normal function as callback.
+
+The callback function is called with two arguments, that are array's elements.
+
+The function below compares two values and returns one of three values:
+
+For instance, the following will sort by the last letter of a string:
+
+var sortFn = function(a, b) {
+  if (a[a.length - 1] < b[b.length - 1]) return -1;
+  if (a[a.length - 1] > b[b.length - 1]) return 1;
+  if (a[a.length - 1] == b[b.length - 1]) return 0;
+}
+myArray.sort(sortFn); 
+// sorts the array so that myArray = ["Wind","Fire","Rain"]
+
+
+
+if a is less than b by the sorting system, return -1 (or any negative number)
+if a is greater than b by the sorting system, return 1 (or any positive number)
+if a and b are considered equivalent, return 0.
+
+
+
+
+
+11)-indexOf(searchElement[, fromIndex]) searches the array for searchElement and returns the index of the first match.
+
+var a = ['a', 'b', 'a', 'b', 'a'];
+console.log(a.indexOf('b')); // logs 1
+// Now try again, starting from after the last match
+console.log(a.indexOf('b', 2)); // logs 3
+console.log(a.indexOf('z')); // logs -1, because 'z' was not found
+
+
+
+
+
+
+12)-lastIndexOf(searchElement[, fromIndex]) works like indexOf, but starts at the end and searches backwards.
+
+var a = ['a', 'b', 'c', 'd', 'a', 'b'];
+console.log(a.lastIndexOf('b')); // logs 5
+// Now try again, starting from before the last match
+console.log(a.lastIndexOf('b', 4)); // logs 1
+console.log(a.lastIndexOf('z')); // logs -1
+
+
+
+
+
+13)-forEach(callback[, thisObject]) executes callback on every array item and returns undefined.
+
+var a = ['a', 'b', 'c'];
+a.forEach(function(element) { console.log(element); }); 
+// logs each item in turn
+
+
+
+
+
+14)-map(callback[, thisObject]) returns a new array of the return value from executing callback on every array item.
+
+var a1 = ['a', 'b', 'c'];
+var a2 = a1.map(function(item) { return item.toUpperCase(); });
+console.log(a2); // logs ['A', 'B', 'C']
+
+
+
+
+15)-filter(callback[, thisObject]) returns a new array containing the items for which callback returned true.
+
+var a1 = ['a', 10, 'b', 20, 'c', 30];
+var a2 = a1.filter(function(item) { return typeof item === 'number'; });
+console.log(a2); // logs [10, 20, 30]
+
+
+
+
+16)-every(callback[, thisObject]) returns true if callback returns true for every item in the array.
+
+function isNumber(value) {
+  return typeof value === 'number';
+}
+var a1 = [1, 2, 3];
+console.log(a1.every(isNumber)); // logs true
+var a2 = [1, '2', 3];
+console.log(a2.every(isNumber)); // logs false
+
+
+
+
+
+17)-some(callback[, thisObject]) returns true if callback returns true for at least one item in the array.
+
+function isNumber(value) {
+  return typeof value === 'number';
+}
+var a1 = [1, 2, 3];
+console.log(a1.some(isNumber)); // logs true
+var a2 = [1, '2', 3];
+console.log(a2.some(isNumber)); // logs true
+var a3 = ['1', '2', '3'];
+console.log(a3.some(isNumber)); // logs false
+
+
+
+
+18)-reduce(callback[, initialValue]) applies callback(firstValue, secondValue) to reduce the list of items down to a single value and returns that value.
+
+var a = [10, 20, 30];
+var total = a.reduce(function(first, second) { return first + second; }, 0);
+console.log(total) // Prints 60
+
+
+
+
+
+19)-reduceRight(callback[, initialValue]) works like reduce(), but starts with the last element.
+
+reduce and reduceRight are the least obvious of the iterative array methods. They should be used for algorithms that combine two values recursively in order to reduce a sequence down to a single value.
+
+
+
+
+
+
+
+
+
+
+Multi-dimensional arrays
+
+
+Arrays can be nested, meaning that an array can contain another array as an element. 
+
+The following code creates a two-dimensional array.
+
+var a = new Array(4);
+for (i = 0; i < 4; i++) {
+  a[i] = new Array(4);
+  for (j = 0; j < 4; j++) {
+    a[i][j] = '[' + i + ', ' + j + ']';
+  }
+}
+
+This example creates an array with the following rows:
+
+Row 0: [0, 0] [0, 1] [0, 2] [0, 3]
+Row 1: [1, 0] [1, 1] [1, 2] [1, 3]
+Row 2: [2, 0] [2, 1] [2, 2] [2, 3]
+Row 3: [3, 0] [3, 1] [3, 2] [3, 3]
+
+
+
+
+
+
+Typed Arrays
+JavaScript typed arrays are array-like objects and provide a mechanism for accessing raw binary data.
+
+
+Buffers and views: typed array architecture
+
+To achieve maximum flexibility and efficiency, JavaScript typed arrays split the implementation into buffers and views. A buffer (implemented by the ArrayBuffer object) is an object representing a chunk of data; it has no format to speak of, and offers no mechanism for accessing its contents. In order to access the memory contained in a buffer, you need to use a view. A view provides a context — that is, a data type, starting offset, and number of elements — that turns the data into an actual typed array.
+
+
+
+
+ArrayBuffer
+The ArrayBuffer is a data type that is used to represent a generic, fixed-length binary data buffer. You can't directly manipulate the contents of an ArrayBuffer; instead, you create a typed array view or a DataView which represents the buffer in a specific format, and use that to read and write the contents of the buffer.
+
+
+
+Typed array views
+Typed array views have self descriptive names and provide views for all the usual numeric types like Int8, Uint32, Float64 and so forth. There is one special typed array view, the Uint8ClampedArray. It clamps the values between 0 and 255. This is useful for Canvas data processing, for example.
+
+Type		Value Range	Size 		Description	Web IDL type	Equivalent C type
+				in bytes
+
+Int8Array	-128 to 127	    1	8-bit two's complement 	     byte	int8_t
+						signed integer
+
+Uint8Array	   0 to 255	    1	8-bit unsigned integer	     octet	uint8_t
+					
+
+Uint8ClampedArray  0 to 255	    1	8-bit unsigned integer       octet	uint8_t
+						(clamped)
+
+Int16Array	-32768 to 32767	    2	16-bit two's complement      short	int16_t
+					     signed integer
+
+Uint16Array	0 to 65535	    2	16-bit unsigned integer	  unsigned 	uint16_t
+								    short
+
+Int32Array	-2147483648 to 2147483647	4	32-bit two's complement signed integer	long	int32_t
+Uint32Array	0 to 4294967295	4	32-bit unsigned integer	unsigned long	uint32_t
+Float32Array	1.2x10-38 to 3.4x1038	4	32-bit IEEE floating point number ( 7 significant digits e.g. 1.1234567)	unrestricted float	float
+Float64Array	5.0x10-324 to 1.8x10308	8	64-bit IEEE floating point number (16 significant digits e.g. 1.123...15)	unrestricted double	double
+
+
+
+----------------------------
+Keyed collection
+
+This chapter introduces collections of data which are ordered by a key; Map and Set objects contain elements which are iterable in the order of insertion.
+
+
+Maps
+
+Map object
+ECMAScript 2015 introduces a new data structure to map values to values. A Map object is a simple key/value map and can iterate its elements in insertion order.
+
+The following code shows some basic operations with a Map.  You can use a for...of loop to return an array of [key, value] for each iteration.
+
+var sayings = new Map();
+sayings.set('dog', 'woof');
+sayings.set('cat', 'meow');
+sayings.set('elephant', 'toot');
+sayings.size; // 3
+sayings.get('fox'); // undefined
+sayings.has('bird'); // false
+sayings.delete('dog');
+sayings.has('dog'); // false
+
+for (var [key, value] of sayings) {
+  console.log(key + ' goes ' + value);
+}
+// "cat goes meow"
+// "elephant goes toot"
+
+sayings.clear();
+sayings.size; // 0
+
+
+
+
+Object and Map compared
+
+	a)The keys of an Object are Strings, where they can be of any value for a Map.
+	b)You can get the size of a Map easily while you have to manually keep track of size for 		an Object.
+	c)The iteration of maps is in insertion order of the elements.
+	d)An Object has a prototype, so there are default keys in the map. (this can be bypassed 		using map = Object.create(null)).
+
+
+
+
+
+WeakMap object
+The WeakMap object is a collection of key/value pairs in which the keys are objects only and the values can be arbitrary values. The object references in the keys are held weakly, meaning that they are a target of garbage collection (GC) if there is no other reference to the object anymore.
+
+One use case of WeakMap objects is to store private data for an object or to hide implementation details. The following example is from Nick Fitzgerald's blog post "Hiding Implementation Details with ECMAScript 6 WeakMaps". The private data and methods belong inside the object and are stored in the privates WeakMap object. Everything exposed on the instance and prototype is public; everything else is inaccessible from the outside world because privates is not exported from the module
+
+const privates = new WeakMap();
+
+function Public() {
+  const me = {
+    // Private data goes here
+  };
+  privates.set(this, me);
+}
+
+Public.prototype.method = function() {
+  const me = privates.get(this);
+  // Do stuff with private data in `me`...
+};
+
+module.exports = Public;
+
+
+
+
+
+Sets
+
+Set object
+Set objects are collections of values. You can iterate its elements in insertion order. A value in a Set may only occur once; it is unique in the Set's collection.
+
+The following code shows some basic operations with a Set. See also the Set reference page for more examples and the complete API.
+
+var mySet = new Set();
+mySet.add(1);
+mySet.add('some text');
+mySet.add('foo');
+
+mySet.has(1); // true
+mySet.delete('foo');
+mySet.size; // 2
+
+for (let item of mySet) console.log(item);
+// 1
+// "some text"
+
+
+
+
+
+Converting between Array and Set
+You can create an Array from a Set using Array.from or the spread operator. Also, the Set constructor accepts an Array to convert in the other direction. Note again that Set objects store unique values, so any duplicate elements from an Array are deleted when converting.
+
+Array.from(mySet);
+[...mySet2];
+
+mySet2 = new Set([1, 2, 3, 4]);
+
+
+
+Array and Set compared
+Traditionally, a set of elements has been stored in arrays in JavaScript in a lot of situations. The new Set object, however, has some advantages:
+
+Checking whether an element exists in a collection using indexOf for arrays is slow.
+Set objects let you delete elements by their value. With an array you would have to splice based on an element's index.
+The value NaN cannot be found with indexOf in an array.
+Set objects store unique values; you don't have to keep track of duplicates by yourself.
+
+
+
+
+
+
+WeakSet object
+WeakSet objects are collections of objects. An object in the WeakSet may only occur once; it is unique in the WeakSet's collection and objects are not enumerable.
+
+The main differences to the Set object are:
+
+	1)In contrast to Sets, WeakSets are collections of objects only and not of arbitrary values of any type.
+	2)The WeakSet is weak: References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. That also means that there is no list of current objects stored in the collection. WeakSets are not enumerable.
+
+
+
+
+
+----------------------
+Working with objects
+
+An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method. 
+
+
+The properties of an object define the characteristics of the object. You access the properties of an object with a simple dot-notation:
+
+objectName.propertyName
+
+
+
+Properties of JavaScript objects can also be accessed or set using a bracket notation (for more details see property accessors). Objects are sometimes called associative arrays, since each property is associated with a string value that can be used to access it. So, for example, you could access the properties of the myCar object as follows:
+
+myCar['make'] = 'Ford';
+myCar['model'] = 'Mustang';
+myCar['year'] = 1969;
+
+
+
+An object property name can be any valid JavaScript string, or anything that can be converted to a string, including the empty string. However, any property name that is not a valid JavaScript identifier (for example, a property name that has a space or a hyphen, or that starts with a number) can only be accessed using the square bracket notation. This notation is also very useful when property names are to be dynamically determined (when the property name is not determined until runtime). Examples are as follows:
+
+// four variables are created and assigned in a single go, 
+// separated by commas
+var myObj = new Object(),
+    str = 'myString',
+    rand = Math.random(),
+    obj = new Object();
+
+myObj.type              = 'Dot syntax';
+myObj['date created']   = 'String with space';
+myObj[str]              = 'String value';
+myObj[rand]             = 'Random Number';
+myObj[obj]              = 'Object';
+myObj['']               = 'Even an empty string';
+
+console.log(myObj);
+
+
+Please note that all keys in the square bracket notation are converted to String type, since objects in JavaScript can only have String type as key type.
+
+
+
+You can use the bracket notation with for...in to iterate over all the enumerable properties of an object. 
+ 
+
+function showProps(obj, objName) {
+  var result = '';
+  for (var i in obj) {
+    // obj.hasOwnProperty() is used to filter out properties from the object's prototype chain
+    if (obj.hasOwnProperty(i)) {
+      result += objName + '.' + i + ' = ' + obj[i] + '\n';
+    }
+  }
+  return result;
+}
+
+
+
+So, the function call showProps(myCar, "myCar") would return the following:
+
+myCar.make = Ford
+myCar.model = Mustang
+myCar.year = 1969
+
+
+
+
+
+Creating new objects
+
+JavaScript has a number of predefined objects. In addition, you can create your own objects. You can create an object using an object initializer. Alternatively, you can first create a constructor function and then instantiate an object invoking that function in conjunction with the new operator.
+
+
+Using object initializers
+
+In addition to creating objects using a constructor function, you can create objects using an object initializer. Using object initializers is sometimes referred to as creating objects with literal notation. "Object initializer" is consistent with the terminology used by C++.
+
+The syntax for an object using an object initializer is:
+
+var obj = { property_1:   value_1,   // property_# may be an identifier...
+            2:            value_2,   // or a number...
+            // ...,
+            'property n': value_n }; // or a string
+where obj is the name of the new object, each property_i is an identifier (either a name, a number, or a string literal), and each value_i is an expression whose value is assigned to the property_i. The obj and assignment is optional; if you do not need to refer to this object elsewhere, you do not need to assign it to a variable. (Note that you may need to wrap the object literal in parentheses if the object appears where a statement is expected, so as not to have the literal be confused with a block statement.)
+
+Object initializers are expressions, and each object initializer results in a new object being created whenever the statement in which it appears is executed. Identical object initializers create distinct objects that will not compare to each other as equal. Objects are created as if a call to new Object() were made; that is, objects made from object literal expressions are instances of Object.
+
+The following statement creates an object and assigns it to the variable x if and only if the expression cond is true:
+
+if (cond) var x = {greeting: 'hi there'};
+
+
+The following example creates myHonda with three properties. Note that the engine property is also an object with its own properties.
+
+var myHonda = {color: 'red', wheels: 4, engine: {cylinders: 4, size: 2.2}};
+You can also use object initializers to create arrays
+
+
+
+
+
+
+Using a constructor function
+
+Alternatively, you can create an object with these two steps:
+
+	(1)Define the object type by writing a constructor function. There is a strong convention, with good reason, to use a capital initial letter.
+	(2)Create an instance of the object with new.
+
+To define an object type, create a function for the object type that specifies its name, properties, and methods. For example, suppose you want to create an object type for cars. You want this type of object to be called Car, and you want it to have properties for make, model, and year. To do this, you would write the following function:
+
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+Notice the use of this to assign values to the object's properties based on the values passed to the function.
+
+Now you can create an object called mycar as follows:
+
+var mycar = new Car('Eagle', 'Talon TSi', 1993);
+
+This statement creates mycar and assigns it the specified values for its properties. Then the value of mycar.make is the string "Eagle", mycar.year is the integer 1993, and so on.
+
+
+You can create any number of Car objects by calls to new. For example,
+
+var kenscar = new Car('Nissan', '300ZX', 1992);
+var vpgscar = new Car('Mazda', 'Miata', 1990);
+
+
+
+An object can have a property that is itself another object. For example, suppose you define an object called person as follows:
+
+function Person(name, age, sex) {
+  this.name = name;
+  this.age = age;
+  this.sex = sex;
+}
+
+
+and then instantiate two new person objects as follows:
+
+var rand = new Person('Rand McKinnon', 33, 'M');
+var ken = new Person('Ken Jones', 39, 'M');
+
+
+
+Then, you can rewrite the definition of Car to include an owner property that takes a person object, as follows:
+
+function Car(make, model, year, owner) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.owner = owner;
+}
+
+
+To instantiate the new objects, you then use the following:
+
+var car1 = new Car('Eagle', 'Talon TSi', 1993, rand);
+var car2 = new Car('Nissan', '300ZX', 1992, ken);
+
+Notice that instead of passing a literal string or integer value when creating the new objects, the above statements pass the objects rand and ken as the arguments for the owners. Then if you want to find out the name of the owner of car2, you can access the following property:
+
+car2.owner.name
+
+
+Note that you can always add a property to a previously defined object. For example, the statement
+
+car1.color = 'black';
+adds a property color to car1, and assigns it a value of "black." However, this does not affect any other objects. To add the new property to all objects of the same type, you have to add the property to the definition of the Car object type.
+
+
+
+
+
+
+
+Using the Object.create method
+
+Objects can also be created using the Object.create() method. This method can be very useful, because it allows you to choose the prototype object for the object you want to create, without having to define a constructor function.
+
+eg:
+// Animal properties and method encapsulation
+var Animal = {
+  type: 'Invertebrates', // Default value of properties
+  displayType: function() {  // Method which will display type of Animal
+    console.log(this.type);
+  }
+};
+
+// Create new animal type called animal1 
+var animal1 = Object.create(Animal);
+animal1.displayType(); // Output:Invertebrates
+
+// Create new animal type called Fishes
+var fish = Object.create(Animal);
+fish.type = 'Fishes';
+fish.displayType(); // Output:Fishes
+
+
+
+
+
+
+
+
+
+
+Inheritance
+All objects in JavaScript inherit from at least one other object. The object being inherited from is known as the prototype, and the inherited properties can be found in the prototype object of the constructor.
+
+
+
+Indexing object properties
+You can refer to a property of an object either by its property name or by its ordinal index. If you initially define a property by its name, you must always refer to it by its name, and if you initially define a property by an index, you must always refer to it by its index.
+
+This restriction applies when you create an object and its properties with a constructor function (as we did previously with the Car object type) and when you define individual properties explicitly (for example, myCar.color = "red"). If you initially define an object property with an index, such as myCar[5] = "25 mpg", you subsequently refer to the property only as myCar[5].
+
+The exception to this rule is array-like object reflected from HTML, such as the forms array-like object. You can always refer to objects in these array-like objects by either their ordinal number (based on where they appear in the document) or their name (if defined). For example, if the second <FORM> tag in a document has a NAME attribute of "myForm", you can refer to the form as document.forms[1] or document.forms["myForm"] or document.forms.myForm.
+
+
+
+
+
+
+
+Defining properties for an object type
+
+You can add a property to a previously defined object type by using the prototype property. This defines a property that is shared by all objects of the specified type, rather than by just one instance of the object. The following code adds a color property to all objects of type Car, and then assigns a value to the color property of the object car1.
+
+Car.prototype.color = null;
+car1.color = 'black';
+
+
+
+
+
+
+Defining methods
+A method is a function associated with an object, or, simply put, a method is a property of an object that is a function. Methods are defined the way normal functions are defined, except that they have to be assigned as the property of an object. See also method definitions for more details. An example is:
+
+objectName.methodname = functionName;
+
+var myObj = {
+  myMethod: function(params) {
+    // ...do something
+  }
+
+  // OR THIS WORKS TOO
+
+  myOtherMethod(params) {
+    // ...do something else
+  }
+};
+where objectName is an existing object, methodname is the name you are assigning to the method, and functionName is the name of the function.
+
+
+
+You can then call the method in the context of the object as follows:
+
+object.methodname(params);
+
+
+You can define methods for an object type by including a method definition in the object constructor function. You could define a function that would format and display the properties of the previously-defined Car objects; for example,
+
+function displayCar() {
+  var result = 'A Beautiful ' + this.year + ' ' + this.make
+    + ' ' + this.model;
+  pretty_print(result);
+}
+where pretty_print is a function to display a horizontal rule and a string. Notice the use of this to refer to the object to which the method belongs.
+
+
+
+
+You can make this function a method of Car by adding the statement
+
+this.displayCar = displayCar;
+to the object definition. So, the full definition of Car would now look like
+
+function Car(make, model, year, owner) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.owner = owner;
+  this.displayCar = displayCar;
+}
+
+Then you can call the displayCar method for each of the objects as follows:
+
+car1.displayCar();
+car2.displayCar();
+
+
+
+
+
+
+
+Using this for object references
+
+JavaScript has a special keyword, this, that you can use within a method to refer to the current object. For example, suppose you have a function called validate that validates an object's value property, given the object and the high and low values:
+
+function validate(obj, lowval, hival) {
+  if ((obj.value < lowval) || (obj.value > hival)) {
+    alert('Invalid Value!');
+  }
+}
+
+
+Then, you could call validate in each form element's onchange event handler, using this to pass it the element, as in the following example:
+
+<input type="text" name="age" size="3"
+  onChange="validate(this, 18, 99)">
+
+In general, this refers to the calling object in a method.
+
+When combined with the form property, this can refer to the current object's parent form. In the following example, the form myForm contains a Text object and a button. When the user clicks the button, the value of the Text object is set to the form's name. The button's onclick event handler uses this.form to refer to the parent form, myForm.
+
+<form name="myForm">
+<p><label>Form name:<input type="text" name="text1" value="Beluga"></label>
+<p><input name="button1" type="button" value="Show Form Name"
+     onclick="this.form.text1.value = this.form.name">
+</p>
+</form>
+
+
+
+
+
+
+
+Defining getters and setters
+A getter is a method that gets the value of a specific property. A setter is a method that sets the value of a specific property. You can define getters and setters on any predefined core object or user-defined object that supports the addition of new properties. The syntax for defining getters and setters uses the object literal syntax.
+
+The following illustrates how getters and setters could work for a user-defined object o.
+
+var o = {
+  a: 7,
+  get b() { 
+    return this.a + 1;
+  },
+  set c(x) {
+    this.a = x / 2;
+  }
+};
+
+console.log(o.a); // 7
+console.log(o.b); // 8
+o.c = 50;
+console.log(o.a); // 25
+
+
+
+
+
+
+
+The o object's properties are:
+
+o.a — a number
+o.b — a getter that returns o.a plus 1
+o.c — a setter that sets the value of o.a to half of the value o.c is being set to
+
+Please note that function names of getters and setters defined in an object literal using "[gs]et property()" (as opposed to __define[GS]etter__ ) are not the names of the getters themselves, even though the [gs]et propertyName(){ } syntax may mislead you to think otherwise. To name a function in a getter or setter using the "[gs]et property()" syntax, define an explicitly named function programmatically using Object.defineProperty (or the Object.prototype.__defineGetter__ legacy fallback).
+
+The following code illustrates how getters and setters can extend the Date prototype to add a year property to all instances of the predefined Date class. It uses the Date class's existing getFullYear and setFullYear methods to support the year property's getter and setter.
+
+These statements define a getter and setter for the year property:
+
+var d = Date.prototype;
+Object.defineProperty(d, 'year', {
+  get: function() { return this.getFullYear(); },
+  set: function(y) { this.setFullYear(y); }
+});
+
+
+These statements use the getter and setter in a Date object:
+
+var now = new Date();
+console.log(now.year); // 2000
+now.year = 2001; // 987617605170
+console.log(now);
+// Wed Apr 18 11:13:25 GMT-0700 (Pacific Daylight Time) 2001
+
+
+In principle, getters and setters can be either
+
+defined using object initializers, or
+added later to any object at any time using a getter or setter adding method.
+
+
+
+When defining getters and setters using object initializers all you need to do is to prefix a getter method with get and a setter method with set. Of course, the getter method must not expect a parameter, while the setter method expects exactly one parameter (the new value to set). For instance:
+
+var o = {
+  a: 7,
+  get b() { return this.a + 1; },
+  set c(x) { this.a = x / 2; }
+};
+
+
+
+Getters and setters can also be added to an object at any time after creation using the Object.defineProperties method. This method's first parameter is the object on which you want to define the getter or setter. The second parameter is an object whose property names are the getter or setter names, and whose property values are objects for defining the getter or setter functions. Here's an example that defines the same getter and setter used in the previous example:
+
+var o = { a: 0 };
+
+Object.defineProperties(o, {
+    'b': { get: function() { return this.a + 1; } },
+    'c': { set: function(x) { this.a = x / 2; } }
+});
+
+o.c = 10; // Runs the setter, which assigns 10 / 2 (5) to the 'a' property
+console.log(o.b); // Runs the getter, which yields a + 1 or 6
+Which of the two forms to choose depends on your programming style and task at hand. If you already go for the object initializer when defining a prototype you will probably most of the time choose the first form. This form is more compact and natural. However, if you need to add getters and setters later — because you did not write the prototype or particular object — then the second form is the only possible form. The second form probably best represents the dynamic nature of JavaScript — but it can make the code hard to read and understand.
+
+
+
+
+
+Deleting properties
+You can remove a non-inherited property by using the delete operator. The following code shows how to remove a property.
+
+// Creates a new object, myobj, with two properties, a and b.
+var myobj = new Object;
+myobj.a = 5;
+myobj.b = 12;
+
+// Removes the a property, leaving myobj with only the b property.
+delete myobj.a;
+console.log ('a' in myobj); // yields "false"
+You can also use delete to delete a global variable if the var keyword was not used to declare the variable:
+
+g = 17;
+delete g;
+
+
+
+
+
+
+
+Comparing Objects
+In JavaScript, objects are a reference type. Two distinct objects are never equal, even if they have the same properties. Only comparing the same object reference with itself yields true.
+
+// Two variables, two distinct objects with the same properties
+var fruit = {name: 'apple'};
+var fruitbear = {name: 'apple'};
+
+fruit == fruitbear; // return false
+fruit === fruitbear; // return false
+// Two variables, a single object
+var fruit = {name: 'apple'};
+var fruitbear = fruit;  // assign fruit object reference to fruitbear
+
+// here fruit and fruitbear are pointing to same object
+fruit == fruitbear; // return true
+fruit === fruitbear; // return true
+fruit.name = 'grape';
+console.log(fruitbear);    // yields { name: "grape" } instead of { name: "apple" }
+
+
+
+
+
+
+
+
+Comparison of class-based (Java) and prototype-based (JavaScript) object systems
+Class-based (Java)					Prototype-based (JavaScript)
+Class and instance are distinct entities.		All objects can inherit from another object.
+
+Define a class with a class definition; 		Define and create a set of objects with constructor functions.
+instantiate a class with constructor methods.
+
+Create a single object with the new operator.		Same.
+
+Construct an object hierarchy by using class		Construct an object hierarchy by assigning an object as the prototype associated with  definitions to define subclasses of existing classes.	a constructor function.
+
+Inherit properties by following the class chain.	Inherit properties by following the prototype chain.
+
+Class definition specifies all properties of all 	Constructor function or prototype specifies an initial set of properties. Can add or instances of a class. Cannot add properties 		remove properties dynamically to individual objects or to the entire set of dynamically at run time.				objects.Comparison of class-based (Java) and prototype-based (JavaScript) object 								systems
+
+
+
+
+
+
+
+
+Note that variables may hold values that have different data types:
+
+Variable	Explanation									Example
+String		A sequence of text known as a string. 						var myVariable = 'Bob';
+		To signify that the value is a string, you must enclose it in quote marks.
+
+Number		A number. Numbers don't have quotes around them.				var myVariable = 10;
+
+Boolean		A True/False value. 								var myVariable = true;
+		The words true and false are special keywords in JS, and don't need quotes.
+
+Array		A structure that allows you to store multiple values in one single reference.	var myVariable = [1,'Bob','Steve',10];
+												Refer to each member of the array like this:
+												myVariable[0], myVariable[1], etc.
+
+Object		Basically, anything. 
+		Everything in JavaScript is an object, and can be stored in a variable. 	var myVariable = document.querySelector('h1');
+
+
+
+
+
+
+
+
+Operators
+An operator is a mathematical symbol which produces a result based on two values (or variables). In the following table you can see some of the simplest operators, along with some examples to try out in the JavaScript console.
+
+Operator	Explanation								Symbol(s)				Example
+Addition	Used to add two numbers together or glue two strings together.		    +					6 + 9;
+															"Hello " + "world!";
+
+
+Subtraction, 	These do what you'd expect them to do in basic math.			-, *, /					9 - 3;
+Multiplication, 											8 * 2; // multiply in JS is an asterisk
+Division															9 / 3;
+
+
+Assignment	it assigns a value to a variable.					    =				var myVariable = 'Bob';
+
+
+Equality	Does a test to see if two values are equal to one another 	           ===				var myVariable = 3;
+		and returns a true false(Boolean)result.								myVariable === 4;
+
+
+Not, 		Returns the logically opposite value of what it precedes; 		!, !==			 	var myVariable = 3;
+Does-not-equal	 it turns a true into a false, etc. 									!(myVariable === 3);
+		 When it is used alongside the Equality operator, 
+		 the negation operator tests whether two values are not equal.						var myVariable = 3;
+		For "Not", the basic expression is true, 								myVariable !== 3;
+		but the comparison returns false because we negate it:
+		"Does-not-equal" gives basically the same result with different syntax. 
+		Here we are testing "is myVariable NOT equal to 3". 
+		This returns false because myVariable IS equal to 3:
+
+
+
+
+
+Clients and servers
+Computers connected to the web are called clients and servers.
+
+Clients are the typical web user's internet-connected devices (for example, your computer connected to your Wi-Fi, or your phone connected to your mobile network) and web-accessing software available on those devices (usually a web browser like Firefox or Chrome).
+Servers are computers that store webpages, sites, or apps. When a client device wants to access a webpage, a copy of the webpage is downloaded from the server onto the client machine to be displayed in the user's web browser.
+
+
+
+So what happens, exactly?
+When you type a web address into your browser (for our analogy that's like walking to the shop):
+
+The browser goes to the DNS server, and finds the real address of the server that the website lives on (you find the address of the shop).
+The browser sends an HTTP request message to the server, asking it to send a copy of the website to the client (you go to the shop and order your goods). This message, and all other data sent between the client and the server, is sent across your internet connection using TCP/IP.
+If the server approves the client's request, the server sends the client a "200 OK" message, which means "Of course you can look at that website! Here it is", and then starts sending the website's files to the browser as a series of small chunks called data packets (the shop gives you your goods, and you bring them back to your house).
+The browser assembles the small chunks into a complete website and displays it to you (the goods arrive at your door — new shiny stuff, awesome!).
+
+
+
+
+Interpreted versus compiled code
+You might hear the terms interpreted and compiled in the context of programming. In interpreted languages, the code is run from top to bottom and the result of running the code is immediately returned. You don't have to transform the code into a different form before the browser runs it.
+
+Compiled languages on the other hand are transformed (compiled) into another form before they are run by the computer. For example, C/C++ are compiled into assembly language that is then run by the computer.
+
+JavaScript is a lightweight interpreted programming language.
+
+
+
+
+
+
+
+Server-side versus client-side code
+Client-side code is code that is run on the user's computer — when a web page is viewed, the page's client-side code is downloaded, then run and displayed by the browser.
+
+Server-side code on the other hand is run on the server, then its results are downloaded and displayed in the browser. Examples of popular server-side web languages include PHP, Python, Ruby, ASP.NET and... JavaScript! JavaScript can also be used as a server-side language, for example in the popular Node.js environment 
+
+
+
+
+
+
+Dynamic versus static code
+The word dynamic is used to describe both client-side JavaScript, and server-side languages — it refers to the ability to update the display of a web page/app to show different things in different circumstances, generating new content as required. Server-side code dynamically generates new content on the server, e.g. pulling data from a database, whereas client-side JavaScript dynamically generates new content inside the browser on the client, e.g. creating a new HTML table, filling it with data requested from the server, then displaying the table in a web page shown to the user. The meaning is slightly different in the two contexts, but related, and both approaches (server-side and client-side) usually work together.
+
+A web page with no dynamically updating content is referred to as static — it just shows the same content all the time.

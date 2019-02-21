@@ -1,0 +1,281 @@
+//step 1:understand
+
+//step 2:Algorithm
+------------------------------------------------------------------------------------------------------------
+Program for adding 2 no
+--------------------------------------------------------------------------------------------------------------------------------------
+1.start
+2.defien variable with a for no1.
+3.defien variable with b for no2.
+4.perform result
+5.store result of addition
+6.Display result on screen
+7.Exit/stop
+
+//step 3:write the program
+
+//step 4:test program
+
+-----------------------------------------------------------------------------------------------------------------
+
+Python 2 vs python 3
+
+1.Division operator
+python 2:only give int value eg:5/2=2
+python 3:gives float as well as int  eg.5/2=2.5
+
+for int div=5//2
+
+2.Print function
+python 2:dosnt requires braket
+Eg.print "Hello"
+
+python 3:requres bracket
+Eg.print ("Hello")
+
+3.Unicode
+
+4.xrange
+python 2 have built in function range and xrange
+python3 only range is function
+---------------------------------------------------------------------------------------------------------------------
+cntrl + d=helps to back from interactive mode
+
+--------------------------------------------------------------------------------------------------------------------
+all keywords are in lowercase except True,False,None
+
+
+--------------------------------------------------------------------------------------------------------------------
+Identifire name -rules
+
+1.only contain lowercase,uppercase,no,or underscore(_)
+2.can not start with no.
+3.not be a keyword
+
+use descriptive(like number_1=10 no use of a=10,no=10 )
+dnt use abbreviation
+number 1 = 2 -------------Correct way(dnt write number1=2)use spaces
+
+Naming Convention
+
+1.names of clases is in Camel case(capital ans squashed together)
+Eg.StudentProfile
+
+2.names of varibles which r intended ato be constants in CAPITAL_LETTER_WITH_UNDESRSCORE
+
+3.other variables in lowercase_with_underscore
+---------------------------------------------------------------------------------------------------------------------
+Python uses indentation to delimit blocks
+
+# uses for comment
+
+type()--used to find its type
+E.g type("Sha")
+gives <class 'Str'>
+------------------------------------------------------------------------------------------------------------------
+//diff btwn method and function
+function is treated as single as independent ..not grouping of statments
+
+method is bounded to class.It is always definjed under class only.
+------------------------------------------------------------------------------------------------------------------
+__builtins__:it is built in module.which automatically executes program
+
+ dir(__builtins__):gives all built in classes and built in function
+ dir(name):gives all built in classes and function related to name..it is variable
+-----------------------------------------------------------------------------------------------------------------------
+round()
+
+------------------------------------------------------------------------------------------------------
+we can get last element from list by -1 ,second last by -2 and so on
+-----------------------------------------------------------------------------------------------------
+slice function is used as listname[lowerbound:upperbound]
+and it will print lowerbound but exclude upperbound.
+
+[:] will give whole list
+
+------------------------------------------------------------------------------------------------------------
+
+any---if any value is true then it prints true
+all--if only all are of same then only or prints falls
+----------------------------------------------------------------------------------
+pop()
+if we didnt mention any particular elemet to pop it then removes last element
+and it will return element
+
+remove will nly remove element
+---------------------------------------------------------------------------------
+List = []
+tuple = ()
+set ={}
+--------------------------------------------------------------------------------------
+List is mutable
+[]
+---------------------------------------------------------------
+Tuple is immutable
+In tuple we can store any type of data.
+()
+-----------------------------------------------------------
+Set 
+It ia mutable.
+set is a collection of unique elemests
+{}
+--------------------------------------------------------------------------
+
+difference------------- returns a new set
+difference_update -------------------changes set in place
+-------------------------------------------------------------------
+when we want to sort the data in set the we have convert it in list or tuple and then sort it
+and it returns lo=ist object
+when we try to sort the set then it will not gives exact sorted list
+
+
+----------------------------------------------------------------------------------
+Ranges are immutable sequence type.
+gives specific range.
+similiarly we used previsioly [:10] it works like that only.
+It excludes the upperbound.Eg range(1,11) it will avoid 11
+list(range(1,11,2))-----gives stepping as 2..[1, 3, 5, 7, 9]
+===========================================================================================================
+Dictionary:
+
+it is key-value pair.
+{key:value}
+keys are immutable
+we can use immutable like tuple as keys
+Dict is mutable.
+keys ae unique--if we repeate it will overwrite the previous value
+Dict is not sorted like sets
+Not present in dict then return None
+-------------------------------------------------------------------------------------------------------------------
+
+for integer operations: system hndles
+brackets () ,** expotentials ,* multiplication ,//division and % modulus and then + and -
+
+----------------------------------------------------------------------------------------------------------------
+
+Strings are immutable
+------------------------------------------------------
+zip uses as
+(1,2,3) and (4,5,6)
+then it will result in (1,4)(2,5)(3,6)
+-------------------------------------------------------
+Comprehenssion:
+
+It is easy way to write the code instead of long lengthy code.
+It is written within the two square bracket
+.[]
+It is only used in loops.
+
+---------------------------------------------------------------------
+PDB is used to debug a prgrm while running
+It is module.
+we can import it
+we can use pdb while running
+set_trace is used to give break points
+used to execute line by line
+when we enter n then it will take next line for debugg
+when we enter s then iw will in function
+c to continue
+a means arguments received
+l means which line is executing--current location
+b 
+a indicates arguments which is given as input parameter
+b line number means we can give brkpooint at runtime..only b tells how many break points we r givong
+clear ---delets all brekpoints
+----------------------------------------------------------------------
+Debugging Tools:
+
+we can dwnload in vs code
+
+----------------------------------------------------------------
+Logging
+
+module used to add logging in our prgrm
+is like print statement.
+When we gives particular no then it will only gives that type of logging module or above tht it will eliminate its less no.
+critical---4
+error---3
+warning----2
+info---1
+debug----0
+
+------------------------------------------------------------
+Enumerator is used to pick th value with its indices
+
+Generator is used to
+
+List comprehenssion by []
+[number * 2 for number in numbers]
+will result doubble
+
+my_generator(number * 2 for number in numbers)--------------------generator
+next-------is used to give next result
+
+def-- used to start the function
+
+
+
+cntrl + ?---------------gives comment with spaces as its syntax is
+
+---------------------------------------------------------------------------------------------------------------------------
+python -m pdb return_value.py is used same as pdb
+--------------------------------------------------------------------------------------------------------------------------
+if it has two function with same name but diff argumentt
+but when executing it rreads first definition
+when second is encounterd then it will overwrite the first one
+
+
+* args-----------is a tuple
+** kargs---keywordargument---------is a dictionary
+
+print_args(*my_list) --it unpacks the elemet means it shows o/p in new single line
+
+print_kwargs(**my_dict)-----------it unpacks elemet from kwargs
+-------------------------------------------------------------------------------------------------------
+Decorator:
+
+we arite a function whivh modifies the function
+-------------------------------------------------------------------------
+Lambada is used to make one line function--unique feauture
+lambda is resrrved keyword
+
+another_print_sum=lambda x,y:x+y
+
+before the colon means whoch arguments are passing 
+and after : means which will return as result
+--------------------------------------------------------------------------------------------------------------
+
+
+everything is object in python.All are inherited from object
+__init__ --it is a private method of class
+*****imp**********     --It is not constructor
+
+
+@property is used to convert the method as an attribute
+@property is needed while using @setter n @deleter
+------------------------------------------------------------------------------------------
+overriding magic meithod:
+
+1.__init__
+2.__str__ : 
+
+
+
+magic methodd---then decorator method---- then bounded methodd....seq of writng methods
+
+__mro__ :gives the class inheretence
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
